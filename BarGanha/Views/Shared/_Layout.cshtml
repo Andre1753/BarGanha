@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BarGanha</title>
+    <title>BAR.GANHA - Ninguém fica sem!</title>
     <environment include="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,15 +18,8 @@
 </head>
 <body>
 
-    <div class="row">
-        <div class="col s3">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <partial name="_SideNav" />
-            }
-        </div>
-
-        <div class="col s9">
+    <div class="row">        
+        <div >
             @if (User.Identity.IsAuthenticated)
             {
                 <partial name="_Nav" />
@@ -36,11 +29,44 @@
                 <div class="body-content">
                     @RenderBody()
                     <hr />
+                                      
                     <footer>
-                        <div class="container">
-                            &copy; 2020 - BarGanha
+                        <div class="copyright">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <img width="120" src="~/images/logo.png" alt="#" /> Todos os direitos reservados.
+                                        Cleytech© 2020
+                                    </div>
+                                    <div class="col-md-4">
+                                        <ul class="list-inline socials">
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </footer>
+
                 </div>
             </div>
         </div>
