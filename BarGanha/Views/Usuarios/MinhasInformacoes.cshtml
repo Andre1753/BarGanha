@@ -1,7 +1,4 @@
 ﻿@model BarGanha.BLL.Models.Usuario
-@{
-    ViewData["Title"] = "Minhas Informações";
-}
 
 <partial name="_Confirmacoes" />
 
@@ -38,7 +35,7 @@
     <partial name="_ModalExcluir" />
 </div>
 
-@section Scripts{
+
     <script>
         function ConfirmarExclusao(id, nome) {
             $('.modal').modal({
@@ -46,8 +43,6 @@
             });
 
             $('#modal').modal('open');
-            $(".nome").text(nome);
-                                
+            $(".nome").text(nome);                                
         }
     </script>
-}

@@ -1,0 +1,54 @@
+﻿<div class="page-content-product">
+    <div class="main-product">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="find-box">
+                    <h1>Procure o produto <br> que você deseja.</h1>
+                    <h4>Nunca foi tão fácil.</h4>
+                    <div class="product-sh">
+                        <div class="col-sm-9">
+                            <div class="form-sh">
+                                <input type="text" placeholder="Procure algo que você ame">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-sh"> <a class="btn" asp-area="" asp-controller="Produtos" asp-action="Index">Procurar</a></div><!-- manda para a pagina category com filtros -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+
+        <div class="products">
+            <div class="main-products">
+                <h2>PRODUTOS</h2>
+                <div class="product-slidr">
+                    <div class="slider">
+                        <div>
+                            <div class="prod-box">
+                                <div class="prod-i">
+                                    <a href="productpage.html">
+                                        <img src="~/images/tr1.png" alt="#" />
+                                    </a>
+                                </div>
+                                <div class="prod-dit clearfix">
+                                    <div class="dit-t clearfix">
+                                        <div class="left-ti">
+                                            <h4>Table with Lights </h4>
+                                            <p>By <span>Beko</span> under <span>Lights</span></p>
+                                        </div>
+                                        <a asp-area="" asp-controller="Home" asp-action="Productpage">$1220</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="meio">
+                    <a class="btn"  asp-area="" asp-controller="Home" asp-action="Category" style="background: #09294c; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Ver todos os produtos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  

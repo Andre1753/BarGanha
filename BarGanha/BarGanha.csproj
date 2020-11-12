@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Content Remove="bundleconfig.json" />
+    <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
     <Content Remove="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>
