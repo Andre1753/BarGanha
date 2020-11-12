@@ -7,6 +7,9 @@ namespace BarGanha.BLL.Models
     {
         public string CPF { get; set; }
 
+        public virtual ICollection<Produto> Produtos { get; set; }
+
+
     }
 
 }

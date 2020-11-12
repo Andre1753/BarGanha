@@ -22,44 +22,7 @@
 </head>
 <body>
     <header id="header" class="top-head">
-        <!-- Static navbar -->
-        <nav class="navbar navbar-fixed-top navbar-default">
-            <div class="container-fluid">
-                <div class="col-md-4 left-rs">
-                    <div class="navbar-header">
-                        <button type="button" id="top-menu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                            <span class="sr-only">Alternar navegação</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" alt=Início></a>
-                    </div>
-
-                    <form class="navbar-form navbar-left web-sh">
-                        <div class="form">
-                            <input type="text" class="form-control" placeholder="Procure por produtos">
-                        </div>
-                    </form>
-                </div>
-                <div class="collapse navbar-collapse " id="navbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-box"><a asp-area="" asp-controller="Home" asp-action="About">Sobre nós</a></li>
-                        <li class="dropdown" style="padding-top: 10px ">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Minha conta <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a asp-area="" asp-controller="Usuarios" asp-action="MinhasInformacoes">Gerenciar conta</a></li>
-                                <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Cadastrar produtos</a></li>
-                                <li><a asp-area="" asp-controller="Usuarios" asp-action="Index">Cadastrar usuario</a></li>
-                                <li><a asp-area="" asp-controller="Home" asp-action="">Meus Pedidos</a></li>
-                                <li><partial name="_Logout" />
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!--/.container-fluid -->
-        </nav>
+        <partial name="_Nav" />
     </header>
 
     @RenderBody()

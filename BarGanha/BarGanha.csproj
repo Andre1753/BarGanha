@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="bundleconfig.json" />
     <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
     <Content Remove="wwwroot\js\IniciarMascaras.min.js" />
@@ -24,13 +23,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
-    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,10 +42,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="bundleconfig.json" />
     <None Include="wwwroot\js\InicializarTooltips.min.js" />
     <None Include="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 
 

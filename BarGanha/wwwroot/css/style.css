@@ -1504,7 +1504,7 @@ header .navbar-default .navbar-header {
 /*-- Category --*/
 
 .furniture-box {
-	background: #f4f9fd;
+	background-color: #f4f9fd;
 }
 
 .furniture-main h2 {
@@ -1962,10 +1962,16 @@ html .ui-button.ui-state-disabled:active {
 	box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
 	background: #fff;
 	padding: 12px;
+	max-width: 200px;
+	max-height: 150px;
 }
 
-.small-img-b img {
-	width: 100%;
+.small-img-b {
+	max-width: 200px;
+	max-height: 150px;
+	width: auto;
+	height: auto;
+	object-fit: cover;
 }
 
 .cat-pd {

@@ -31,8 +31,8 @@ namespace BarGanha.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _usuarioRepositorio.PegarTodos());
-        }
 
+        }
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Registro()
