@@ -64,7 +64,7 @@ namespace BarGanha.Controllers
                     {
                         await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Administrador");
                         await _usuarioRepositorio.LogarUsuario(usuario, false);
-                        return RedirectToAction("Index", "Usuarios");
+                        return View("login");
                     }
                 }
 
@@ -119,10 +119,7 @@ namespace BarGanha.Controllers
                     if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, model.Senha) != PasswordVerificationResult.Failed)
                     {
                         await _usuarioRepositorio.LogarUsuario(usuario, false);
-                        if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Usuario"))
-                            return RedirectToAction(nameof(MinhasInformacoes));
-                        else
-                            return RedirectToAction(nameof(Index));
+                       return RedirectToAction("Index", "Produtos"); ;
                     }
 
                     else
@@ -225,11 +222,25 @@ namespace BarGanha.Controllers
             TempData["Atualizacao"] = $"As funções do usuário {usuario.UserName} foram atualizadas";
             return RedirectToAction(nameof(Index));
         }
-
         [Authorize]
         public async Task<IActionResult> MinhasInformacoes()
         {
             return View(await _usuarioRepositorio.PegarUsuarioPeloNome(User));
+        }
+
+        [Authorize]
+        public async Task<IActionResult>Informacoes(string usuarioId)
+        {
+            if (usuarioId == null)
+            {
+                return NotFound();
+            }
+            var usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return View(usuario);
         }
 
         [Authorize]

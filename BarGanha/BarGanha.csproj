@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Shared\_SideNav.cshtml" />
+    <Content Remove="Views\Usuarios\Redirecionador.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
     <Content Remove="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>

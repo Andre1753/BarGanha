@@ -30,10 +30,10 @@
                     <div class="pro-img">
                     </div>
                     <div class="pof-text">
-                        <h3>Nome do anunciante</h3>
+                        <h3>@Html.DisplayFor(model => model.usuario.NormalizedUserName)</h3>
                         <div class="check-box"></div>
                     </div>
-                    <a href="profile.html">Visite o perfil do aunciante</a>
+                    <a asp-controller="Usuarios" asp-action="Informacoes" asp-route-usuarioId="@Model.UsuarioId">Visite o perfil do aunciante</a>
                 </div>
             </div>
             <div class="col-md-7 col-sm-8">
@@ -45,7 +45,7 @@
                                     @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
                                     {
                                         var str = Model.ImagemProduto;
-                                        <img src="~/images/@str" asp-append-version="true" />
+                                        <img src="~/images/@str" asp-append-version="true" style="width: 70%; height: 70%" />
                                     }
                                     else
                                     {

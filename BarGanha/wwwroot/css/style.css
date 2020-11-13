@@ -2552,11 +2552,6 @@ html .ui-button.ui-state-disabled:active {
 	flex-grow: 1;
 }
 
-.preview-thumbnail.nav-tabs {
-	border: none;
-	margin-top: 15px;
-}
-
 .preview-thumbnail.nav-tabs li {
 	width: 24%;
 	margin: 0 0.5%;
@@ -2584,7 +2579,7 @@ html .ui-button.ui-state-disabled:active {
 
 .preview-pic.tab-content {
 	border: 3px solid #ddd;
-	width: 99%;
+	width: 120%;
 	margin: 0.5%;
 }
 
