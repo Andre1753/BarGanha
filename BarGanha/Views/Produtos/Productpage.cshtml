@@ -1,0 +1,82 @@
+﻿@model IEnumerable<BarGanha.BLL.Models.Produto>
+<div class="furniture-box">
+    <div class="terms-title">
+        <div class="container">
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                    <li class="active">Produtos</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="furniture-main">
+                <h2>Produtos</h2>
+                <div class="col-md-3 col-sm-4">
+                    <div class="furniture-left">
+                        <h3>Categorias</h3>
+                        <div class="right-list-f">
+                            <ul>
+                                <li><a href="#">Cadeiras</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-8">
+                    <div class="furniture-middle">
+                        <div class="row cat-pd">
+                            @foreach (var item in Model)
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="small-box-c">
+                                        <div class="small-img-b">
+                                            @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
+                                            {
+                                                <img src="~/images/@item.ImagemProduto" asp-append-version="true" />
+                                            }
+                                            else
+                                            {
+                                                <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                            }
+                                        </div>
+                                        <div class="dit-t clearfix">
+                                            <div class="left-ti">
+                                                <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
+                                                <p>Por <span>Beko</span> em <span>Luzes</span></p>
+                                            </div>
+                                            <a style ="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+         $( function() {
+         	$( "#slider-range" ).slider({
+         		range: true,
+         		min: 0,
+         		max: 2000,
+         		values: [ 158, 1230 ],
+         		slide: function( event, ui ) {
+         			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+         		}
+         	});
+         	$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+         		" - $" + $( "#slider-range" ).slider( "values", 1 ) );
+         } );
+    </script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script>
+         $(document).ready(function() {
+           $("#boxscroll").niceScroll({cursorborder:"",cursorcolor:"#ededed",boxzoom:true}); // First scrollable DIV
+         });
+    </script>

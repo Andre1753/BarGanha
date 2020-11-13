@@ -1,41 +1,51 @@
 ﻿@model BarGanha.ViewModels.ProdutoViewModel
-
-<h2>Create</h2>
-
-<h4>Produto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form enctype="multipart/form-data" asp-action="Create">
-            <div class="form-group">
-                <label asp-for="NomeProduto" class="control-label"></label>
-                <input asp-for="NomeProduto" class="form-control" />
-                <span asp-validation-for="NomeProduto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Preco" class="control-label"></label>
-                <input asp-for="Preco" class="form-control" />
-                <span asp-validation-for="Preco" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImagemProduto" class="control-label"></label>
-                <div class="custom-file">
-                    <input asp-for="ImagemProduto" class="custom-file-input" id="customFile">
-                </div>
-                <span asp-validation-for="ImagemProduto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+<div class="terms-conditions product-page">
+    <div class="terms-title">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                <li><a asp-area="" asp-controller="Produtos" asp-action="Productpage">Produtos</a></li>
+                <li class="active">Cadastro de produto</li>
+            </ol>
+        </div>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+<div class="md-prod-page">
+    <div class="md-prod-page-in">
+        <div class="col-md-12">
+            <div class="prod-page-title">
+                <h2>Cadastro do produto</h2>
+                <p>De <span>Nome do anunciante</span></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <form enctype="multipart/form-data" asp-action="Create">
+                <div class="form-group col-md-6">
+                    <label asp-for="NomeProduto" class="control-label"></label>
+                    <input asp-for="NomeProduto" class="form-control" />
+                    <span asp-validation-for="NomeProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Preco" class="control-label"></label>
+                    <input asp-for="Preco" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ImagemProduto" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="ImagemProduto" class="custom-file-input" id="customFile">
+                    </div>
+                    <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar Produto" class="btn" style="background-color:#09294c; color:#fff;" />
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

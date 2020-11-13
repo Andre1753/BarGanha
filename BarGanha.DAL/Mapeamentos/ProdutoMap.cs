@@ -18,6 +18,7 @@ namespace BarGanha.DAL.Mapeamentos
 
             builder.HasOne(p => p.usuario).WithMany(p => p.Produtos).HasForeignKey(p => p.UsuarioId);
 
+
             builder.ToTable("Produtos");
         }
     }

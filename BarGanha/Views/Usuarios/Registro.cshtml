@@ -1,7 +1,6 @@
 ﻿@model BarGanha.ViewModels.RegistroViewModel
 @{
     Layout = null;
-    ViewData["Title"] = "Cadastro de moradores";
 }
 
 <!DOCTYPE html>
@@ -9,8 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Novo morador</title>
-
+    <title>BAR.GANHA - Ninguém fica sem!</title>
     <environment include="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -29,7 +27,7 @@
     <div class="registroform">
         <div class="center-align">
             <h4><i class="large material-icons">account_circle</i></h4>
-            <h5>Novo morador</h5>
+            <h5>Cadastrar Usuario</h5>
         </div>
 
         <div>
@@ -88,8 +86,8 @@
                 </div>
 
                 <div class="botoes">
-                    <button type="submit" class="waves-effect waves-light btn-small green darken-4">Registrar</button> &emsp;
-                    <a asp-controller="Usuarios" asp-action="Login">Já possuo uma conta</a>
+                    <button type="submit" class="waves-effect waves-light btn-small darken-4"style="background-color:#09294c;">Registrar</button> &emsp;
+                    <a style="color:#09294c;" asp-controller="Usuarios" asp-action="Login">Já possuo uma conta</a>
                 </div>
             </form>
         </div>

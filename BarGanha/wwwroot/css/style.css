@@ -73,10 +73,6 @@ ol {
 a,
 a:hover,
 a:focus {
-	-webkit-text-decoration: none;
-	-moz-text-decoration: none;
-	-ms-text-decoration: none;
-	-o-text-decoration: none;
 	text-decoration: none;
 	transition: ease all 0.5s;
 }
@@ -275,7 +271,6 @@ header .navbar-default .navbar-header {
 
 .top-nav ul li a {
 	color: #fff;
-	font-family: ;
 	font-size: 14px;
 	font-weight: 400;
 }
@@ -286,7 +281,6 @@ header .navbar-default .navbar-header {
 	transition: all .5s ease-out 0s;
 	-webkit-transition: all .5s ease-out 0s;
 	-moz-transition: all .5s ease-out 0s;
-	-ms-transition: all .5s ease-out 0s;
 	-o-transition: all .5s ease-out 0s;
 }
 
@@ -939,6 +933,8 @@ header .navbar-default .navbar-header {
 	transform: scale(1);
 	-webkit-transition: 0.3s ease-in-out all;
 	transition: 0.3s ease-in-out all;
+	height: 250px;
+	width: 250px;
 }
 
 .switch {
@@ -951,6 +947,8 @@ header .navbar-default .navbar-header {
 }
 
 .prod-box {
+	height: 250px;
+	width: 250px;
 	border: 1px solid #e7e7e7;
 	background: #fff;
 	padding: 12px;
@@ -958,7 +956,9 @@ header .navbar-default .navbar-header {
 }
 
 .prod-i img {
-	width: 100%;
+	height: 300px;
+	width: 300px;
+	object-fit: contain
 }
 
 .left-ti {
@@ -1044,6 +1044,7 @@ header .navbar-default .navbar-header {
 /*------------------------------------------------------------- 
 	7. FOOTER
 -------------------------------------------------------------*/
+
 
 .main-footer {
 	background-image: url('../images/footer_bg.png');
@@ -1962,16 +1963,15 @@ html .ui-button.ui-state-disabled:active {
 	box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
 	background: #fff;
 	padding: 12px;
-	max-width: 200px;
-	max-height: 150px;
+	height: 250px;
+	width: 250px;
+	margin-bottom: 40px;
 }
 
-.small-img-b {
-	max-width: 200px;
-	max-height: 150px;
-	width: auto;
-	height: auto;
-	object-fit: cover;
+.small-img-b img {
+	height: 180px;
+	width: 180px;
+	object-fit: contain;
 }
 
 .cat-pd {
@@ -2549,7 +2549,6 @@ html .ui-button.ui-state-disabled:active {
 .preview-pic {
 	-webkit-box-flex: 1;
 	-webkit-flex-grow: 1;
-	-ms-flex-positive: 1;
 	flex-grow: 1;
 }
 

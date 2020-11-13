@@ -1,15 +1,13 @@
 ﻿@model BarGanha.ViewModels.LoginViewModel
 @{
     Layout = null;
-    ViewData["Title"] = "Login de moradores";
 }
-
 <!DOCTYPE html>
 
 <html>
 <head>
+    <title>BAR.GANHA - Ninguém fica sem!</title>
     <meta name="viewport" content="width=device-width" />
-    <title>Login de moradores</title>
 
     <environment include="Development">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css">
@@ -54,8 +52,8 @@
                 </div>
 
                 <div class="botoes">
-                    <button type="submit" class="waves-effect waves-light btn-small green darken-4">Login</button> &emsp;
-                    <a asp-controller="Usuarios" asp-action="Registro">Não possuo uma conta</a>
+                    <button type="submit" class="waves-effect waves-light btn-small darken-4" style="background-color:#09294c;">Login</button> &emsp;
+                    <a style="color:#09294c;" asp-controller="Usuarios" asp-action="Registro">Não possuo uma conta</a>
                 </div>
             </form>
         </div>

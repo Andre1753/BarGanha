@@ -1,36 +1,78 @@
 ﻿@model BarGanha.BLL.Models.Produto
 
-@{
-    ViewData["Title"] = "Details";
-}
-
-<h2>Details</h2>
-
-<div>
-    <h4>Produto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeProduto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagemProduto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImagemProduto)
-        </dd>
-    </dl>
+<div class="terms-conditions product-page">
+    <div class="terms-title">
+        <div class="container">
+            <div class="row">
+                <ol class="breadcrumb">
+                    <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                    <li><a asp-area="" asp-controller="Produtos" asp-action="Productpage">Produtos </a></li>
+                    <li class="active">@Html.DisplayFor(model => model.NomeProduto)</li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ProdutoId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="product-page-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="prod-page-title">
+                    <h2>@Html.DisplayFor(model => model.NomeProduto)</h2>
+                    <p>De <span>Nome do anunciante</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-2 col-sm-4">
+                <div class="left-profile-box-m prod-page">
+                    <div class="pro-img">
+                    </div>
+                    <div class="pof-text">
+                        <h3>Nome do anunciante</h3>
+                        <div class="check-box"></div>
+                    </div>
+                    <a href="profile.html">Visite o perfil do aunciante</a>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-8">
+                <div class="md-prod-page">
+                    <div class="md-prod-page-in">
+                        <div class="page-preview">
+                            <div class="preview">
+                                <div class="preview-pic">
+                                    @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
+                                    {
+                                        var str = Model.ImagemProduto;
+                                        <img src="~/images/@str" asp-append-version="true" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="description-box">
+                        <div class="dex-a">
+                            <h4>Descrição</h4>
+                            <p>
+                                @Html.DisplayFor(model => model.Descricao)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-12">
+                <div class="price-box-right">
+                    <h4>Preço</h4>
+                    <h3>R$@Html.DisplayFor(model => model.Preco)</h3>
+                    <a href="#">Entrar em contato</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

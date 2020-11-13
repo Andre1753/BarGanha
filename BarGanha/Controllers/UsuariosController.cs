@@ -112,24 +112,33 @@ namespace BarGanha.Controllers
             if (ModelState.IsValid)
             {
                 Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloEmail(model.Email);
-
-                PasswordHasher<Usuario> passwordHasher = new PasswordHasher<Usuario>();
-
-                if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, model.Senha) != PasswordVerificationResult.Failed)
+                if (usuario != null)
                 {
-                    await _usuarioRepositorio.LogarUsuario(usuario, false);
-                    if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Usuario"))
-                        return RedirectToAction(nameof(MinhasInformacoes));
-                    else
-                        return RedirectToAction(nameof(Index));
-                }
+                    PasswordHasher<Usuario> passwordHasher = new PasswordHasher<Usuario>();
 
+                    if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, model.Senha) != PasswordVerificationResult.Failed)
+                    {
+                        await _usuarioRepositorio.LogarUsuario(usuario, false);
+                        if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Usuario"))
+                            return RedirectToAction(nameof(MinhasInformacoes));
+                        else
+                            return RedirectToAction(nameof(Index));
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("", "Usuario e/ou senhas inválidos");
+                        return View(model);
+
+                    }
+                }
                 else
                 {
-                     ModelState.AddModelError("", "Usuario e/ou senhas inválidos");
-                     return View(model);
+                    ModelState.AddModelError("", "Usuario não cadastrado");
+                    return View(model);
 
-                }
+                }       
+
             }
 
             return View(model);

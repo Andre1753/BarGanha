@@ -45,13 +45,16 @@ namespace BarGanha.Controllers
             {
                 return NotFound();
             }
-
             return View(produto);
         }
 
         public IActionResult Create()
         {
             return View();
+        }
+        public async Task<IActionResult> Productpage()
+        {
+            return View(await _context.Produtos.ToListAsync());
         }
 
         [HttpPost]
