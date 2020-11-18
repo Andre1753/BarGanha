@@ -74,7 +74,6 @@ namespace BarGanha.Controllers
                     Descricao = model.Descricao,
                     ImagemProduto = nomeUnicoArquivo,
                     UsuarioId = usuario.Id,
-                    CategoriaId = categoria.CategoriaId,
                 };
                 _context.Add(prod);
                 await _context.SaveChangesAsync();
