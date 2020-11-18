@@ -15,9 +15,7 @@ namespace BarGanha.DAL.Mapeamentos
             builder.Property(p => p.Descricao).IsRequired().HasMaxLength(144);
             builder.Property(p => p.ImagemProduto).IsRequired();
             builder.Property(p => p.UsuarioId).IsRequired();
-            builder.Property(p => p.CategoriaId).IsRequired();
 
-            builder.HasOne(p => p.categoria).WithMany(p => p.Produtos).HasForeignKey(p => p.CategoriaId);
             builder.HasOne(p => p.usuario).WithMany(p => p.Produtos).HasForeignKey(p => p.UsuarioId);
 
 
