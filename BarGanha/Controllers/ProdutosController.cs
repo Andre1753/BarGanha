@@ -50,6 +50,7 @@ namespace BarGanha.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categorias = _context.Categorias;
             return View();
         }
         public async Task<IActionResult> Productpage()
@@ -74,6 +75,7 @@ namespace BarGanha.Controllers
                     Descricao = model.Descricao,
                     ImagemProduto = nomeUnicoArquivo,
                     UsuarioId = usuario.Id,
+                    CategoriaId = model.CategoriaId,
                 };
                 _context.Add(prod);
                 await _context.SaveChangesAsync();

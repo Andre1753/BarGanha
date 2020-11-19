@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BarGanha.BLL.Models;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
 
@@ -23,5 +24,9 @@ namespace BarGanha.ViewModels
 
         [Display(Name = "Imagem do Produto")]
         public IFormFile ImagemProduto { get; set; }
+
+        [Required(ErrorMessage = "Selecione uma categoria")]
+        [Display(Name = "Categoria")]
+        public int CategoriaId { get; set; }
     }
 }

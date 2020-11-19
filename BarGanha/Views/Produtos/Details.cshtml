@@ -19,20 +19,12 @@
             <div class="col-md-12">
                 <div class="prod-page-title">
                     <h2>@Html.DisplayFor(model => model.NomeProduto)</h2>
-                    <p>De <span>Nome do anunciante</span></p>
                 </div>
             </div>
         </div>
         <div class="row">
-
             <div class="col-md-2 col-sm-4">
-                <div class="left-profile-box-m prod-page">
-                    <div class="pro-img">
-                    </div>
-                    <div class="pof-text">
-                        <h3>@Html.DisplayFor(model => model.usuario.UserName)</h3>
-                        <div class="check-box"></div>
-                    </div>
+                <div class="left-profile-box-m prod-page">                    
                     <a asp-controller="Usuarios" asp-action="Informacoes" asp-route-usuarioId="@Model.UsuarioId">Visite o perfil do aunciante</a>
                 </div>
             </div>

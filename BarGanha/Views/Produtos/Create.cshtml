@@ -42,6 +42,13 @@
                     </div>
                     <span asp-validation-for="ImagemProduto" class="text-danger"></span>
                 </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(m => m.CategoriaId, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.CategoriaId,
+                                                     new SelectList(ViewBag.Categorias, "CategoriaId", "NomeCategoria"),
+                                                     "Escolha a categoria", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CategoriaId, "", new { @class = "text-danger" })
+                </div>
                 <div class="form-group">
                     <input type="submit" value="Cadastrar Produto" class="btn" style="background-color:#09294c; color:#fff;" />
                 </div>
