@@ -16,13 +16,31 @@ namespace BarGanha.DAL.Mapeamentos
                 new Categoria
                 {
                     CategoriaId = 1,
-                    NomeCategoria = "Moveis",
+                    NomeCategoria = "Móveis",
                 },
 
                 new Categoria
                 {
                     CategoriaId = 2,
-                    NomeCategoria = "Eletronicos"
+                    NomeCategoria = "Eletrônicos"
+                },
+
+                new Categoria
+                {
+                    CategoriaId = 3,
+                    NomeCategoria = "Eletrodomésticos",
+                },
+
+                new Categoria
+                {
+                    CategoriaId = 4,
+                    NomeCategoria = "Vestuários",
+                },
+
+                new Categoria
+                {
+                    CategoriaId = 5,
+                    NomeCategoria = "Outros",
                 }); 
 
             builder.ToTable("Categorias");

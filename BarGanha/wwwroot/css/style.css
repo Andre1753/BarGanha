@@ -1516,21 +1516,11 @@ header .navbar-default .navbar-header {
 	padding-left: 15px;
 }
 
-.furniture-left {}
-
-.furniture-left h3 {
-	font-size: 11px;
-	color: #333333;
-	font-weight: 700;
-	text-transform: uppercase;
-	padding-bottom: 25px;
-}
-
-.furniture-right {
+.furniture-left {
 	margin-top: 15px;
 }
 
-.furniture-right h3 {
+.furniture-left h3 {
 	font-size: 14px;
 	color: #fff;
 	font-weight: 500;
@@ -1781,41 +1771,17 @@ html .ui-button.ui-state-disabled:active {
 	border-color: #BDBDBD;
 }
 
-.left-list-f {}
 
-.left-list-f .panel-title>a::before {
-	display: none;
-}
-
-.left-list-f .panel-default>.panel-heading {
-	background-color: transparent;
-	border: none;
-}
-
-.left-list-f .panel-default {
-	background: #f4f9fd;
-	border: none;
-	box-shadow: none;
-}
-
-.left-list-f .panel-group .panel+.panel {
-	margin: 0px;
-}
-
-.left-list-f .panel-title {
-	font-size: 13px;
-}
-
-.right-list-f {
+.left-list-f {
 	padding: 0px;
 }
 
-.right-list-f ul {
+.left-list-f ul {
 	margin: 0px;
 	padding: 0px;
 }
 
-.right-list-f ul li {
+.left-list-f ul li {
 	background: #ffffff;
 	-webkit-box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
 	box-shadow: 0 6px 10px -5px rgba(0, 0, 0, 0.1);
@@ -1823,14 +1789,18 @@ html .ui-button.ui-state-disabled:active {
 	margin-bottom: 20px;
 }
 
-.right-list-f ul li a {
-	color: #333;
+.left-list-f ul li a {
+	color: #000;
 	font-size: 15px;
+	border-radius: 4px
 }
 
-.right-list-f ul li a img {
-	margin-right: 5px;
-	margin-left: 5px;
+.left-list-f ul li.active, .left-list-f ul li.active:focus, .left-list-f ul li.active:hover {
+	background-color:#337ab7
+}
+
+.left-list-f ul li.active a, .left-list-f ul li.active a:focus, .left-list-f ul li.active a:hover {
+	color: #fff
 }
 
 .furniture-middle {
