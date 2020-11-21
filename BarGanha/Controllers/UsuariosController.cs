@@ -1,4 +1,5 @@
 ﻿using BarGanha.BLL.Models;
+using BarGanha.DAL;
 using BarGanha.DAL.Interfaces;
 using BarGanha.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -16,12 +17,14 @@ namespace BarGanha.Controllers
 {
     public class UsuariosController : Controller
     {
+        private readonly Contexto _context;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly IFuncaoRepositorio _funcaoRepositorio;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public UsuariosController(IUsuarioRepositorio usuarioRepositorio, IFuncaoRepositorio funcaoRepositorio, IWebHostEnvironment webHostEnvironment)
+        public UsuariosController(Contexto context,IUsuarioRepositorio usuarioRepositorio, IFuncaoRepositorio funcaoRepositorio, IWebHostEnvironment webHostEnvironment)
         {
+            _context = context;
             _usuarioRepositorio = usuarioRepositorio;
             _funcaoRepositorio = funcaoRepositorio;
             _webHostEnvironment = webHostEnvironment;
@@ -54,6 +57,7 @@ namespace BarGanha.Controllers
                 if (_usuarioRepositorio.VerificarSeExisteRegistro() == 0)
                 {
                     usuario.UserName = model.Nome;
+                    usuario.NomeCompleto = model.NomeCompleto;
                     usuario.CPF = model.CPF;
                     usuario.Email = model.Email;
                     usuario.PhoneNumber = model.Telefone;
@@ -67,8 +71,7 @@ namespace BarGanha.Controllers
                         return View("login");
                     }
                 }
-
-
+                usuario.NomeCompleto = model.NomeCompleto;
                 usuario.UserName = model.Nome;
                 usuario.CPF = model.CPF;
                 usuario.Email = model.Email;
@@ -256,6 +259,7 @@ namespace BarGanha.Controllers
             {
                 UsuarioId = usuario.Id,
                 Nome = usuario.UserName,
+                NomeCompleto = usuario.NomeCompleto,
                 CPF = usuario.CPF,
                 Email = usuario.Email,
                 Telefone = usuario.PhoneNumber
@@ -275,22 +279,17 @@ namespace BarGanha.Controllers
                 
 
                 Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloId(viewModel.UsuarioId);
-                usuario.UserName = viewModel.Nome;
-                usuario.CPF = viewModel.CPF;
-                usuario.PhoneNumber = viewModel.Telefone;
-                usuario.Email = viewModel.Email;
+                var usu = _context.Usuarios.Find(usuario.Id);
 
-                await _usuarioRepositorio.AtualizarUsuario(usuario);
+                usu.UserName = viewModel.Nome;
+                usu.NomeCompleto = viewModel.NomeCompleto;
+                usu.CPF = viewModel.CPF;
+                usu.PhoneNumber = viewModel.Telefone;
+                usu.Email = viewModel.Email;
 
-                TempData["Atualizacao"] = "Registro atualizado";
+                _context.SaveChanges();
 
-                if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, "Administrador"))
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-
-                else
-                    return RedirectToAction(nameof(MinhasInformacoes));
+                return RedirectToAction(nameof(MinhasInformacoes));
             }
 
             return View(viewModel);

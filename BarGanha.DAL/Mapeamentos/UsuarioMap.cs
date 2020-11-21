@@ -9,6 +9,7 @@ namespace BarGanha.DAL.Mapeamentos
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
+            builder.Property(u => u.NomeCompleto).IsRequired().HasMaxLength(80);
             builder.Property(u => u.CPF).IsRequired().HasMaxLength(30);
             builder.HasIndex(u => u.CPF).IsUnique();
 

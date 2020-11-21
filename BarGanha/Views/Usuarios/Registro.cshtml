@@ -29,7 +29,6 @@
             <h4><i class="large material-icons">account_circle</i></h4>
             <h5>Cadastrar Usuario</h5>
         </div>
-
         <div>
             <form asp-action="Registro" enctype="multipart/form-data">
                 <div class="campos">
@@ -43,6 +42,13 @@
                             <span asp-validation-for="Nome" class="red-text text-darken-4"></span>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input asp-for="NomeCompleto" class="validate" id="NomeCompleto" />
+                            <label asp-for="NomeCompleto" id="NomeCompleto"></label>
+                            <span asp-validation-for="NomeCompleto" class="red-text text-darken-4"></span>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="input-field col s12">
@@ -51,7 +57,7 @@
                             <span asp-validation-for="CPF" class="red-text text-darken-4"></span>
                         </div>
                     </div>
-                                  
+
                     <div class="row">
                         <div class="input-field col s12">
                             <input asp-for="Telefone" class="validate" id="Telefone" />
