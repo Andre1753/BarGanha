@@ -1,48 +1,34 @@
-﻿@model BarGanha.BLL.Models.Usuario
-
-<partial name="_Confirmacoes" />
-
-<div class="card horizontal">
-    
-    <div class="card-stacked">
-        <div class="card-content">
-            <div class="row">
-                <div class="col s6">
-                    <span class="card-text purple-text darken-3">Nome - @Model.UserName</span>
+﻿<div class="product-profile-box">
+    <div class="container">
+        <div class="row">            
+            <div class="col-md-12 col-sm-10">
+                <div>
+                    <h1>@Model.UserName <span class="check-box"></span></h1>
                 </div>
-                <div class="col s6">
-                    <span class="card-text purple-text darken-3">Email - @Model.Email</span>
+                <div class="panel-body">
+                    <div class="about-box">
+                        <h2>Minhas informações</h2>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Nome</h4>
+                            <p>@Model.UserName</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Email</h4>
+                            <p>@Model.Email</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>CPF</h4>
+                            <p>@Model.CPF</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Telefone</h4>
+                            <p>@Model.PhoneNumber</p>
+                        </div>
+                    </div>
+                    <a class="btn" asp-controller="Usuarios" asp-action="Atualizar" asp-route-id="@Model.Id" style="background: #09294c; border-radius: 6px; padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Atualizar</a>
+                    
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col s6">
-                    <span class="card-text purple-text darken-3">CPF - @Model.CPF</span>
-                </div>
-                <div class="col s6">
-                    <span class="card-text purple-text darken-3">Telefone - @Model.PhoneNumber</span>
-                </div>
             </div>
-        </div>
-
-        <div class="card-action">
-            <a asp-controller="Usuarios" asp-action="Atualizar" asp-route-id="@Model.Id" class="btn-small purple darken-3">Atualizar</a>
         </div>
     </div>
-</div>
-
-<div>
-    <partial name="_ModalExcluir" />
-</div>
-
-
-    <script>
-        function ConfirmarExclusao(id, nome) {
-            $('.modal').modal({
-                dismissble: true
-            });
-
-            $('#modal').modal('open');
-            $(".nome").text(nome);                                
-        }
-    </script>

@@ -1,13 +1,9 @@
 ﻿@model BarGanha.ViewModels.AtualizarViewModel
-@{
-    ViewData["Title"] = "Atualizar morador " + Model.Nome;
-}
 
 <div class="formulario">
     <div class="collection with-header">
         <form asp-action="Atualizar" enctype="multipart/form-data">
             <div class="collection-header">
-                <h5>Atualizar morador @Model.Nome</h5>
             </div>
 
             <div class="collection-item">

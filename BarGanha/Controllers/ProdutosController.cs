@@ -58,6 +58,13 @@ namespace BarGanha.Controllers
             return View(await _context.Produtos.ToListAsync());
         }
 
+        public async Task<IActionResult> MeusProdutos()
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+            ViewBag.Id = usuario.Id;
+            return View(await _context.Produtos.ToListAsync());
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProdutoViewModel model)
@@ -108,7 +115,9 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos.FindAsync(id);
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+
             if (produto == null)
             {
                 return NotFound();
@@ -121,32 +130,22 @@ namespace BarGanha.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomeProduto,Preco,Descricao,ImagemProduto")] Produto produto)
+        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,")] Produto produto)
         {
-            if (id != produto.ProdutoId)
-            {
-                return NotFound();
-            }
-
             if (ModelState.IsValid)
             {
-                try
+                var prod = _context.Produtos.Find(produto.ProdutoId);
+                if (produto == null)
                 {
-                    _context.Update(produto);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    /*if (!ProdutoExists(produto.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }*/
-                }
-                return RedirectToAction(nameof(Index));
+                prod.NomeProduto = produto.NomeProduto;
+                prod.Preco = produto.Preco;
+                prod.Descricao = produto.Descricao;
+
+                _context.SaveChanges();
+
+                return RedirectToAction("MeusProdutos");
             }
             return View(produto);
         }

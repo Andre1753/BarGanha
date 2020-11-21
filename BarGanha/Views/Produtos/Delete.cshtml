@@ -1,36 +1,60 @@
 ﻿@model BarGanha.BLL.Models.Produto
 
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Produto</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeProduto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.NomeProduto)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Preco)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Preco)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ImagemProduto)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ImagemProduto)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="ProdutoId" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<div class="product-page-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="prod-page-title">
+                    <h1>Você tem certeza que quer apagar este produto?</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-sm-8">
+                <div class="md-prod-page">
+                    <div class="md-prod-page-in">
+                        <h2>@Html.DisplayFor(model => model.NomeProduto)</h2>
+                        <div class="page-preview">
+                            <div class="preview">
+                                <div class="preview-pic">
+                                    @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
+                                    {
+                                        var str = Model.ImagemProduto;
+                                        <img src="~/images/@str" asp-append-version="true" style="width: 70%; height: 70%" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <div class="price-box-right">
+                    <h3 style="color:#000000">Descrição</h3>
+                    <h4>
+                        @Html.DisplayFor(model => model.Descricao)
+                    </h4>
+                </div>
+            </div>
+            <div><br /></div>
+            <div class="col-md-3 col-sm-12">
+                <div class="price-box-right"style="margin-top:4px; margin-bottom:4px">
+                    <h3 style="color:#000000">Preço</h3>
+                    <h4>R$@Html.DisplayFor(model => model.Preco)</h4>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                <form asp-action="Delete">
+                    <input type="submit" value="Delete" class="btn btn-default" style="background-color:#ff0000; color:#fff;" /> 
+                    <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="MeusProdutos">Voltar</a>
+                </form>
+            </div>
+        </div>
+        
+    </div>
 </div>
