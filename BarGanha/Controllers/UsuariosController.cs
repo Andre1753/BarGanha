@@ -245,7 +245,19 @@ namespace BarGanha.Controllers
             }
             return View(usuario);
         }
-
+        public async Task<IActionResult> EntreemContato(string usuarioId)
+        {
+            if (usuarioId == null)
+            {
+                return NotFound();
+            }
+            var usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+            return View(usuario);
+        }
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> Atualizar(string id)

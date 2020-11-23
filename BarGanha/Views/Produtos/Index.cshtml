@@ -7,14 +7,16 @@
                     <h1>Procure o produto <br> que você deseja.</h1>
                     <h4>Nunca foi tão fácil.</h4>
                     <div class="product-sh">
-                        <div class="col-sm-9">
-                            <div class="form-sh">
-                                <input type="text" placeholder="Procure algo que você ame">
+                        <form asp-controller="Produtos" asp-action="ProductPage">
+                            <div class="col-sm-9">
+                                <div class="form-sh">
+                                    <input type="text" name="SearchString " placeholder="Procure algo que você ame">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-sh"> <a class="btn" asp-area="" asp-controller="Produtos" asp-action="Index">Procurar</a></div><!-- manda para a pagina category com filtros -->
-                        </div>
+                            <div class="col-sm-3">
+                                <div class="form-sh"> <input type="submit"value="Procurar" /></div><!-- manda para a pagina category com filtros -->
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

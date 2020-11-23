@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-7 col-sm-8">
-                    <div class="md-prod-page"style="width: 100%; height:70%">
+                    <div class="md-prod-page">
                         <div class="md-prod-page-in ">
                             <div class="page-preview">
                                 <div class="preview">
@@ -37,7 +37,7 @@
                                         @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
                                         {
                                             var str = Model.ImagemProduto;
-                                            <img src="~/images/@str" asp-append-version="true" style="width: 100%; height:60%" />
+                                            <img src="~/images/@str" asp-append-version="true" style="width: 70%; height:70%" />
                                         }
                                         else
                                         {
@@ -61,7 +61,7 @@
                     <div class="price-box-right">
                         <h4>Preço</h4>
                         <h3>R$@Html.DisplayFor(model => model.Preco)</h3>
-                        <a href="#">Barganhar</a>
+                        <a asp-controller="Usuarios" asp-action="EntreemContato" asp-route-usuarioId="@Model.UsuarioId">Entrar em contato</a>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,6 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
-                <li><a asp-area="" asp-controller="Produtos" asp-action="Productpage">Produtos</a></li>
                 <li class="active">Cadastro de produto</li>
             </ol>
         </div>
@@ -15,7 +14,7 @@
         <div class="col-md-12">
             <div class="prod-page-title">
                 <h2>Cadastro do produto</h2>
-                <p>De <span>Nome do anunciante</span></p>
+                <p>De <span>@User.Identity.Name</span></p>
             </div>
         </div>
         <div class="col-md-10">
@@ -51,6 +50,7 @@
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Cadastrar Produto" class="btn" style="background-color:#09294c; color:#fff;" />
+                    <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
                 </div>
             </form>
         </div>
