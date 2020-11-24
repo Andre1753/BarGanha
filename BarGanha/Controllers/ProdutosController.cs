@@ -53,9 +53,17 @@ namespace BarGanha.Controllers
             ViewBag.Categorias = _context.Categorias;
             return View();
         }
-        public async Task<IActionResult> Productpage()
+        public async Task<IActionResult> Productpage(string searchString)
         {
-            return View(await _context.Produtos.ToListAsync());
+            var prod = from m in _context.Produtos
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                prod = prod.Where(s => s.NomeProduto.Contains(searchString));
+            }
+
+            return View(await prod.ToListAsync());
         }
 
         public async Task<IActionResult> MeusProdutos()

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<BarGanha.BLL.Models.Produto>
-<div class="page-content-product">
+<div class="page-content-product">  
     <div class="main-product">
         <div class="container">
             <div class="row clearfix">
@@ -7,7 +7,7 @@
                     <h1>Procure o produto <br> que você deseja.</h1>
                     <h4>Nunca foi tão fácil.</h4>
                     <div class="product-sh">
-                        <form asp-controller="Produtos" asp-action="ProductPage">
+                        <form asp-controller="Produtos" asp-action="Productpage" method="get">
                             <div class="col-sm-9">
                                 <div class="form-sh">
                                     <input type="text" name="SearchString " placeholder="Procure algo que você ame">
