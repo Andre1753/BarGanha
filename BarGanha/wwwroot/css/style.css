@@ -958,11 +958,14 @@ header .navbar-default .navbar-header {
 .prod-i img {
 	height: 300px;
 	width: 300px;
-	object-fit: contain
+	object-fit: contain;
 }
 
 .left-ti {
 	float: left;
+	width: 128px;
+	height: 22px;
+	object-fit: contain;
 }
 
 .dit-t {

@@ -50,7 +50,9 @@
                                             <div class="left-ti">
                                                 <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
                                             </div>
-                                            <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                            <div class="dit-t right-ti">
+                                                <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +81,9 @@
                                                 <div class="left-ti">
                                                     <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
                                                 </div>
-                                                <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                <div class="meio">
+                                                    <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
