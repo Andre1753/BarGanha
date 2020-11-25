@@ -32,11 +32,6 @@
                         <input style="border:solid 0.2px #000000" asp-for="Telefone" class="validate" id="Telefone" />
                         <span asp-validation-for="Telefone" class="red-text text-darken-4"></span>
                     </div>
-                    <div style="margin-bottom:10px;">
-                        <h4><label asp-for="Email" id="Email"></label></h4>
-                        <input style="border:solid 0.2px #000000" asp-for="Email" class="validate" type="email" id="Email" />
-                        <span asp-validation-for="Email" class="red-text text-darken-4"></span>
-                    </div>
                     <div class="botoes">
                         <button type="submit" class="btn" style="background-color:#09294c; color:#fff;">Atualizar</button> &emsp;
                         <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Usuarios" asp-action="MinhasInformacoes">Voltar</a>
