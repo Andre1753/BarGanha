@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<BarGanha.BLL.Models.Produto>
+@{var ss = ViewBag.Ss;
+}
 <div class="furniture-box">
     <div class="terms-title">
         <div class="container">
@@ -34,28 +36,56 @@
                         <div class="row cat-pd">
                             @foreach (var item in Model)
                             {
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="small-box-c">
-                                        <div class="small-img-b">
-                                            @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
-                                            {
-                                                <img src="~/images/@item.ImagemProduto" asp-append-version="true" />
-                                            }
-                                            else
-                                            {
-                                                <img src="~/images/footer_bg.png" asp-append-version="true" />
-                                            }
+                            @if(ss != null && @item.NomeProduto == ss)
+                                {
+                            <div class="col-md-4 col-sm-4">
+                                <div class="small-box-c">
+                                    <div class="small-img-b">
+                                        @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
+                                                {
+                                        <img src="~/images/@item.ImagemProduto" asp-append-version="true" />
+                                                }
+                                                else
+                                                {
+                                        <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                                }
+                                    </div>
+                                    <div class="dit-t clearfix">
+                                        <div class="left-ti">
+                                            <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
                                         </div>
-                                        <div class="dit-t clearfix">
-                                            <div class="left-ti">
-                                                <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
-                                            </div>
-                                            <div class="dit-t right-ti">
-                                                <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
-                                            </div>
+                                        <div class="dit-t right-ti">
+                                            <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-4 col-sm-4">
+                                        <div class="small-box-c">
+                                            <div class="small-img-b">
+                                                @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
+                                                        {
+                                                <img src="~/images/@item.ImagemProduto" asp-append-version="true" />
+                                                        }
+                                                        else
+                                                        {
+                                                <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                                        }
+                                            </div>
+                                            <div class="dit-t clearfix">
+                                                <div class="left-ti">
+                                                    <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
+                                                </div>
+                                                <div class="dit-t right-ti">
+                                                    <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
                             }
                         </div>
                     </div>

@@ -1,0 +1,41 @@
+﻿@model BarGanha.BLL.Models.Usuario
+
+<div class="product-profile-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div>
+                    <h1>Você tem certeza que quer apagar este usuario?</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="about-box">
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Nome Completo</h4>
+                            <p>@Model.UserName</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Nome Completo</h4>
+                            <p>@Model.NomeCompleto</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Email</h4>
+                            <p>@Model.Email</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>CPF</h4>
+                            <p>@Model.CPF</p>
+                        </div>
+                        <div class="col-md-6 col-sm-5">
+                            <h4>Telefone</h4>
+                            <p>@Model.PhoneNumber</p>
+                        </div>
+                    </div>
+                    <form asp-action="Delete">
+                        <input type="submit" value="Deletar" class="btn btn-default" style="background-color:#ff0000; color:#fff;" />
+                        <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Usuarios" asp-action="Index">Voltar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

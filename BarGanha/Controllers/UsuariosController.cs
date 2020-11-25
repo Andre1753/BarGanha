@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,8 +35,84 @@ namespace BarGanha.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _usuarioRepositorio.PegarTodos());
-
         }
+
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> AtualizarAdm(string id)
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarPeloId(id);
+
+            if (usuario == null)
+                return NotFound();
+
+            AtualizarViewModel model = new AtualizarViewModel
+            {
+                UsuarioId = usuario.Id,
+                Nome = usuario.UserName,
+                NomeCompleto = usuario.NomeCompleto,
+                CPF = usuario.CPF,
+                Email = usuario.Email,
+                Telefone = usuario.PhoneNumber
+            };
+            return View(model);
+        }
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AtualizarAdm(AtualizarViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloId(viewModel.UsuarioId);
+                var usu = _context.Usuarios.Find(usuario.Id);
+
+                usu.UserName = viewModel.Nome;
+                usu.NomeCompleto = viewModel.NomeCompleto;
+                usu.CPF = viewModel.CPF;
+                usu.PhoneNumber = viewModel.Telefone;
+                usu.Email = viewModel.Email;
+
+                _context.SaveChanges();
+
+                return RedirectToAction(nameof(MinhasInformacoes));
+            }
+
+            return View(viewModel);
+        }
+
+
+        [Authorize(Roles = "Administrador")]
+        // GET: Produtos/Delete/5
+        public async Task<IActionResult> Delete(string? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (usuario == null)
+            {
+                return NotFound();
+            }
+
+            return View(usuario);
+        }
+
+        // POST: Produtos/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var produto = await _context.Usuarios.FindAsync(id);
+            _context.Usuarios.Remove(produto);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         [AllowAnonymous]
         [HttpGet]
         public IActionResult Registro()
@@ -152,79 +229,6 @@ namespace BarGanha.Controllers
             return RedirectToAction("Login");
         }
        
-        [Authorize(Roles = "Administrador")]
-        [HttpGet]
-        public async Task<IActionResult> GerenciarUsuario(string usuarioId, string nome)
-        {
-            if (usuarioId == null)
-                return NotFound();
-
-            TempData["usuarioId"] = usuarioId;
-            ViewBag.Nome = nome;
-            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
-
-            if (usuario == null)
-                return NotFound();
-
-            List<FuncaoUsuariosViewModel> viewModel = new List<FuncaoUsuariosViewModel>();
-
-            foreach (Funcao funcao in await _funcaoRepositorio.PegarTodos())
-            {
-                FuncaoUsuariosViewModel model = new FuncaoUsuariosViewModel
-                {
-                    FuncaoId = funcao.Id,
-                    Nome = funcao.Name,
-                    Descricao = funcao.Descricao
-                };
-
-                if (await _usuarioRepositorio.VerificarSeUsuarioEstaEmFuncao(usuario, funcao.Name))
-                {
-                    model.isSelecionado = true;
-                }
-
-                else
-                    model.isSelecionado = false;
-
-                viewModel.Add(model);
-            }
-
-            return View(viewModel);
-        }
-
-        [Authorize(Roles = "Administrador")]
-        [HttpPost]
-        public async Task<IActionResult> GerenciarUsuario(List<FuncaoUsuariosViewModel> model)
-        {
-            string usuarioId = TempData["usuarioId"].ToString();
-
-            Usuario usuario = await _usuarioRepositorio.PegarPeloId(usuarioId);
-
-            if (usuario == null)
-                return NotFound();
-
-            IEnumerable<string> funcoes = await _usuarioRepositorio.PegarFuncoesUsuario(usuario);
-            IdentityResult resultado = await _usuarioRepositorio.RemoverFuncoesUsuario(usuario, funcoes);
-
-            if (!resultado.Succeeded)
-            {
-                ModelState.AddModelError("", "Não foi possível atualizar as funções do usuários");
-                TempData["Exclusao"] = $"Não foi possível atualizar as funções do usuário {usuario.UserName}";
-                return View("GerenciarUsuario", usuarioId);
-            }
-
-            resultado = await _usuarioRepositorio.IncluirUsuarioEmFuncoes(usuario,
-                model.Where(x => x.isSelecionado == true).Select(x => x.Nome));
-
-            if (!resultado.Succeeded)
-            {
-                ModelState.AddModelError("", "Não foi possível atualizar as funções do usuários");
-                TempData["Exclusao"] = $"Não foi possível atualizar as funções do usuário {usuario.UserName}";
-                return View("GerenciarUsuario", usuarioId);
-            }
-
-            TempData["Atualizacao"] = $"As funções do usuário {usuario.UserName} foram atualizadas";
-            return RedirectToAction(nameof(Index));
-        }
         [Authorize]
         public async Task<IActionResult> MinhasInformacoes()
         {
@@ -280,6 +284,7 @@ namespace BarGanha.Controllers
 
             return View(model);
         }
+
 
         [Authorize]
         [HttpPost]

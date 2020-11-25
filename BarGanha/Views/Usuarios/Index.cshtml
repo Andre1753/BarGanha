@@ -1,6 +1,12 @@
 ﻿@model IEnumerable<BarGanha.BLL.Models.Usuario>
+@{
+    var cont = 0;
+    @foreach (var item in Model)
+    {
+        cont++;
+    }
+}
 
-@using BarGanha.BLL.Models
 
 <div class="tabelas">
 
@@ -16,37 +22,46 @@
                         <th>
                             Nome
                         </th>
-
                         <th>
                             CPF
                         </th>
-
                         <th>
                             Email
                         </th>
-
                         <th>
                             Telefone
-                        </th>                        
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.UserName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CPF)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CPF)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-action="AtualizarAdm" asp-route-id="@item.Id">Editar</a>
+                                @if (cont == 1)
+                                {
+                                }
+                                else
+                                {
+                                    <a class="btn" style="background-color:#ff0000; color:#fff;" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                                }
+                                <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Produtosconta" asp-route-id="@item.Id">Produtos cadastrados</a>
+                            </td>
+                        </tr>
+                        cont--;
                     }
                 </tbody>
             </table>

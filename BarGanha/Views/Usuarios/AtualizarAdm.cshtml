@@ -1,0 +1,50 @@
+﻿@model BarGanha.ViewModels.AtualizarViewModel
+<div class="product-profile-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-10">
+                <div>
+                    <h1>Edite as informações do usuario</h1>
+                </div>
+                <br />
+                <div>
+                    <h2>Usuario: @Model.Nome</h2>
+                </div>
+                <br />
+                <form asp-action="AtualizarAdm" enctype="multipart/form-data">
+                    <div class="red-text text-darken-4" asp-validation-summary="ModelOnly"></div>
+                    <input type="hidden" asp-for="UsuarioId" />
+                    <div style="margin-bottom:10px;">
+                        <h4><label asp-for="Nome" id="Nome"></label></h4>
+                        <input style="border:solid 0.2px #000000" asp-for="Nome" class="validate" id="Nome" />
+                        <span asp-validation-for="Nome" class="red-text text-darken-4"></span>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <h4><label asp-for="NomeCompleto" id="Nome"></label></h4>
+                        <input style="border:solid 0.2px #000000" asp-for="NomeCompleto" class="validate" id="NomeCompleto" />
+                        <span asp-validation-for="NomeCompleto" class="red-text text-darken-4"></span>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <h4><label asp-for="CPF" id="CPF"></label></h4>
+                        <input style="border:solid 0.2px #000000" asp-for="CPF" class="validate" id="CPF" />
+                        <span asp-validation-for="CPF" class="red-text text-darken-4"></span>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <h4><label asp-for="Telefone" id="Telefone"></label></h4>
+                        <input style="border:solid 0.2px #000000" asp-for="Telefone" class="validate" id="Telefone" />
+                        <span asp-validation-for="Telefone" class="red-text text-darken-4"></span>
+                    </div>
+                    <div style="margin-bottom:10px;">
+                        <h4><label asp-for="Email" id="Email"></label></h4>
+                        <input style="border:solid 0.2px #000000" asp-for="Email" class="validate" type="email" id="Email" />
+                        <span asp-validation-for="Email" class="red-text text-darken-4"></span>
+                    </div>
+                    <div class="botoes">
+                        <button type="submit" class="btn" style="background-color:#09294c; color:#fff;">Atualizar</button> &emsp;
+                        <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Usuarios" asp-action="Index">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

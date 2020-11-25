@@ -1,0 +1,60 @@
+﻿@model BarGanha.BLL.Models.Produto
+
+<div class="product-page-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="prod-page-title">
+                    <h1>Edite as informações do produto</h1>
+                    <p>*Não é possivel editar a foto e a categoria do produto</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 col-sm-8">
+                <div class="md-prod-page">
+                    <div class="md-prod-page-in">
+                        <h2>@Html.DisplayFor(model => model.NomeProduto)</h2>
+                        <div class="page-preview">
+                            <div class="preview">
+                                <div class="preview-pic">
+                                    @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
+                                    {
+                                        var str = Model.ImagemProduto;
+                                        <img src="~/images/@str" asp-append-version="true" style="width: 70%; height: 70%" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form asp-action="Edit">
+                <input type="hidden" asp-for="ProdutoId" />
+                <div class="form-group col-md-3 col-sm-12">
+                    <label asp-for="NomeProduto" class="control-label"></label>
+                    <input asp-for="NomeProduto" class="form-control" />
+                    <span asp-validation-for="NomeProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3 col-sm-12">
+                    <label asp-for="Preco" class="control-label"></label>
+                    <input asp-for="Preco" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3 col-sm-12">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-3 col-sm-12">
+                    <input type="submit" value="Editar" class="btn btn-default" style="background-color:#ff0000; color:#fff;" />
+                    <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Produtosconta" asp-route-id="@Model.UsuarioId">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

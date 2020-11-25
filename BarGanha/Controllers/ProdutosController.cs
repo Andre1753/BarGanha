@@ -53,23 +53,23 @@ namespace BarGanha.Controllers
             ViewBag.Categorias = _context.Categorias;
             return View();
         }
+
         public async Task<IActionResult> Productpage(string searchString)
         {
-            var prod = from m in _context.Produtos
-                         select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                prod = prod.Where(s => s.NomeProduto.Contains(searchString));
-            }
-
-            return View(await prod.ToListAsync());
+            ViewBag.Ss = searchString;
+            return View(await _context.Produtos.ToListAsync());
         }
-
         public async Task<IActionResult> MeusProdutos()
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
             ViewBag.Id = usuario.Id;
+            return View(await _context.Produtos.ToListAsync());
+        }
+        public async Task<IActionResult> Produtosconta(string id)
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloId(id);
+            ViewBag.Id = usuario.Id;
+            ViewBag.Nome = usuario.UserName;
             return View(await _context.Produtos.ToListAsync());
         }
 
@@ -153,7 +153,7 @@ namespace BarGanha.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction("MeusProdutos");
+                return RedirectToAction("Index");
             }
             return View(produto);
         }
@@ -190,6 +190,23 @@ namespace BarGanha.Controllers
         {
             return _context.Produtos.Any(e => e.ProdutoId == id);
         }
+        public async Task<IActionResult> EditAdm(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+
+            if (produto == null)
+            {
+                return NotFound();
+            }
+            return View(produto);
+        }        
     }
+
 }
 
