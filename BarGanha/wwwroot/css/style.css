@@ -89,6 +89,23 @@ textarea {
 	resize: none;
 }
 
+table {
+	border-collapse: separate;
+	border-spacing: 0px 5px;
+}
+table thead th {
+	background-color:#09294c;
+	color:#fff;
+	width: 23em;
+}
+table tr:nth-child(odd) {	
+	background-color: #fff;
+}
+
+table tr:nth-child(even) {	
+	background-color: #ccc;
+} 
+
 
 /*------------------------------------------------------------- 
 	2. HEADER 
@@ -2798,4 +2815,7 @@ html .ui-button.ui-state-disabled:active {
 .bg_img_left img,
 .bg_img_right img {
 	width: 100%;
+}
+
+.nada{
 }

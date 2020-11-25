@@ -1,12 +1,4 @@
 ﻿@model IEnumerable<BarGanha.BLL.Models.Usuario>
-@{
-    var cont = 0;
-    @foreach (var item in Model)
-    {
-        cont++;
-    }
-}
-
 
 <div class="tabelas">
 
@@ -49,9 +41,9 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.PhoneNumber)
                             </td>
-                            <td>
+                            <td class="nada">
                                 <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-action="AtualizarAdm" asp-route-id="@item.Id">Editar</a>
-                                @if (cont == 1)
+                                @if (item.UserName == User.Identity.Name)
                                 {
                                 }
                                 else
@@ -61,7 +53,6 @@
                                 <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Produtosconta" asp-route-id="@item.Id">Produtos cadastrados</a>
                             </td>
                         </tr>
-                        cont--;
                     }
                 </tbody>
             </table>

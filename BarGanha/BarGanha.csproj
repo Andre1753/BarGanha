@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Imagens\**" />
+    <Content Remove="wwwroot\Imagens\**" />
+    <EmbeddedResource Remove="wwwroot\Imagens\**" />
+    <None Remove="wwwroot\Imagens\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="Views\Usuarios\Redirecionador.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
@@ -37,10 +44,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BarGanha.BLL\BarGanha.BLL.csproj" />
     <ProjectReference Include="..\BarGanha.DAL\BarGanha.DAL.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Imagens\" />
   </ItemGroup>
 
   <ItemGroup>
