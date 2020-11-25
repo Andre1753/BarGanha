@@ -15,6 +15,9 @@
                             Nome
                         </th>
                         <th>
+                            Nome Completo
+                        </th>
+                        <th>
                             CPF
                         </th>
                         <th>
@@ -28,31 +31,34 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CPF)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.PhoneNumber)
-                            </td>
-                            <td class="nada">
-                                <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-action="AtualizarAdm" asp-route-id="@item.Id">Editar</a>
-                                @if (item.UserName == User.Identity.Name)
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NomeCompleto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CPF)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PhoneNumber)
+                        </td>
+                        <td class="nada">
+                            <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-action="AtualizarAdm" asp-route-id="@item.Id">Editar</a>
+                            @if (item.UserName == User.Identity.Name)
                                 {
                                 }
                                 else
                                 {
-                                    <a class="btn" style="background-color:#ff0000; color:#fff;" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+                            <a class="btn" style="background-color:#ff0000; color:#fff;" asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
                                 }
-                                <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Produtosconta" asp-route-id="@item.Id">Produtos cadastrados</a>
-                            </td>
-                        </tr>
+                            <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Produtosconta" asp-route-id="@item.Id">Produtos cadastrados</a>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
