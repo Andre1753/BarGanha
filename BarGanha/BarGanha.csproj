@@ -56,7 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Produtos\About.cshtml" />
+    <None Include="Views\Home\About.cshtml" />
     <None Include="Views\Produtos\Cart.cshtml" />
     <None Include="Views\Produtos\Checkout.cshtml" />
     <None Include="Views\Produtos\Contact-us.cshtml" />
