@@ -13,6 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Produtos\About.cshtml" />
+    <Content Remove="Views\Produtos\Cart.cshtml" />
+    <Content Remove="Views\Produtos\Checkout.cshtml" />
+    <Content Remove="Views\Produtos\Contact-us.cshtml" />
+    <Content Remove="Views\Produtos\My-account.cshtml" />
+    <Content Remove="Views\Produtos\Service.cshtml" />
+    <Content Remove="Views\Produtos\Shop-detail.cshtml" />
+    <Content Remove="Views\Produtos\Shop.cshtml" />
+    <Content Remove="Views\Produtos\Wishlist.cshtml" />
     <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="Views\Usuarios\Redirecionador.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
@@ -47,6 +56,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Produtos\About.cshtml" />
+    <None Include="Views\Produtos\Cart.cshtml" />
+    <None Include="Views\Produtos\Checkout.cshtml" />
+    <None Include="Views\Produtos\Contact-us.cshtml" />
+    <None Include="Views\Produtos\My-account.cshtml" />
+    <None Include="Views\Produtos\Service.cshtml" />
+    <None Include="Views\Produtos\Shop-detail.cshtml" />
+    <None Include="Views\Produtos\Shop.cshtml" />
+    <None Include="Views\Produtos\Wishlist.cshtml" />
     <None Include="wwwroot\js\InicializarTooltips.min.js" />
     <None Include="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>
