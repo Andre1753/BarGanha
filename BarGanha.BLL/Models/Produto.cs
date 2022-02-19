@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace BarGanha.BLL.Models
 {
@@ -19,5 +20,6 @@ namespace BarGanha.BLL.Models
         public string UsuarioId { get; set; }
         public virtual Usuario usuario { get; set; }
         public virtual Categoria categoria { get; set; }
+        public ICollection<SolicitacaoTroca> SolicitacoesRecebidas { get; set; }
     }
 }
