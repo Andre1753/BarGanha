@@ -7,7 +7,6 @@ namespace BarGanha.ViewModels
 {
     public class ProdutoViewModel
     {
-
         [Required(ErrorMessage = "O campo Nome do Produto é obrigatório")]
         [StringLength(30, ErrorMessage = "Use menos caracteres")]
         [Display(Name = "Nome do Produto")]
