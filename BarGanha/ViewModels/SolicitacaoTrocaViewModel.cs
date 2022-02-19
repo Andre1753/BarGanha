@@ -8,9 +8,9 @@ namespace BarGanha.ViewModels
     public class SolicitacaoTrocaViewModel
     {
         [Display(Name = "Produto")]
-        public string ProdutoId { get; set; }
+        public int ProdutoId { get; set; }
 
         [Display(Name = "Produtos Ofertados")]
-        public decimal ProdutoOfertadoId { get; set; }
+        public int ProdutoOfertadoId { get; set; }
     }
 }

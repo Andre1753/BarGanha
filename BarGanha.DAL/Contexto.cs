@@ -16,7 +16,7 @@ namespace BarGanha.DAL
         public Contexto(DbContextOptions<Contexto> opcoes) : base(opcoes)
         {
             Database.EnsureCreated();
-        }
+        }   
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

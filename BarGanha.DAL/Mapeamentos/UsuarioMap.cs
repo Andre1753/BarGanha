@@ -14,7 +14,6 @@ namespace BarGanha.DAL.Mapeamentos
             builder.HasIndex(u => u.CPF).IsUnique();
 
             builder.ToTable("Usuarios");
-
         }
     }
 }

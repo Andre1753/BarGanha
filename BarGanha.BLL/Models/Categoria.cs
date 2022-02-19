@@ -8,7 +8,7 @@ namespace BarGanha.BLL.Models
     {
         public int CategoriaId { get; set; }
         public string NomeCategoria { get; set; }
-        public virtual ICollection<Produto> Produtos { get; set; }
+        public ICollection<Produto> Produtos { get; set; }
 
     }
 }

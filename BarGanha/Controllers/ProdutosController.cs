@@ -23,7 +23,6 @@ namespace BarGanha.Controllers
             _context = context;
             webHostEnvironment = hostEnvironment;
             _usuarioRepositorio = usuarioRepositorio;
-
         }
 
         public async Task<IActionResult> Index()

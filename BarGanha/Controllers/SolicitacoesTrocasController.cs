@@ -1,14 +1,31 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using BarGanha.BLL.Models;
+using BarGanha.DAL;
+using BarGanha.DAL.Interfaces;
+using BarGanha.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
 namespace BarGanha.Controllers
 {
     public class SolicitacoesTrocasController : Controller
     {
+        private readonly Contexto _context;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IWebHostEnvironment webHostEnvironment;
+
+        public SolicitacoesTrocasController(Contexto context, IWebHostEnvironment hostEnvironment, IUsuarioRepositorio usuarioRepositorio)
+        {
+            _context = context;
+            webHostEnvironment = hostEnvironment;
+            _usuarioRepositorio = usuarioRepositorio;
+        }
         // GET: SolicitacoesTrocasController
         public ActionResult Index()
         {
@@ -30,16 +47,21 @@ namespace BarGanha.Controllers
         // POST: SolicitacoesTrocasController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(SolicitacaoTrocaViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
+                SolicitacaoTroca solicitacaoTroca = new SolicitacaoTroca
+                {
+                    ProdutoId = model.ProdutoId,
+                    ProdutoOfertadoId = model.ProdutoOfertadoId
+                };
+                _context.Add(solicitacaoTroca);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+            return View();
+
         }
 
         // GET: SolicitacoesTrocasController/Edit/5
