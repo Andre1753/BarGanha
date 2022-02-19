@@ -11,6 +11,8 @@ namespace BarGanha.DAL
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<SolicitacaoTroca> SolicitacoesTroca { get; set; }
+
         public Contexto(DbContextOptions<Contexto> opcoes) : base(opcoes)
         {
             Database.EnsureCreated();
@@ -24,6 +26,8 @@ namespace BarGanha.DAL
             builder.ApplyConfiguration(new UsuarioMap());
             builder.ApplyConfiguration(new ProdutoMap());
             builder.ApplyConfiguration(new CategoriaMap());
+            builder.ApplyConfiguration(new SolicitacaoTrocaMap());
+
         }
     }
 }
