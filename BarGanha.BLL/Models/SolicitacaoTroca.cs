@@ -9,5 +9,6 @@ namespace BarGanha.BLL.Models
         public Produto Produto { get; set; }
         public int ProdutoOfertadoId { get; set; }
         public Produto ProdutoOfertado { get; set; }
+        public bool Aprovado { get; set; }
     }
 }

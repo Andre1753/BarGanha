@@ -12,6 +12,7 @@ namespace BarGanha.DAL.Mapeamentos
             builder.HasKey(st => st.TrocaId);
             builder.Property(st => st.ProdutoId).IsRequired();
             builder.Property(st => st.ProdutoOfertadoId).IsRequired();
+            builder.Property(st => st.Aprovado);
 
             builder.HasOne(st => st.Produto).WithOne().OnDelete(DeleteBehavior.Restrict); ;
             builder.HasOne(st => st.ProdutoOfertado).WithMany(p => p.SolicitacoesRecebidas).HasForeignKey(st => st.ProdutoOfertadoId).OnDelete(DeleteBehavior.Restrict); ;
