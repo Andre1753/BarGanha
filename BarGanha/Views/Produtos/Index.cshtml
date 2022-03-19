@@ -26,16 +26,16 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
-                <div class="product-categori">
+                <div class="product-categorie-box">
                     <div class="search-product">
                         <form action="#">
-                            <input class="form-control" placeholder="Search here..." type="text">
+                            <input class="form-control" placeholder="Procurar..." type="text">
                             <button type="submit"> <i class="fa fa-search"></i> </button>
                         </form>
                     </div>
                     <div class="filter-sidebar-left">
                         <div class="title-left">
-                            <h3>Categories</h3>
+                            <h3>Categorias</h3>
                         </div>
                         <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
                             <div class="list-group-collapse sub-men">
@@ -72,7 +72,7 @@
                     </div>
                     <div class="filter-price-left">
                         <div class="title-left">
-                            <h3>Price</h3>
+                            <h3>Preço</h3>
                         </div>
                         <div class="price-box-slider">
                             <div id="slider-range"></div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="filter-brand-left">
                         <div class="title-left">
-                            <h3>Brand</h3>
+                            <h3>Marcas</h3>
                         </div>
                         <div class="brand-box">
                             <ul>
@@ -159,17 +159,15 @@
                     <div class="product-item-filter row">
                         <div class="col-12 col-sm-8 text-center text-sm-left">
                             <div class="toolbar-sorter-right">
-                                <span>Sort by </span>
-                                <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                    <option data-display="Select">Nothing</option>
-                                    <option value="1">Popularity</option>
-                                    <option value="2">High Price → High Price</option>
-                                    <option value="3">Low Price → High Price</option>
-                                    <option value="4">Best Selling</option>
+                                <span>Ordenar:</span>
+                                <select id="basic" class="selectpicker show-tick form-control">
+                                    <option value="1">Relevância</option>
+                                    <option value="2">Maior Preço → Menor Preço</option>
+                                    <option value="3">Menor Preço → Maior Preço</option>
                                 </select>
                             </div>
-                            <p>Showing all 4 results</p>
                         </div>
+
                         <div class="col-12 col-sm-4 text-center text-sm-right">
                             <ul class="nav nav-tabs ml-auto">
                                 <li>
@@ -192,152 +190,63 @@
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
                                                     <div class="type-lb">
-                                                        <p class="new">New</p>
+                                                        <p class="new">Novo</p>
                                                     </div>
-                                                    <img src="~/images/@item.ImagemProduto" class="img-fluid max" style="height: 250px; width:90% "; alt="Image" asp-append-version="true" />
+                                                    <img src="~/images/@item.ImagemProduto" class="img-fluid" style="height: 250px; width:90% " ; alt="Image" asp-append-version="true" />
                                                     <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
                                                         <a class="cart" href="#">Adicionar a sacola</a>
                                                     </div>
                                                 </div>
+
                                                 <div class="why-text">
-                                                    <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
-                                                    <h5> R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--<div class="prod-box">
-                                            <div class="prod-i">
-                                                @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
-                                                {
-                                                    <img src="~/images/@item.ImagemProduto" asp-append-version="true" />
-                                                }
-                                                else
-                                                {
-                                                    <img src="~/images/footer_bg.png" asp-append-version="true" />
-                                                }
-                                            </div>
-                                            <div class="prod-dit clearfix">
-                                                <div class="dit-t clearfix">
-                                                    <div class="left-ti">
-                                                        <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
+                                                    <div class="row">
+                                                        <div class="col-md-7">
+                                                            <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
+                                                            <h5> R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <a class="btn hvr-hover text-white mt-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                        </div>
                                                     </div>
-                                                    <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        -->
                                     }
-
-
                                 </div>
                             </div>
+
                             <div role="tabpanel" class="tab-pane fade" id="list-view">
                                 <div class="list-view-box">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="new">New</p>
+                                    @foreach (var item in Model)
+                                    {
+                                        <div class="row">
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <div class="type-lb">
+                                                            <p class="new">Novo</p>
+                                                        </div>
+                                                        <img src="~/images/@item.ImagemProduto" class="img-fluid" style="height: 350px; width:110%"; alt="Image" asp-append-version="true" />
                                                     </div>
-                                                    <img src="../images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
+                                                </div>
+                                            </div>
 
+                                            <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                <div class="why-text full-width">
+                                                    <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
+                                                    <h5> R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
+                                                    <p style="height: 212px;">
+                                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                                    </p>
+
+                                                    <div class="row">
+                                                        <a class="btn hvr-hover text-white mx-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                        <a class="btn hvr-hover" href="#">Adicionar a Sacola</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                            <div class="why-text full-width">
-                                                <h4>Lorem ipsum dolor sit amet</h4>
-                                                <h5> <del>$ 60.00</del> $40.79</h5>
-                                                <p>
-                                                    Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                    sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                    Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.
-                                                </p>
-                                                <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-view-box">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <img src="../images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                            <div class="why-text full-width">
-                                                <h4>Lorem ipsum dolor sit amet</h4>
-                                                <h5> <del>$ 60.00</del> $40.79</h5>
-                                                <p>
-                                                    Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                    sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                    Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.
-                                                </p>
-                                                <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="list-view-box">
-                                    <div class="row">
-                                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                            <div class="products-single fix">
-                                                <div class="box-img-hover">
-                                                    <div class="type-lb">
-                                                        <p class="sale">Sale</p>
-                                                    </div>
-                                                    <img src="../images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                                                    <div class="mask-icon">
-                                                        <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                        </ul>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                            <div class="why-text full-width">
-                                                <h4>Lorem ipsum dolor sit amet</h4>
-                                                <h5> <del>$ 60.00</del> $40.79</h5>
-                                                <p>
-                                                    Integer tincidunt aliquet nibh vitae dictum. In turpis sapien, imperdiet quis magna nec, iaculis ultrices ante. Integer vitae suscipit nisi. Morbi dignissim risus sit amet orci porta, eget aliquam purus
-                                                    sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus, quis euismod ex volutpat in. Vestibulum eleifend eros ac lobortis aliquet.
-                                                    Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin quam. Praesent vulputate semper libero pulvinar consequat. Etiam ut placerat lectus.
-                                                </p>
-                                                <a class="btn hvr-hover" href="#">Add to Cart</a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>

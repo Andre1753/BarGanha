@@ -1,0 +1,74 @@
+﻿@model BarGanha.BLL.Models.Produto
+
+    <div class="terms-conditions product-page">
+        <div class="terms-title">
+            <div class="container">
+                <div class="row">
+                    <ol class="breadcrumb">
+                        <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                        <li><a asp-area="" asp-controller="Produtos" asp-action="Productpage">Produtos </a></li>
+                        <li class="active">@Html.DisplayFor(model => model.NomeProduto)</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-page-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="prod-page-title">
+                        <h2>@Html.DisplayFor(model => model.NomeProduto)</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-4">
+                    <div class="left-profile-box-m">
+                        <a asp-controller="Usuarios" asp-action="Informacoes" asp-route-usuarioId="@Model.UsuarioId">Visite o perfil do aunciante</a>
+                    </div>
+                </div>
+                <div class="col-md-7 col-sm-8">
+                    <div class="md-prod-page">
+                        <div class="md-prod-page-in ">
+                            <div class="page-preview">
+                                <div class="preview">
+                                    <div class="preview-pic">
+                                        @if (Model.ImagemProduto != null || Model.ImagemProduto == "")
+                                        {
+                                            var str = Model.ImagemProduto;
+                                            <img src="~/images/@str" asp-append-version="true" style="width: 70%; height:70%" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/images/footer_bg.png" asp-append-version="true" />
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="price-box-right" style="margin-bottom:4px">
+                        <h3 style="color:#000000">Descrição</h3>
+                        <h4>
+                            @Html.DisplayFor(model => model.Descricao)
+                        </h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="price-box-right" style="margin-bottom:4px">
+                        <h4>Preço</h4>
+                        <h3>R$@Html.DisplayFor(model => model.Preco)</h3>
+                        <a asp-controller="Usuarios" asp-action="EntreemContato" asp-route-usuarioId="@Model.UsuarioId">Entrar em contato</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-12">
+                    <div class="price-box-right">                        
+                        <a asp-controller="Produtos" asp-action="Index">Voltar a Pagina Inicial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
