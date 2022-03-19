@@ -27,6 +27,10 @@ namespace BarGanha.Controllers
         {
             return View();
         }
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
         public IActionResult Profilepage()
         {
             return View();
