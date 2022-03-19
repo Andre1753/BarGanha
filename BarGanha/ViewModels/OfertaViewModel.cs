@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BarGanha.ViewModels
 {
-    public class SolicitacaoTrocaViewModel
+    public class OfertaViewModel
     {
         [Display(Name = "Produto")]
         public int ProdutoId { get; set; }

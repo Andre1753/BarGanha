@@ -14,13 +14,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BarGanha.Controllers
 {
-    public class SolicitacoesTrocasController : Controller
+    public class OfertasController : Controller
     {
         private readonly Contexto _context;
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        public SolicitacoesTrocasController(Contexto context, IWebHostEnvironment hostEnvironment, IUsuarioRepositorio usuarioRepositorio)
+        public OfertasController(Contexto context, IWebHostEnvironment hostEnvironment, IUsuarioRepositorio usuarioRepositorio)
         {
             _context = context;
             webHostEnvironment = hostEnvironment;
@@ -47,11 +47,11 @@ namespace BarGanha.Controllers
         // POST: SolicitacoesTrocasController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(SolicitacaoTrocaViewModel model)
+        public async Task<IActionResult> Create(OfertaViewModel model)
         {
             if (ModelState.IsValid)
             {
-                SolicitacaoTroca solicitacaoTroca = new SolicitacaoTroca
+                Oferta solicitacaoTroca = new Oferta
                 {
                     ProdutoId = model.ProdutoId,
                     ProdutoOfertadoId = model.ProdutoOfertadoId

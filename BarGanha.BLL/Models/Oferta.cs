@@ -2,9 +2,9 @@
 
 namespace BarGanha.BLL.Models
 {
-    public class SolicitacaoTroca
+    public class Oferta
     {
-        public int TrocaId { get; set; }
+        public int OfertaId { get; set; }
         public int ProdutoId { get; set; }
         public Produto Produto { get; set; }
         public int ProdutoOfertadoId { get; set; }

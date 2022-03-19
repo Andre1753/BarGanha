@@ -5,11 +5,11 @@ using System;
 
 namespace BarGanha.DAL.Mapeamentos
 {
-    public class SolicitacaoTrocaMap : IEntityTypeConfiguration<SolicitacaoTroca>
+    public class OfertaMap : IEntityTypeConfiguration<Oferta>
     {
-        public void Configure(EntityTypeBuilder<SolicitacaoTroca> builder)
+        public void Configure(EntityTypeBuilder<Oferta> builder)
         {
-            builder.HasKey(st => st.TrocaId);
+            builder.HasKey(st => st.OfertaId);
             builder.Property(st => st.ProdutoId).IsRequired();
             builder.Property(st => st.ProdutoOfertadoId).IsRequired();
             builder.Property(st => st.Aprovado);
@@ -17,7 +17,7 @@ namespace BarGanha.DAL.Mapeamentos
             builder.HasOne(st => st.Produto).WithOne().OnDelete(DeleteBehavior.Restrict); ;
             builder.HasOne(st => st.ProdutoOfertado).WithMany(p => p.SolicitacoesRecebidas).HasForeignKey(st => st.ProdutoOfertadoId).OnDelete(DeleteBehavior.Restrict); ;
 
-            builder.ToTable("SolicitacoesTrocas");
+            builder.ToTable("Ofertas");
         }
     }
 }

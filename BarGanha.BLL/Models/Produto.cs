@@ -16,6 +16,6 @@ namespace BarGanha.BLL.Models
 
         public int CategoriaId { get; set; }
         public Categoria categoria { get; set; }
-        public ICollection<SolicitacaoTroca> SolicitacoesRecebidas { get; set; }
+        public ICollection<Oferta> SolicitacoesRecebidas { get; set; }
     }
 }
