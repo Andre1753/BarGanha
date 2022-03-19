@@ -62,6 +62,9 @@
     <None Include="Views\Produtos\Service.cshtml" />
     <None Include="Views\Produtos\Shop-detail.cshtml" />
     <None Include="Views\Produtos\Wishlist.cshtml" />
+    <None Include="wwwroot\jquery-ui-datepicker\external\jquery\jquery.js" />
+    <None Include="wwwroot\jquery-ui-datepicker\jquery-ui.js" />
+    <None Include="wwwroot\jquery-ui-datepicker\jquery-ui.min.js" />
     <None Include="wwwroot\js\InicializarTooltips.min.js" />
     <None Include="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>
