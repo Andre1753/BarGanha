@@ -174,6 +174,11 @@ namespace BarGanha.Controllers
             return View(produto);
         }
 
+        public IActionResult Shop()
+        {
+            return View();
+        }
+
         // POST: Produtos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

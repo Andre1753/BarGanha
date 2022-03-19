@@ -8,74 +8,30 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="../Views/Produtos/Index.cshtml"><img src="~/images/logo.png" class="logo" alt=""></a>
+
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logo.png" class="logo" alt="">
+                </a>
             </div>
             <!-- End Header Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="../Views/Produtos/Index.cshtml">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Sobre nós</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Ofertas" asp-action="Create">Solicitar Troca</a></li>
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Produtos" asp-action="Create">Criar Produto</a></li>
-                    <!--<li class="dropdown megamenu-fw">
-        <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Product</a>
-        <ul class="dropdown-menu megamenu-content" role="menu">
-            <li>
-                <div class="row">
-                    <div class="col-menu col-md-3">
-                        <h6 class="title">Top</h6>
-                        <div class="content">
-                            <ul class="menu-col">
-                                <li><a href="../Views/Produtos/Shop.cshtml">Jaquetas</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Camisas</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Moletons</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Camisetas</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    end col-3
-                    <div class="col-menu col-md-3">
-                        <h6 class="title">Bottom</h6>
-                        <div class="content">
-                            <ul class="menu-col">
-                                <li><a href="../Views/Produtos/Shop.cshtml">Roupa de banho</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Saias</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Jeans</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Calça</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    end col-3
-                    <div class="col-menu col-md-3">
-                        <h6 class="title">Clothing</h6>
-                        <div class="content">
-                            <ul class="menu-col">
-                                <li><a href="../Views/Produtos/Shop.cshtml">Parte de cima</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Parte de baixo</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Social</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Festa</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-menu col-md-3">
-                        <h6 class="title">Accessories</h6>
-                        <div class="content">
-                            <ul class="menu-col">
-                                <li><a href="../Views/Produtos/Shop.cshtml">Bolsas</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Óculos</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Perfumes</a></li>
-                                <li><a href="../Views/Produtos/Shop.cshtml">Carteiras</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    end col-3
-                </div>
-                end row
-            </li>
-        </ul>
-    </li>-->
-                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contate-nós</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Sobre nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Ofertas" asp-action="Create">Solicitar Troca</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Produtos" asp-action="Create">Criar Produto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contate-nós</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
