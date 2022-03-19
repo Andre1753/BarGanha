@@ -1,0 +1,58 @@
+﻿@model BarGanha.ViewModels.ProdutoViewModel
+<div class="terms-conditions product-page">
+    <div class="terms-title">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                <li class="active">Cadastro de produto</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<div class="md-prod-page">
+    <div class="md-prod-page-in">
+        <div class="col-md-12">
+            <div class="prod-page-title">
+                <h2>Cadastro do produto</h2>
+                <p>De <span>@User.Identity.Name</span></p>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <form enctype="multipart/form-data" asp-action="Create">
+                <div class="form-group col-md-6">
+                    <label asp-for="NomeProduto" class="control-label"></label>
+                    <input asp-for="NomeProduto" class="form-control" />
+                    <span asp-validation-for="NomeProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Preco" class="control-label"></label>
+                    <input asp-for="Preco" class="form-control" />
+                    <span asp-validation-for="Preco" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-12">
+                    <label asp-for="Descricao" class="control-label"></label>
+                    <input asp-for="Descricao" class="form-control" />
+                    <span asp-validation-for="Descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="ImagemProduto" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="ImagemProduto" class="custom-file-input" id="customFile">
+                    </div>
+                    <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    @Html.LabelFor(m => m.CategoriaId, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.CategoriaId,
+                                                     new SelectList(ViewBag.Categorias, "CategoriaId", "NomeCategoria"),
+                                                     "Escolha a categoria", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CategoriaId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar Produto" class="btn" style="background-color:#09294c; color:#fff;" />
+                    <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
