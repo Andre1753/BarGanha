@@ -1,141 +1,79 @@
 ﻿@model BarGanha.ViewModels.ProdutoViewModel
-<div class="terms-conditions product-page">
-    <div class="terms-title">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
-                <li class="active">Cadastro de produto</li>
-            </ol>
+<!-- Start Top Search -->
+<div class="top-search">
+    <div class="container">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
         </div>
     </div>
 </div>
-<!-- Start Product Register -->
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Site Metas -->
-    <title>BAR.GANHA - Ninguém fica sem!</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="André Luiz Araújo e Pedro Henrique Trindade">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="~/images/logo.png" type="image/x-icon">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="~/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="~/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/css/custom.css">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700" />
-    <!-- https://fonts.google.com/specimen/Roboto -->
-
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="~/css/fontawesome.min.css" />
-
-    <link rel="stylesheet" href="~/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
-    <!-- http://api.jqueryui.com/datepicker/ -->
-
-    <!-- Product Admin CSS Template -->
-    <link rel="stylesheet" href="~/css/templatemo-style.css">
-</head>
-
-<div class="container tm-mt-big tm-mb-big">
-    <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-                <div class="row">
-                    <div class="col-12">
-                        <h2 class="tm-block-title d-inline-block">Add Product</h2>
-                    </div>
-                </div>
-                <div class="row tm-edit-product-row">
-                    <div class="col-xl-6 col-lg-6 col-md-12">
-                        <form action="" class="tm-edit-product-form">
-
-                            <div class="form-group mb-3">
-                                <label for="name">
-                                    Product Name
-                                </label>
-                                <input id="name"
-                                       name="name"
-                                       type="text"
-                                       class="form-control validate"
-                                       required />
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="description">Description</label>
-                                <textarea class="form-control validate"
-                                          rows="3"
-                                          required></textarea>
-                            </div>
-
-                            <div class="form-group mb-3">
-                                <label for="category">Category</label>
-                                <select class="custom-select tm-select-accounts"
-                                        id="category">
-                                    <option selected>Select category</option>
-                                    <option value="1">New Arrival</option>
-                                    <option value="2">Most Popular</option>
-                                    <option value="3">Trending</option>
-                                </select>
-                            </div>
-
-                            <div class="row">
-                                <!-- Start Date Picker -->
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="expire_date">
-                                        Expire Date
-                                    </label>
-                                    <input id="expire_date"
-                                           name="expire_date"
-                                           type="text"
-                                           class="form-control validate"
-                                           data-large-mode="true" />
-                                </div>
-                                <!-- End Date Picker -->
-                                <div class="form-group mb-3 col-xs-12 col-sm-6">
-                                    <label for="stock">
-                                        Units In Stock
-                                    </label>
-                                    <input id="stock"
-                                           name="stock"
-                                           type="text"
-                                           class="form-control validate"
-                                           required />
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                                <div class="tm-product-img-dummy mx-auto">
-                                    <i class="fas fa-cloud-upload-alt tm-upload-icon"
-                                       onclick="document.getElementById('fileInput').click();"></i>
-                                </div>
-                                <div class="custom-file mt-3 mb-3">
-                                    <input id="fileInput" type="file" style="display:none;" />
-                                    <input type="button"
-                                           class="btn btn-primary btn-block mx-auto"
-                                           value="UPLOAD PRODUCT IMAGE"
-                                           onclick="document.getElementById('fileInput').click();" />
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
+<!-- End Top Search -->
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>CADASTRAR PRODUTO</h2>
             </div>
         </div>
     </div>
 </div>
-<!-- End Product Register-->
+<!-- End All Title Box -->
+<div class="d-flex justify-content-center">
+    <div class="card col-9">
+        <div class="card-body">
+            <form enctype="multipart/form-data" asp-action="Create">
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="NomeProduto" class="control-label"></label>
+                        <input asp-for="NomeProduto" class="form-control" />
+                        <span asp-validation-for="NomeProduto" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Preco" class="control-label"></label>
+                        <input asp-for="Preco" class="form-control" />
+                        <span asp-validation-for="Preco" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(m => m.CategoriaId, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.CategoriaId,
+                                                        new SelectList(ViewBag.Categorias, "CategoriaId", "NomeCategoria"),
+                                                        "Escolha a categoria", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CategoriaId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="Descricao" class="control-label"></label>
+                        <textarea rows="6" asp-for="Descricao" class="form-control"></textarea>
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="ImagemProduto" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="ImagemProduto" class="custom-file-input" id="customFile">
+                        </div>
+                        <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar Produto" class="btn" style="background-color:#09294c; color:#fff;" />
+                    <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
