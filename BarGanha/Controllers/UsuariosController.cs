@@ -199,7 +199,7 @@ namespace BarGanha.Controllers
                     if (passwordHasher.VerifyHashedPassword(usuario, usuario.PasswordHash, model.Senha) != PasswordVerificationResult.Failed)
                     {
                         await _usuarioRepositorio.LogarUsuario(usuario, false);
-                       return RedirectToAction("Index", "Produtos"); ;
+                        return RedirectToAction("Index", "Home");
                     }
 
                     else
