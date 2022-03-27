@@ -61,7 +61,7 @@ namespace BarGanha
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Usuarios}/{action=Login}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }

@@ -1,4 +1,8 @@
-﻿<!-- Start Main Top -->
+﻿@using Microsoft.AspNetCore.Identity
+@using BarGanha.BLL.Models
+@inject SignInManager<Usuario> SignInManager
+
+<!-- Start Main Top -->
 <header class="main-header">
     <!-- Start Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
@@ -38,20 +42,57 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
-                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="search">
+                        <a href="#">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </li>
                     <li class="side-menu">
                         <a href="#">
                             <i class="fa fa-shopping-bag"></i>
                             <span class="badge">3</span>
                         </a>
                     </li>
-                    @*<li class="nav-item">*@
-                <li class="side-menu">
-                    <a class="nav-link" href="accounts.html">
-                        <i class="far fa-user"></i>
-                        Minha Conta
-                    </a>
-                </li>
+
+                    <!-- ICONE ALINHADO MAS NAO FUNCIONAL -->
+                    @*<li class="nav-item">
+
+                    <li class="side-menu">
+                        <a class="nav-link" href="accounts.html">
+                            <i class="far fa-user"></i>
+                            Minha Conta
+                        </a>
+                    </li>*@
+
+                   @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="side-menu">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MinhaConta">
+                                <i class="far fa-user">Minha Conta</i>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="side-menu">
+                            <a class="nav-link" asp-area="" asp-controller="Usuarios" asp-action="Login">
+                                <i class="far fa-user">Login</i>
+                            </a>
+                        </li>
+                    }
+
+                   @*<li class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Dropdown button
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                            </div>
+                     </li>*@
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
@@ -78,8 +119,9 @@
                     </li>
                     <li class="total">
                         <a href="#" class="btn btn-default hvr-hover btn-cart">
-                            VER CARRINHO</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            VER CARRINHO
+                        </a>
+                        <span class="float-right"><strong>Total</strong>: $180.00</span>
                     </li>
                 </ul>
             </li>
