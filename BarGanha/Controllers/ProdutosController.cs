@@ -25,7 +25,7 @@ namespace BarGanha.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> TodosProdutos()
         {
             return View(await _context.Produtos.ToListAsync());
         }
@@ -47,7 +47,7 @@ namespace BarGanha.Controllers
             return View(produto);
         }
 
-        public IActionResult Create()
+        public IActionResult Cadastrar()
         {
             ViewBag.Categorias = _context.Categorias;
             return View();
@@ -74,7 +74,7 @@ namespace BarGanha.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(ProdutoViewModel model)
+        public async Task<IActionResult> Cadastrar(ProdutoViewModel model)
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 

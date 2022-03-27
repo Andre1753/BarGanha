@@ -23,11 +23,11 @@ namespace BarGanha.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult SobreNos()
         {
             return View();
         }
-        public IActionResult ContactUs()
+        public IActionResult ContateNos()
         {
             return View();
         }
