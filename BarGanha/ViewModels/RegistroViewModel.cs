@@ -6,7 +6,7 @@ namespace BarGanha.ViewModels
     {
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(40, ErrorMessage = "Use menos caracteres")]
-        [Display(Name = "Usuário")]
+        [Display(Name = "Apelido")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

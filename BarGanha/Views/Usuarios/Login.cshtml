@@ -5,75 +5,75 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <title>BAR.GANHA - Ninguém fica sem!</title>
-    <meta name="viewport" content="width=device-width" />
+    <head>
+        <title>BAR.GANHA - Ninguém fica sem!</title>
+        <meta name="viewport" content="width=device-width" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="~/images/logo.png" type="image/x-icon">
+        <!-- Site Icons -->
+        <link rel="shortcut icon" href="~/images/logo.png" type="image/x-icon">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="~/css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="~/css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="~/css/custom.css">
-</head>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="~/css/bootstrap.min.css">
+        <!-- Site CSS -->
+        <link rel="stylesheet" href="~/css/style.css">
+        <!-- Responsive CSS -->
+        <link rel="stylesheet" href="~/css/responsive.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="~/css/custom.css">
+    </head>
 
-<body class="row justify-content-center overflow-hidden py-5" style="background-color: #808080; vertical-align: middle; overflow: hidden; height: 100vh; ">
-    <div class="col-5 rounded align" style="background-color: #ffffff; display: grid; align-content: space-between;">
-        <div class="center-align mt-4">  
-            <h4><i class="large material-icons">account_circle</i></h4>
-            <h5>Login</h5>
-        </div>
-
-        <form class="px-4" asp-action="Login">
-            <div class="red-text text-darken-4" asp-validation-summary="ModelOnly"></div>
-
-            <div class="row">
-                <div class="form-group col-12">
-                    <label asp-for="Email" id="Email" class="control-label" style="font-size: 1.02rem;"></label>
-                    <input asp-for="Email" class="form-control border border-black" id="Email" />
-                    <span asp-validation-for="Email" class="red-text text-darken-4" />
-                </div>
+    <body class="row justify-content-center overflow-hidden py-5" style="background-color: #808080; vertical-align: middle; overflow: hidden; height: 100vh; ">
+        <div class="col-5 rounded align" style="background-color: #ffffff; display: grid; align-content: space-between;">
+            <div class="center-align mt-4">  
+                <h4><i class="large material-icons">account_circle</i></h4>
+                <h5>Login</h5>
             </div>
 
-            <div class="row">
-                <div class="form-group col-12">
-                    <label asp-for="Senha" id="Senha" class="control-label" style="font-size: 1.02rem;"></label>
-                    <input asp-for="Senha" class="form-control border border-black" id="Senha" />
-                    <span asp-validation-for="Senha" class="red-text text-darken-4" />
-                </div>
-            </div>
+            <form class="px-4" asp-action="Login">
+                <div class="red-text text-darken-4" asp-validation-summary="ModelOnly"></div>
 
-            <div class="px-3">
                 <div class="row">
-                    <button type="submit" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #d33b33;">Entrar</button>
+                    <div class="form-group col-12">
+                        <label asp-for="Email" id="Email" class="control-label" style="font-size: 1.02rem;"></label>
+                        <input asp-for="Email" class="form-control border border-black" id="Email" />
+                        <span asp-validation-for="Email" class="red-text text-darken-4" />
+                    </div>
                 </div>
 
                 <div class="row">
-                    <button type="button" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #f0726B; " onclick="location.href='@Url.Action("Registro", "Usuarios")'">Criar uma conta</button>
+                    <div class="form-group col-12">
+                        <label asp-for="Senha" id="Senha" class="control-label" style="font-size: 1.02rem;"></label>
+                        <input asp-for="Senha" class="form-control border border-black" id="Senha" />
+                        <span asp-validation-for="Senha" class="red-text text-darken-4" />
+                    </div>
+                </div>
+
+                <div class="px-3">
+                    <div class="row">
+                        <button type="submit" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #d33b33;">Entrar</button>
+                    </div>
+
+                    <div class="row">
+                        <button type="button" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #808080; " onclick="location.href='@Url.Action("Registro", "Usuarios")'">Criar uma conta</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <div>
+                <hr style="color: #000000" />
+
+                <div class="row justify-content-center px-3">
+                        Todos os direitos reservados.
                 </div>
             </div>
-        </form>
-
-
-
-        <div>
-            <hr style="color: #000000" />
-
-            <div class="row justify-content-center px-3">
-                    Todos os direitos reservados.
-            </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    </body>
 </html>
