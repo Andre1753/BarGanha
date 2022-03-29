@@ -12,5 +12,7 @@ namespace BarGanha.ViewModels
 
         [Display(Name = "Produtos Ofertados")]
         public int ProdutoOfertadoId { get; set; }
+
+        public Produto produto { get; set; }
     }
 }
