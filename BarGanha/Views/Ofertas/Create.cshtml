@@ -1,40 +1,169 @@
 ﻿@model BarGanha.ViewModels.OfertaViewModel
+@{ var produto = ViewBag.produto;}
 
-<div class="terms-conditions product-page">
-    <div class="terms-title">
-        <div class="container">
-            <ol class="breadcrumb">
-                <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
-                <li class="active">Cadastro de produto</li>
-            </ol>
-        </div>
-    </div>
-</div>
-<div class="md-prod-page">
-    <div class="md-prod-page-in">
-        <div class="col-md-12">
-            <div class="prod-page-title">
-                <h2>Cadastro do produto</h2>
-
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>OFERTA DE TROCA</h2>
             </div>
         </div>
-        <div class="col-md-10">
-            <form enctype="multipart/form-data" asp-action="Create">
-                <div class="form-group col-md-6">
-                    <label asp-for="ProdutoId" class="control-label"></label>
-                    <input asp-for="ProdutoId" class="form-control" />
-                    <span asp-validation-for="ProdutoId" class="text-danger"></span>
-                </div>
-                <div class="form-group col-md-6">
-                    <label asp-for="ProdutoOfertadoId" class="control-label"></label>
-                    <input asp-for="ProdutoOfertadoId" class="form-control" />
-                    <span asp-validation-for="ProdutoOfertadoId" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Cadastrar Solicitaçao Troca" class="btn" style="background-color:#09294c; color:#fff;" />
-                    <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
-                </div>
-            </form>
+    </div>
+</div>
+<!-- End All Title Box -->
+
+<div class="shop-detail-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-6">
+                @if (produto.ImagemProduto != null || produto.ImagemProduto == "")
+                {
+                    var str = produto.ImagemProduto;
+                    <img src="~/images/@str" class="img-fluid" style="height: 80%; width: 80%;" ; alt="Image" asp-append-version="true" />
+                }
+                <h2>@produto.NomeProduto</h2>
+                <h5>R$ @produto.Preco</h5>
+            </div>
+
+            @*<div class="col-xl-7 col-lg-7 col-md-6">
+            <div class="single-product-details p-3" style="background-color: #FFFFEB;">
+                <h2>@produto.NomeProduto</h2>
+                <h5>R$ @produto.Preco</h5>
+                <p>
+                    <h4>Descrição:</h4>
+                <p style="height: 212px;">
+                    @produto.Descricao
+                </p>
+            </div>
+        </div>
+            *@
         </div>
     </div>
 </div>
+
+<div class="d-flex justify-content-center">
+    <div class="card col-11 " style="background: rgba(0, 53, 68, 0.1);">
+        <div class="card-body">
+            <div class="row justify-content-between">
+                <div class="col-5" style="background-color:#808080; height:100px">
+
+                </div>
+
+                <div class="col-1" style="height: 100px; vertical-align: middle; ">
+                    ABC
+                </div>
+
+
+                <div class="col-5" style="background-color:#808080; height:100px">
+
+                </div>
+            </div>
+            <!--<form enctype="multipart/form-data" asp-action="Create">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="justify-content-center">
+                            <img id="blah" src="~/images/UploadImage.png" class="rounded mx-auto d-block" />
+
+                            <input asp-for="ImagemProduto" class="custom-file-input" id="fileInput" style="display:none;" onchange="readURL(this);">
+                            <input type="button"
+                                   class="btn btn-primary btn-block mt-1"
+                                   value="Enviar imagem"
+                                   onclick="document.getElementById('fileInput').click();" />
+                            <span asp-validation-for="ImagemProduto" class="text-danger"></span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label asp-for="NomeProduto" class="control-label"></label>
+                            <input asp-for="NomeProduto" class="form-control" />
+                            <span asp-validation-for="NomeProduto" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Preco" class="control-label"></label>
+                            <input asp-for="Preco" class="form-control" />
+                            <span asp-validation-for="Preco" class="text-danger"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label asp-for="Descricao" class="control-label"></label>
+                        <textarea rows="6" asp-for="Descricao" class="form-control"></textarea>
+                        <span asp-validation-for="Descricao" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row justify-content-end">
+                    <input type="submit" value="Cadastrar Produto" class="btn hvr-hover text-white mr-1 rounded" />
+                    <a class="btn" style="background-color:#808080; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
+                </div>
+            </form>-->
+        </div>
+    </div>
+</div>
+
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(200)
+                    .height(220);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+<!--
+    <div class="terms-conditions product-page">
+        <div class="terms-title">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
+                    <li class="active">Cadastro de produto</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="md-prod-page">
+        <div class="md-prod-page-in">
+            <div class="col-md-12">
+                <div class="prod-page-title">
+                    <h2>Cadastro do produto</h2>
+
+                </div>
+            </div>
+            <div class="col-md-10">
+                <form enctype="multipart/form-data" asp-action="Create">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProdutoId" class="control-label"></label>
+                        <input asp-for="ProdutoId" class="form-control" />
+                        <span asp-validation-for="ProdutoId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="ProdutoOfertadoId" class="control-label"></label>
+                        <input asp-for="ProdutoOfertadoId" class="form-control" />
+                        <span asp-validation-for="ProdutoOfertadoId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar Solicitaçao Troca" class="btn" style="background-color:#09294c; color:#fff;" />
+                        <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+-->

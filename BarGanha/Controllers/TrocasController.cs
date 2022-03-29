@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using BarGanha.BLL.Models;
 
+using BarGanha.DAL;
+using BarGanha.DAL.Interfaces;
+using BarGanha.ViewModels;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 namespace BarGanha.Controllers
 {
     public class TrocasController : Controller
     {
+        private readonly Contexto _context;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IWebHostEnvironment webHostEnvironment;
+
         // GET: TrocasController
         public ActionResult Index()
         {

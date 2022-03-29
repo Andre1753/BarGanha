@@ -39,8 +39,12 @@ namespace BarGanha.Controllers
         }
 
         // GET: SolicitacoesTrocasController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create(int id)
         {
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+            ViewBag.produto = produto;
+
             return View();
         }
 
