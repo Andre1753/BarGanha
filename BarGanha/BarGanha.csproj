@@ -23,6 +23,7 @@
     <Content Remove="Views\Produtos\ContactUs.cshtml" />
     <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="Views\Usuarios\Redirecionador.cshtml" />
+    <Content Remove="wwwroot\images\banner-01.jpg" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
     <Content Remove="wwwroot\js\IniciarMascaras.min.js" />
   </ItemGroup>
@@ -58,8 +59,6 @@
     <None Include="Views\Home\SobreNos.cshtml" />
     <None Include="Views\Produtos\Cart.cshtml" />
     <None Include="Views\Produtos\Checkout.cshtml" />
-    <None Include="Views\Produtos\Service.cshtml" />
-    <None Include="Views\Produtos\Wishlist.cshtml" />
     <None Include="wwwroot\jquery-ui-datepicker\external\jquery\jquery.js" />
     <None Include="wwwroot\jquery-ui-datepicker\jquery-ui.js" />
     <None Include="wwwroot\jquery-ui-datepicker\jquery-ui.min.js" />
