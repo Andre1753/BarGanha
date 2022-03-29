@@ -21,10 +21,6 @@
     <Content Remove="Views\Produtos\Cart.cshtml" />
     <Content Remove="Views\Produtos\Checkout.cshtml" />
     <Content Remove="Views\Produtos\ContactUs.cshtml" />
-    <Content Remove="Views\Produtos\CreateOLD.cshtml" />
-    <Content Remove="Views\Produtos\My-account.cshtml" />
-    <Content Remove="Views\Produtos\Service.cshtml" />
-    <Content Remove="Views\Produtos\Wishlist.cshtml" />
     <Content Remove="Views\Shared\_SideNav.cshtml" />
     <Content Remove="Views\Usuarios\Redirecionador.cshtml" />
     <Content Remove="wwwroot\js\InicializarTooltips.min.js" />
@@ -62,7 +58,6 @@
     <None Include="Views\Home\SobreNos.cshtml" />
     <None Include="Views\Produtos\Cart.cshtml" />
     <None Include="Views\Produtos\Checkout.cshtml" />
-    <None Include="Views\Produtos\My-account.cshtml" />
     <None Include="Views\Produtos\Service.cshtml" />
     <None Include="Views\Produtos\Wishlist.cshtml" />
     <None Include="wwwroot\jquery-ui-datepicker\external\jquery\jquery.js" />
@@ -70,10 +65,6 @@
     <None Include="wwwroot\jquery-ui-datepicker\jquery-ui.min.js" />
     <None Include="wwwroot\js\InicializarTooltips.min.js" />
     <None Include="wwwroot\js\IniciarMascaras.min.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="v2\fonts\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
