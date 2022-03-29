@@ -32,40 +32,37 @@
 
             <div class="col-xl-7 col-lg-7 col-md-6">
                 <div class="card rounded-lg" style="background-color: rgb(32, 32, 32)">
-                    <div class="card-title text-center">
-                        <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
-                    </div>
-                    <div class="card-body -mt-3 p-3">
+                    <div class="card-body p-3">
                         <div class="card-title text-center">
                             <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
                         </div>
-                        <div class="card dropzone">
-                            @foreach (var meuProduto in meusProdutos)
-                            {
-                                <div class="col-md-4 col-sm-4">
-                                    <div class="card-drag">
+                        <div class="card p-3">
+                            <div class="row dropzone">
+                                @foreach (var meuProduto in meusProdutos)
+                                {
+                                    <div class="card-drag col-md-4 col-sm-4 col-4" style="background-color: ">
                                         <img src="~/images/@meuProduto.ImagemProduto" class="img-fluid" style="height: 100px; width:100px" ; alt="Image" asp-append-version="true" />
                                     </div>
-                                </div>
-                            }
-
-
+                                }
+                            </div>
                         </div>
                     </div>
-                        <div class="card p-3" style="background-color: rgb(32, 32, 32)">
-                            <div class="card-title text-center">
-                                <h3 class="text-white">Oferta</h3>
-                            </div>
-                            <div class="card-body -mt-3 p-3" style="height: 400px">
-                                <div class="card dropzone" style="height: 300px">
-                                
-                                </div>
+                </div>
+
+                <div class="card rounded-lg mt-2" style="background-color: rgb(32, 32, 32)">
+                    <div class="card-body p-3">
+                        <div class="card-title text-center">
+                            <h3 class="text-white mt-2 -mb-4">Ofertas</h3>
+                        </div>
+                        <div class="card p-3">
+                            <div class="row dropzone">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+         </div>
+    </div>
 </div>
 
 <script src="~/js/drag_drop.js" defer></script>
