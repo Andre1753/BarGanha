@@ -8,7 +8,7 @@ const cards = document.querySelectorAll('.card-drag')
 const dropzones = document.querySelectorAll('.dropzone')
 
 
-/** our cards */
+/** our cards */ 
 cards.forEach(card => {
     card.addEventListener('dragstart', dragstart)
     card.addEventListener('drag', drag)

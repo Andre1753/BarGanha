@@ -1,5 +1,9 @@
 ﻿@model BarGanha.ViewModels.OfertaViewModel
-@{ var produto = ViewBag.produto;}
+
+@{
+    var produto = ViewBag.produto;
+    var meusProdutos = ViewBag.meusProdutos;
+}
 
 <!-- Start All Title Box -->
 <div class="all-title-box">
@@ -26,50 +30,42 @@
                 <h5>R$ @produto.Preco</h5>
             </div>
 
-            @*<div class="col-xl-7 col-lg-7 col-md-6">
-            <div class="single-product-details p-3" style="background-color: #FFFFEB;">
-                <h2>@produto.NomeProduto</h2>
-                <h5>R$ @produto.Preco</h5>
-                <p>
-                    <h4>Descrição:</h4>
-                <p style="height: 212px;">
-                    @produto.Descricao
-                </p>
-            </div>
-        </div>
-            *@
-        </div>
-    </div>
-</div>
+            <div class="col-xl-7 col-lg-7 col-md-6">
+                <div class="card rounded-lg" style="background-color: rgb(32, 32, 32)">
+                    <div class="card-title text-center">
+                        <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
+                    </div>
+                    <div class="card-body -mt-3 p-3">
+                        <div class="card-title text-center">
+                            <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
+                        </div>
+                        <div class="card dropzone">
+                            @foreach (var meuProduto in meusProdutos)
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="card-drag">
+                                        <img src="~/images/@meuProduto.ImagemProduto" class="img-fluid" style="height: 100px; width:100px" ; alt="Image" asp-append-version="true" />
+                                    </div>
+                                </div>
+                            }
 
-<div class="boards">
-    <div class="board">
-        <h3>Todo</h3>
-        <div class="dropzone">
-            <div class="card-drag" draggable="true">
-                <div class="status green"></div>
-                <div class="content"> Do videos!</div>
+
+                        </div>
+                    </div>
+                        <div class="card p-3" style="background-color: rgb(32, 32, 32)">
+                            <div class="card-title text-center">
+                                <h3 class="text-white">Oferta</h3>
+                            </div>
+                            <div class="card-body -mt-3 p-3" style="height: 400px">
+                                <div class="card dropzone" style="height: 300px">
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="board">
-        <h3>In progress</h3>
-        <div class="dropzone">
-            <div class="card-drag" draggable="true">
-                <div class="status blue"></div>
-                <div class="content"> Forum</div>
-            </div>
-        </div>
-    </div>
-    <div class="board">
-        <h3>Done</h3>
-        <div class="dropzone">
-            <div class="card-drag" draggable="true">
-                <div class="status red"></div>
-                <div class="content"> Next Level Week</div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <script src="~/js/drag_drop.js" defer></script>

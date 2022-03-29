@@ -2397,24 +2397,6 @@
 
 /* Drag % Drop */
 
-.boards {
-    display: flex;
-    margin-top: 32px;
-}
-
-.board {
-    background: #141316;
-    border: 1px solid #FD951F11;
-    border-radius: 4px;
-    margin: 0 16px;
-}
-
-.board h3 {
-    padding: 16px;
-    margin: 0;
-    color: #FD951Fcc;
-}
-
 .dropzone {
     padding: 16px;
     min-width: 282px;
@@ -2422,39 +2404,9 @@
 }
 
 .card-drag {
-    background-color: #1A1A1C;
-    padding: 16px;
-    box-shadow: 0 2px 2px -1px #FD951Fcc;
-    width: 250px;
-    margin: 25px 0;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 18px;
 }
 
-.status {
-    width: 30px;
-    height: 8px;
-    background: gray;
-    margin-bottom: 16px;
-    border-radius: 8px;
-}
 
-    .status.green {
-        background: #23d2ac;
-    }
-
-    .status.blue {
-        background: #33adff;
-    }
-
-    .status.red {
-        background: red;
-    }
-
-.highlight {
-    background-color: #FD951F08;
-}
 
 .card-drag, .dropzone {
     transition: 400ms;
@@ -2468,24 +2420,3 @@
 .over {
     background-color: #4cd13711;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
