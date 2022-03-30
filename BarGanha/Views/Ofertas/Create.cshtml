@@ -36,12 +36,21 @@
                         <div class="card-title text-center">
                             <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
                         </div>
-                        <div class="card p-3">
+                        <div class="card">
                             <div class="row dropzone">
                                 @foreach (var meuProduto in meusProdutos)
                                 {
-                                    <div class="card-drag col-md-4 col-sm-4 col-4" style="background-color: ">
-                                        <img src="~/images/@meuProduto.ImagemProduto" class="img-fluid" style="height: 100px; width:100px" ; alt="Image" asp-append-version="true" />
+                                    <div class="card-drag rounded-lg col-sm-4 col-4 rounded p-2">
+                                        <img src="~/images/@meuProduto.ImagemProduto" class="img-fluid border border-2 border-bottom-0 border-dark" style="height: 80%; width:110%" ; alt="Image" asp-append-version="true" />
+                                        <div style="background-color: #d33b33">
+                                            <div class="text-center">
+                                                <h2 class="text-white">@meuProduto.NomeProduto</h2>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <span class="text-white"> R$ @meuProduto.Preco</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 }
                             </div>
@@ -54,7 +63,7 @@
                         <div class="card-title text-center">
                             <h3 class="text-white mt-2 -mb-4">Ofertas</h3>
                         </div>
-                        <div class="card p-3">
+                        <div class="card">
                             <div class="row dropzone">
                             </div>
                         </div>
