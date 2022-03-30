@@ -2394,26 +2394,29 @@
      vertical-align: middle;
      white-space: nowrap;
 }
- 
+
+/* Drag % Drop */
+
+.dropzone {
+    padding: 16px;
+    min-width: 282px;
+    min-height: 200px;
+}
+
+.card-drag {
+}
 
 
 
+.card-drag, .dropzone {
+    transition: 400ms;
+}
 
+.is-dragging {
+    cursor: move;
+    opacity: 0.3;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.over {
+    background-color: #4cd13711;
+}

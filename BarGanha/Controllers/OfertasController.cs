@@ -43,8 +43,13 @@ namespace BarGanha.Controllers
         {
             var produto = await _context.Produtos
                 .FirstOrDefaultAsync(m => m.ProdutoId == id);
-            ViewBag.produto = produto;
 
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+
+            ViewBag.produto = produto;
+            ViewBag.meusProdutos = produtos;
             return View();
         }
 

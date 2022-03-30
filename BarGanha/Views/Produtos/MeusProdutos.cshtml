@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<BarGanha.BLL.Models.Produto>
-@{ var id = ViewBag.Id;
-        }
+@{ 
+    var id = ViewBag.Id;
+
+
+}
 <div class="furniture-box">
     <div class="terms-title">
         <div class="container">
@@ -18,11 +21,14 @@
                 <h2>Meus Produtos</h2>                
                 <div class="col-md-9 col-sm-8 furniture-middle">
                         <div class="row cat-pd">
-                            @foreach (var item in Model)
+                           @foreach (var item in Model)
                             {
-                                @if (@item.UsuarioId == id)
+                                 @if (@item.UsuarioId == id)
                                 {
-                                    <div class="col-md-4 col-sm-4">
+                                    <div class="col-md-3 col-sm-4">
+                                        <div class="card">
+
+                                        </div>
                                         <div class="small-box-d">
                                             <div class="small-img-b">
                                                 @if (@item.ImagemProduto != null || @item.ImagemProduto == "")
