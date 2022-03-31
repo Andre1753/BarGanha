@@ -25,7 +25,7 @@ namespace BarGanha.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
-        public async Task<IActionResult> TodosProdutos()
+        public async Task<IActionResult> Index()
         {
             return View(await _context.Produtos.ToListAsync());
         }
@@ -37,17 +37,24 @@ namespace BarGanha.Controllers
             {
                 return NotFound();
             }
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
             var produto = await _context.Produtos
                 .FirstOrDefaultAsync(u => u.ProdutoId == id);
+
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+
+            ViewBag.produto = produto;
+            ViewBag.meusProdutos = produtos;
+
             if (produto == null)
             {
                 return NotFound();
             }
-            return View(produto);
+            return View();
         }
 
-        public IActionResult Cadastrar()
+        public IActionResult Create()
         {
             ViewBag.Categorias = _context.Categorias;
             return View();
@@ -58,6 +65,7 @@ namespace BarGanha.Controllers
             ViewBag.Ss = searchString;
             return View(await _context.Produtos.ToListAsync());
         }
+
         public async Task<IActionResult> MeusProdutos()
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
@@ -74,7 +82,7 @@ namespace BarGanha.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Cadastrar(ProdutoViewModel model)
+        public async Task<IActionResult> Create(ProdutoViewModel model)
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
