@@ -51,17 +51,7 @@
                         </a>
                     </li>
 
-                    <!-- ICONE ALINHADO MAS NAO FUNCIONAL -->
-                    @*<li class="nav-item">
-
-                    <li class="side-menu">
-                        <a class="nav-link" href="accounts.html">
-                            <i class="far fa-user"></i>
-                            Minha Conta
-                        </a>
-                    </li>*@
-
-                   @if (SignInManager.IsSignedIn(User))
+                    @*@if (SignInManager.IsSignedIn(User))
                     {
                         <li class="side-menu">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="MinhaConta">
@@ -76,20 +66,31 @@
                                 <i class="far fa-user"></i> <span class="mr-2">Login</span>
                             </a>
                         </li>
-                    }
+                    }*@
 
-                   @*<li class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Dropdown button
-                            </button>
+                   @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li class="dropdown">
+                            <!-- OG = type, value, onclick -->
+                            <input class="btn btn-secondary dropdown-toggle" type="button" value="Minha Conta" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"/>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <input class="dropdown-item" value="Minha Conta" onclick="location.href='@Url.Action("MinhaConta", "Home")'" />
+                                <input class="dropdown-item" value="Meus Produtos" onclick="location.href='@Url.Action("TodosProdutos", "Produtos")'" />
+                                <a class="dropdown-item" href="#">Meus Anuncios</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Separated link</a>
                             </div>
-                     </li>*@
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Usuarios" asp-action="Login">
+                                Login
+                            </button>
+                            <input type="button" value="Login" onclick="location.href='@Url.Action("Login", "Usuarios")'"/>
+                        </li>
+                    }
                 </ul>
             </div>
             <!-- End Atribute Navigation -->
