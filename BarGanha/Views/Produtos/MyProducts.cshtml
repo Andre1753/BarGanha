@@ -15,42 +15,38 @@
 <!-- End All Title Box -->
 
 <div class="container">
-    <div class="row">
-        <div class="furniture-main">
-            <h2>Meus Produtos</h2>
-            <div class="col-md-9 col-sm-8 furniture-middle">
-                <div class="row cat-pd">
-                    @foreach (var produto in meusProdutos)
-                    {
-                        <div class="col-md-3 col-sm-4">
-                            <div class="card">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col" class="text-center">Anuncio</th>
+                <th scope="col" class="text-center">Produto</th>
+                <th scope="col" class="text-center">Preço Estimado</th>
+                <th scope="col" colspan="2" class="text-center">Descrição</th>
+                <th scope="col" class="text-center">Açoes</th>
 
-                            </div>
-                            <div class="small-box-d">
-                                <div class="small-img-b">
-                                    <img src="~/images/@produto.ImagemProduto" asp-append-version="true" />
-                            </div>
-                            <div class="dit-t clearfix">
-                                <div class="left-ti">
-                                    <h4>@produto.NomeProduto</h4>
-                                </div>
-                                <a style="background-color:#09294c; color:#fff;" asp-action="Details" asp-route-id="@produto.ProdutoId">Visualizar</a>
-                            </div>
-                            <div class="dit-t">
-                                <div class="meio">
-                                    <a style="background-color:#FFFFF0; color:#09294c;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>
-                                    <a style="background-color:#ff0000; color:#fff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Excluir</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produto in meusProdutos)
+            {
 
-                }
-                </div>
-                <a class="btn" style="background-color:#09294c; color:#fff;" asp-controller="Produtos" asp-action="Create">Cadastrar Produto</a>
-                <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
-
-            </div>
-        </div>
-    </div>
+                <tr>
+                    <td class="text-center">
+                        <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                    </td>
+                    <td class="text-center">
+                        <input type="checkbox" id="anunciado" name="anunciado" checked>
+                    </td>
+                    <td class="text-center">@produto.NomeProduto</td>
+                    <td class="text-center">R$ @produto.Preco</td>
+                    <td colspan="2" class="text-center">@produto.Descricao</td>
+                    <td class="text-center">
+                        <!--<a class="btn" style="background-color:#FFFFF0; color:#09294c;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>-->
+                        <a class="btn text-white-50" style="background-color:#0026ff;">Editar</a>
+                    </td>
+                </tr>
+            }            
+        </tbody>
+    </table>   
 </div>
