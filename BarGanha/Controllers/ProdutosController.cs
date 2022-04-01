@@ -54,23 +54,15 @@ namespace BarGanha.Controllers
             return View();
         }
 
-        public IActionResult Create()
-        {
-            ViewBag.Categorias = _context.Categorias;
-            return View();
-        }
 
-        public async Task<IActionResult> Productpage(string searchString)
-        {
-            ViewBag.Ss = searchString;
-            return View(await _context.Produtos.ToListAsync());
-        }
-
-        public async Task<IActionResult> MeusProdutos()
+        public async Task<IActionResult> MyProducts()
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
-            ViewBag.Id = usuario.Id;
-            return View(await _context.Produtos.ToListAsync());
+
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+            ViewBag.meusProdutos = produtos;
+
+            return View();
         }
         public async Task<IActionResult> Produtosconta(string id)
         {
@@ -78,6 +70,12 @@ namespace BarGanha.Controllers
             ViewBag.Id = usuario.Id;
             ViewBag.Nome = usuario.UserName;
             return View(await _context.Produtos.ToListAsync());
+        }
+
+        public IActionResult Create()
+        {
+            ViewBag.Categorias = _context.Categorias;
+            return View();
         }
 
         [HttpPost]
