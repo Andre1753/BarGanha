@@ -121,7 +121,7 @@
                 // Add Class to body
                 $("nav.navbar.bootsnav").find("ul.nav").wrap("<div class='wrap-full-menu'></div>");
                 $(".wrap-full-menu").wrap("<div class='nav-full'></div>");
-                $("ul.nav.navbar-nav").prepend("<li class='close-full-menu'><a href='#'><i class='fa fa-times'></i></a></li>");
+                $("ul.nav.navbar-nav").prepend("<li class='close-full-menu'><a href='#'><i class='fas fa-times'></i></a></li>");
             }else if( getNav.hasClass("navbar-mobile")){
                 getNav.removeClass("no-full");
             }else{
