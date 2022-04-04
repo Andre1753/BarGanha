@@ -27,7 +27,7 @@ namespace BarGanha.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produtos.ToListAsync());
+            return View(await _context.Produtos.Where(p => p.Anunciar == true).ToListAsync());
         }
 
         // GET: Produtos/Details/5
@@ -166,6 +166,24 @@ namespace BarGanha.Controllers
             }
             return View(produto);
         }
+
+        public async Task<IActionResult> ChangeAnunciar(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var produto = await _context.Produtos
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+
+            produto.Anunciar = !produto.Anunciar;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProducts");
+        }
+
         // GET: Produtos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -182,11 +200,6 @@ namespace BarGanha.Controllers
             }
 
             return View(produto);
-        }
-
-        public IActionResult Shop()
-        {
-            return View();
         }
 
         // POST: Produtos/Delete/5
