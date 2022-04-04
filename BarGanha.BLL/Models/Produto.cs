@@ -8,6 +8,7 @@ namespace BarGanha.BLL.Models
         public int ProdutoId { get; set; }
         public string NomeProduto { get; set; }
         public decimal Preco { get; set; }
+        public bool Anunciar { get; set; }
         public string Descricao { get; set; }
         public string ImagemProduto { get; set; }
 

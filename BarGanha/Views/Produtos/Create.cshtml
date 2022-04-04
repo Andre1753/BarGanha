@@ -1,9 +1,5 @@
 ﻿@model BarGanha.ViewModels.ProdutoViewModel
 
-@{
-    var categorias = ViewBag.Categorias;
-}
-
 <!-- Start All Title Box -->
 <div class="all-title-box">
     <div class="container">
@@ -32,8 +28,6 @@
                                    onclick="document.getElementById('fileInput').click();" />
                             <span asp-validation-for="ImagemProduto" class="text-danger"></span>
                         </div>
-
-
                     </div>
 
                     <div class="col-6">
@@ -51,8 +45,8 @@
 
                         <div class="form-group">
                             @Html.LabelFor(m => m.CategoriaId, new { @class = "control-label" })
-                            @Html.DropDownListFor(m => m.CategoriaId,
-                                                        new SelectList(categorias, "CategoriaId", "NomeCategoria"),
+                            @Html.DropDownListFor(m => m.CategoriaId, 
+                                                        new SelectList(ViewBag.Categorias, "CategoriaId", "NomeCategoria"),
                                                         "Escolha a categoria", new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.CategoriaId, "", new { @class = "text-danger" })
                         </div>

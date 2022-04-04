@@ -74,7 +74,7 @@ namespace BarGanha.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.Categorias = _context.Categorias;
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View();
         }
 
@@ -84,14 +84,18 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
+
+
+            Console.WriteLine(model.CategoriaId);
+
             if (ModelState.IsValid)
             {
                 string nomeUnicoArquivo = UploadedFile(model);
-
                 Produto prod = new Produto
                 {
                     NomeProduto = model.NomeProduto,
                     Preco = model.Preco,
+                    Anunciar = true,
                     Descricao = model.Descricao,
                     ImagemProduto = nomeUnicoArquivo,
                     UsuarioId = usuario.Id,

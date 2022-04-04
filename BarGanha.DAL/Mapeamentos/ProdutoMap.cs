@@ -12,6 +12,7 @@ namespace BarGanha.DAL.Mapeamentos
             builder.HasKey(p => p.ProdutoId);
             builder.Property(p => p.NomeProduto).IsRequired().HasMaxLength(40);
             builder.Property(p => p.Preco).IsRequired().HasMaxLength(10);
+            builder.Property(p => p.Anunciar).IsRequired();
             builder.Property(p => p.Descricao).IsRequired().HasMaxLength(144);
             builder.Property(p => p.ImagemProduto).IsRequired();
             builder.Property(p => p.CategoriaId).IsRequired();
