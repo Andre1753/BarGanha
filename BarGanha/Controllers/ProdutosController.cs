@@ -103,7 +103,7 @@ namespace BarGanha.Controllers
                 };
                 _context.Add(prod);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MyProducts");
             }
             return View();
         }
@@ -139,6 +139,8 @@ namespace BarGanha.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View(produto);
         }
 
@@ -162,7 +164,7 @@ namespace BarGanha.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("MyProducts");
             }
             return View(produto);
         }
@@ -184,39 +186,16 @@ namespace BarGanha.Controllers
             return RedirectToAction("MyProducts");
         }
 
-        // GET: Produtos/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produto = await _context.Produtos
-                .FirstOrDefaultAsync(m => m.ProdutoId == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
-
-            return View(produto);
-        }
-
-        // POST: Produtos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int id)
         {
             var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToAction("MyProducts");
         }
 
-        private bool ProdutoExists(int id)
-        {
-            return _context.Produtos.Any(e => e.ProdutoId == id);
-        }
         public async Task<IActionResult> EditAdm(int? id)
         {
             if (id == null)

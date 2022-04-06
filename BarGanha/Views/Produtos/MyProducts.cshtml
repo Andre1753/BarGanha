@@ -26,49 +26,59 @@
                 <th scope="col" class="text-center">Anuncio</th>
                 <th scope="col" class="text-center">Produto</th>
                 <th scope="col" class="text-center">Preço Estimado</th>
-                <th scope="col" colspan="2" class="text-center">Descrição</th>
+                <th scope="col" colspan="3" class="text-center">Descrição</th>
                 <th scope="col" class="text-center">Ações</th>
 
             </tr>
         </thead>
         <tbody>
-            @foreach (var produto in meusProdutos)
+            @if (meusProdutos.Count > 0)
             {
+                @foreach (var produto in meusProdutos)
+                {
 
-                <tr>
-                    <td class="text-center">
-                        <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                    </td>
-                    <td class="text-center">
-                        @if (produto.Anunciar)
-                        {
-                            <span class="badge badge-success">Anunciado</span>
-                        }
-                        else
-                        {
-                            <span class="badge badge-danger">Não Anunciado</span>
-                        }
-                    </td>
-                    <td class="text-center">@produto.NomeProduto</td>
-                    <td class="text-center">R$ @produto.Preco</td>
-                    <td colspan="2" class="text-center">@produto.Descricao</td>
-                    <td class="text-center">
-                        <a class="btn btn-sm" style="background-color:#ff6a00; color:#ffffff;" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
+                    <tr>
+                        <td class="text-center">
+                            <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                        </td>
+                        <td class="text-center">
                             @if (produto.Anunciar)
                             {
-                                <span>Remover Anuncio</span>
+                                <span class="badge badge-success">Anunciado</span>
                             }
                             else
                             {
-                                <span>Anunciar</span>
+                                <span class="badge badge-danger">Não Anunciado</span>
                             }
-                        </a>
+                        </td>
+                        <td class="text-center">@produto.NomeProduto</td>
+                        <td class="text-center">R$ @produto.Preco</td>
+                        <td colspan="3" class="text-center">@produto.Descricao</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm" style="background-color:#ff6a00; color:#ffffff;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>
 
-                        <a class="btn btn-sm" style="background-color:#ff0000; color:#ffffff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
-                        <!--<a class="btn text-white-50" style="background-color:#0026ff;">Editar</a> -->
-                    </td>
+                            <a class="btn btn-sm" style="background-color:#0026ff; color:#ffffff;" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
+                                @if (produto.Anunciar)
+                                {
+                                    <span>Remover Anuncio</span>
+                                }
+                                else
+                                {
+                                    <span>Anunciar</span>
+                                }
+                            </a>
+
+                            <a class="btn btn-sm" style="background-color:#411010; color:#ffffff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="8" class="text-center">Nenhum produto registrado</td>
                 </tr>
-            }            
+            }
         </tbody>
     </table>   
 </div>
