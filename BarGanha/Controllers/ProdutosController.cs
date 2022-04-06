@@ -84,10 +84,6 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-
-
-            Console.WriteLine(model.CategoriaId);
-
             if (ModelState.IsValid)
             {
                 string nomeUnicoArquivo = UploadedFile(model);
@@ -149,7 +145,7 @@ namespace BarGanha.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,")] Produto produto)
+        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,CategoriaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -161,6 +157,7 @@ namespace BarGanha.Controllers
                 prod.NomeProduto = produto.NomeProduto;
                 prod.Preco = produto.Preco;
                 prod.Descricao = produto.Descricao;
+                prod.CategoriaId = produto.CategoriaId;
 
                 _context.SaveChanges();
 
