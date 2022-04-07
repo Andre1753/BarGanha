@@ -25,6 +25,10 @@ namespace BarGanha.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
 
+        public IList<Produto> Produtos { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string SearchString { get; set; }
+
         public async Task<IActionResult> Index()
         {
             if (User.Identity.Name != null)
@@ -224,7 +228,19 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
             return View(produto);
-        }        
+        }
+
+        public async Task SearchBarFilter()
+        {
+            var produtos = from m in _context.Produtos
+                           select m;
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                produtos = produtos.Where(s => s.NomeProduto.Contains(SearchString));
+            }
+
+            Produtos = await produtos.ToListAsync();
+        }
     }
 
 }
