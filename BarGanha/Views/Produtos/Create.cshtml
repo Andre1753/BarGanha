@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="justify-content-center">
-                            <img id="blah" src="~/images/UploadImage.png" class="rounded mx-auto d-block" />
+                            <img id="blah" src="~/images/UploadImage.png" width="200px" height="200px" class="rounded mx-auto d-block" />
 
                             <input asp-for="ImagemProduto" class="custom-file-input" id="fileInput" style="display:none;" onchange="readURL(this);">
                             <input type="button"
@@ -64,7 +64,7 @@
 
                 <div class="row justify-content-end">
                     <input type="submit" value="Cadastrar Produto" class="btn hvr-hover text-white mr-1 rounded" />
-                    <a class="btn" style="background-color:#808080; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
+                    <a class="btn" style="background-color:#808080; color:#fff;" asp-controller="Produtos" asp-action="MyProducts">Voltar</a>
                 </div>
             </form>
         </div>

@@ -24,9 +24,6 @@
                     <li class="nav-item">
                         <a class="nav-link" asp-area="" asp-controller="Produtos" asp-action="Index">Produtos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-area="" asp-controller="Produtos" asp-action="Create">Cadastrar Produto</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -52,10 +49,14 @@
                                 <i class="fas fa-user"></i> <span class="mr-2">Minha Conta</span>
                             </a>
                             <div class="dropdown-menu" style="margin-top: -8px" aria-labelledby="dropdownMenuButton">
-                                <input class="dropdown-item" value="Meu Perfil" onclick="location.href='@Url.Action("MinhaConta", "Home")'" />
-                                <input class="dropdown-item" value="Meus Produtos" onclick="location.href='@Url.Action("MyProducts", "Produtos")'" />
+                                <a class="dropdown-item" style="cursor:pointer" onclick="location.href='@Url.Action("MinhaConta", "Home")'">
+                                    Meu Perfil
+                                </a>
+                                <a class="dropdown-item" style="cursor:pointer" value="Meus Produtos" onclick="location.href='@Url.Action("MyProducts", "Produtos")'">
+                                    Meus Produtos
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" style="margin-top: -10px;"><partial name="_Logout" /></a>
+                                <a class="dropdown-item" style="margin-top: -10px; margin-left: -10px"><partial name="_Logout" /></a>
                             </div>
 
                         </li>

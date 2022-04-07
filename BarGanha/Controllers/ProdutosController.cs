@@ -31,7 +31,7 @@ namespace BarGanha.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produtos.ToListAsync());
+            return View(await _context.Produtos.Where(p => p.Anunciar == true).ToListAsync());
         }
 
         // GET: Produtos/Details/5
@@ -88,10 +88,6 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-
-
-            Console.WriteLine(model.CategoriaId);
-
             if (ModelState.IsValid)
             {
                 string nomeUnicoArquivo = UploadedFile(model);
@@ -107,7 +103,7 @@ namespace BarGanha.Controllers
                 };
                 _context.Add(prod);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("MyProducts");
             }
             return View();
         }
@@ -143,6 +139,8 @@ namespace BarGanha.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Categorias = _context.Categorias.ToList();
             return View(produto);
         }
 
@@ -151,7 +149,7 @@ namespace BarGanha.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,")] Produto produto)
+        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,CategoriaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
@@ -163,15 +161,16 @@ namespace BarGanha.Controllers
                 prod.NomeProduto = produto.NomeProduto;
                 prod.Preco = produto.Preco;
                 prod.Descricao = produto.Descricao;
+                prod.CategoriaId = produto.CategoriaId;
 
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("MyProducts");
             }
             return View(produto);
         }
-        // GET: Produtos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+
+        public async Task<IActionResult> ChangeAnunciar(int? id)
         {
             if (id == null)
             {
@@ -180,34 +179,24 @@ namespace BarGanha.Controllers
 
             var produto = await _context.Produtos
                 .FirstOrDefaultAsync(m => m.ProdutoId == id);
-            if (produto == null)
-            {
-                return NotFound();
-            }
 
-            return View(produto);
+            produto.Anunciar = !produto.Anunciar;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProducts");
         }
 
-        public IActionResult Shop()
-        {
-            return View();
-        }
 
-        // POST: Produtos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
             var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+            return RedirectToAction("MyProducts");
         }
 
-        private bool ProdutoExists(int id)
-        {
-            return _context.Produtos.Any(e => e.ProdutoId == id);
-        }
         public async Task<IActionResult> EditAdm(int? id)
         {
             if (id == null)
