@@ -33,19 +33,24 @@ namespace BarGanha.Controllers
         // GET: Produtos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
+            if (id == null) { 
                 return NotFound();
             }
-            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            if(User.Identity.Name != null){
+                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+              
+                var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+
+                ViewBag.meusProdutos = produtos;
+            }
+            else{
+                ViewBag.meusProdutos = null;
+            }
 
             var produto = await _context.Produtos
-                .FirstOrDefaultAsync(u => u.ProdutoId == id);
-
-            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
-
+                    .FirstOrDefaultAsync(u => u.ProdutoId == id);
             ViewBag.produto = produto;
-            ViewBag.meusProdutos = produtos;
 
             if (produto == null)
             {
