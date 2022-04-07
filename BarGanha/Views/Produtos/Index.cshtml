@@ -1,5 +1,4 @@
-﻿@model IEnumerable<BarGanha.BLL.Models.Produto>
-<!-- Start Top Search -->
+﻿<!-- Start Top Search -->
 <div class="top-search">
     <div class="container">
         <div class="input-group">
@@ -102,7 +101,7 @@
                         <div class="tab-content">
                             <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
                                 <div class="row">
-                                    @foreach (var item in Model)
+                                    @foreach (var produto in ViewBag.produtos)
                                     {
                                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
@@ -110,17 +109,17 @@
                                                     <div class="type-lb">
                                                         <p class="new">Novo</p>
                                                     </div>
-                                                    <img src="~/images/@item.ImagemProduto" class="img-fluid" style="height: 250px; width:90% " ; alt="Image" asp-append-version="true" />
+                                                    <img src="~/images/@produto.ImagemProduto" class="img-fluid" style="height: 250px; width:90% " ; alt="Image" asp-append-version="true" />
                                                 </div>
 
                                                 <div class="why-text">
                                                     <div class="row">
                                                         <div class="col-md-7">
-                                                            <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
-                                                            <h5> R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
+                                                            <h4>@produto.NomeProduto</h4>
+                                                            <h5> R$ @produto.Preco</h5>
                                                         </div>
                                                         <div class="col-md-5">
-                                                            <a class="btn hvr-hover text-white mt-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                            <a class="btn hvr-hover text-white mt-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@produto.ProdutoId">Visualizar</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -132,7 +131,7 @@
 
                             <div role="tabpanel" class="tab-pane fade" id="list-view">
                                 <div class="list-view-box">
-                                    @foreach (var item in Model)
+                                    @foreach (var produto in ViewBag.produtos)
                                     {
                                         <div class="row">
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
@@ -141,21 +140,21 @@
                                                         <div class="type-lb">
                                                             <p class="new">Novo</p>
                                                         </div>
-                                                        <img src="~/images/@item.ImagemProduto" class="img-fluid" style="height: 350px; width:110%"; alt="Image" asp-append-version="true" />
+                                                        <img src="~/images/@produto.ImagemProduto" class="img-fluid" style="height: 350px; width:110%"; alt="Image" asp-append-version="true" />
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                                 <div class="why-text full-width">
-                                                    <h4>@Html.DisplayFor(modelItem => item.NomeProduto)</h4>
-                                                    <h5> R$ @Html.DisplayFor(modelItem => item.Preco)</h5>
+                                                    <h4>@produto.NomeProduto</h4>
+                                                    <h5> R$ @produto.Preco</h5>
                                                     <p style="height: 212px;">
-                                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                                        @produto.Descricao
                                                     </p>
 
                                                     <div class="row">
-                                                        <a class="btn hvr-hover text-white mx-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@item.ProdutoId">Visualizar</a>
+                                                        <a class="btn hvr-hover text-white mx-2" asp-controller="Produtos" asp-action="Details" asp-route-id="@produto.ProdutoId">Visualizar</a>
                                                     </div>
                                                 </div>
                                             </div>

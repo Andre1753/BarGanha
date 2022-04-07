@@ -27,7 +27,18 @@ namespace BarGanha.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Produtos.Where(p => p.Anunciar == true).ToListAsync());
+            if (User.Identity.Name != null)
+            {
+                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+                ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id).Where(p => p.Anunciar == true).ToListAsync();
+            }
+            else
+            {
+                ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true).ToListAsync();
+            }
+
+            return View();
         }
 
         // GET: Produtos/Details/5
