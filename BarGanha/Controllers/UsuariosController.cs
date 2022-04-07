@@ -226,7 +226,7 @@ namespace BarGanha.Controllers
         public async Task<IActionResult> Logout()
         {
             await _usuarioRepositorio.DeslogarUsuario();
-            return RedirectToAction("Login");
+            return RedirectToAction("Index", "Home");
         }
        
         [Authorize]
