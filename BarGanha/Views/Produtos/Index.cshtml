@@ -28,7 +28,7 @@
                 <div class="product-categorie-box ">
                     <div class="search-product">
                         <form asp-controller="Produtos" asp-action="Index">
-                            <input class="form-control" type="text" name="SearchString" />
+                            <input class="form-control" placeholder="Procure por um produto" type="text" name="SearchString" value="@ViewBag.searchString"/>
                             <button type="submit"> <i class="fas fa-search" value="Buscar"></i> </button>
                         </form>
                     </div>

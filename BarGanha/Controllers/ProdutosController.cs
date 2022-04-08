@@ -44,6 +44,8 @@ namespace BarGanha.Controllers
                 ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
                                                           .Where(p => p.NomeProduto.Contains(searchString))
                                                           .ToListAsync();
+
+                ViewBag.searchString = searchString;
             }
             else
             {
