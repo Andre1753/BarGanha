@@ -34,6 +34,12 @@
                 <p style="height: 111px; overflow-y: auto">
                     @produto.Descricao
                 </p>
+
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <a class="btn hvr-hover" style="background-color: #d33b33; margin-top: -8px; color: #fff;" asp-controller="Ofertas" asp-action="Create" asp-route-id="@produto.ProdutoId">Ofertar Troca</a>
+                }
+
             </div>
         </div>
     </div>
@@ -76,7 +82,7 @@
                             <div class="row justify-content-between">
                                 <h3 class="text-white">Produtos Ofertado</h3>
 
-                                <a class="btn hvr-hover" style="background-color: #d33b33; margin-top: -8px; color: #fff;" asp-controller="Ofertas" asp-action="Create" asp-route-id="@produto.ProdutoId">Ofertar Troca</a>
+                                <a class="btn hvr-hover" style="background-color: #d33b33; margin-top: -8px; color: #fff;" onclick="abc()">Ofertar Troca</a>
                             </div>
                         </div>
                         <div class="card">
@@ -87,10 +93,6 @@
                 </div>
             </div>
         </div>
-    }
-    else
-    {
-
     }
 
     <script src="~/js/drag_drop.js" defer></script>
