@@ -52,17 +52,6 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
-            if(User.Identity.Name != null){
-                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
-              
-                var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
-
-                ViewBag.meusProdutos = produtos;
-            }
-            else{
-                ViewBag.meusProdutos = null;
-            }
-
             var produto = await _context.Produtos
                     .FirstOrDefaultAsync(u => u.ProdutoId == id);
             ViewBag.produto = produto;

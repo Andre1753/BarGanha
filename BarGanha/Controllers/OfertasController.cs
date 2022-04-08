@@ -50,6 +50,7 @@ namespace BarGanha.Controllers
 
             ViewBag.produto = produto;
             ViewBag.meusProdutos = produtos;
+
             return View();
         }
 
@@ -58,17 +59,6 @@ namespace BarGanha.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(OfertaViewModel model)
         {
-            if (ModelState.IsValid)
-            {
-                Oferta solicitacaoTroca = new Oferta
-                {
-                    ProdutoId = model.ProdutoId,
-                    ProdutoOfertadoId = model.ProdutoOfertadoId
-                };
-                _context.Add(solicitacaoTroca);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
             return View();
 
         }

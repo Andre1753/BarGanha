@@ -1,8 +1,7 @@
 ﻿@model BarGanha.ViewModels.OfertaViewModel
 
 @{
-    var produto = ViewBag.produto;
-    var meusProdutos = ViewBag.meusProdutos;
+    ViewBag.Title = "Create";
 }
 
 <!-- Start All Title Box -->
@@ -21,99 +20,58 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-5 col-lg-5 col-md-6">
-                @if (produto.ImagemProduto != null || produto.ImagemProduto == "")
-                {
-                    var str = produto.ImagemProduto;
-                    <img src="~/images/@str" class="img-fluid" style="height: 70%; width: 80%;" ; alt="Image" asp-append-version="true" />
-                }
-                <h2>@produto.NomeProduto</h2>
-                <h5>R$ @produto.Preco</h5>
+                <img src="~/images/@ViewBag.produto.ImagemProduto" class="img-fluid" style="height: 70%; width: 80%;" ; alt="Image" asp-append-version="true" />
+
+                <h2>@ViewBag.produto.NomeProduto</h2>
+                <h5>R$ @ViewBag.produto.Preco</h5>
             </div>
 
             <div class="col-xl-7 col-lg-7 col-md-6">
-                <div class="card rounded-lg" style="background-color: rgb(32, 32, 32)">
-                    <div class="card-body p-3">
-                        <div class="card-title text-center">
-                            <h3 class="text-white mt-2 -mb-4">Meus Produtos</h3>
-                        </div>
-                        <div class="card">
-                            <div class="row dropzone" >
-                                @foreach (var meuProduto in meusProdutos)
+                @using (Html.BeginForm())
+                {
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col"></th>
+                                <th scope="col" class="text-center">Produto</th>
+                                <th scope="col" class="text-center">Preço Estimado</th>
+                                <th scope="col" class="text-center">Trocar</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (ViewBag.meusProdutos.Count > 0)
+                            {
+                                var i = 0;
+
+                                @foreach (var meuProduto in ViewBag.meusProdutos)
                                 {
-                                    <div class="card-drag rounded-lg col-md-3 col-12 rounded p-2 -mt-2">
-                                        <img src="~/images/@meuProduto.ImagemProduto" class="img-fluid border border-2 border-bottom-0 border-dark" style="height: 60%; width:110%" ; alt="Image" asp-append-version="true" />
-                                        <div style="background-color: #d33b33">
-                                            <div class="text-center">
-                                                <h2 class="text-white" style="font-size: 15px">@meuProduto.NomeProduto</h2>
-                                            </div>
 
-                                            <div class="text-center">
-                                                <span class="text-white"> R$ @meuProduto.Preco</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <tr>
+                                        <td class="text-center">
+                                            <img src="~/images/@meuProduto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </td>
+                                        <td class="text-center">@meuProduto.NomeProduto</td>
+                                        <td class="text-center">R$ @meuProduto.Preco</td>
+                                        <td class="text-center">
+                                            @Html.CheckBoxFor(m => Model.Ofertas[i].Selected)
+                                        </td>
+                                    </tr>
+
+                                    i++;
                                 }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card rounded-lg mt-2" style="background-color: rgb(32, 32, 32)">
-                    <div class="card-body p-3">
-                        <div class="card-title text-center">
-                            <h3 class="text-white mt-2 -mb-4">Ofertas</h3>
-                        </div>
-                        <div class="card">
-                            <div class="row dropzone">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="4" class="text-center">Você não tem produtos registrados para trocar</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Enviar" />
+                }
             </div>
-         </div>
+        </div>
     </div>
 </div>
-
-<script src="~/js/drag_drop.js" defer></script>
-
-
-<!--
-    <div class="terms-conditions product-page">
-        <div class="terms-title">
-            <div class="container">
-                <ol class="breadcrumb">
-                    <li><a asp-area="" asp-controller="Produtos" asp-action="Index">Inicial </a></li>
-                    <li class="active">Cadastro de produto</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-    <div class="md-prod-page">
-        <div class="md-prod-page-in">
-            <div class="col-md-12">
-                <div class="prod-page-title">
-                    <h2>Cadastro do produto</h2>
-
-                </div>
-            </div>
-            <div class="col-md-10">
-                <form enctype="multipart/form-data" asp-action="Create">
-                    <div class="form-group col-md-6">
-                        <label asp-for="ProdutoId" class="control-label"></label>
-                        <input asp-for="ProdutoId" class="form-control" />
-                        <span asp-validation-for="ProdutoId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label asp-for="ProdutoOfertadoId" class="control-label"></label>
-                        <input asp-for="ProdutoOfertadoId" class="form-control" />
-                        <span asp-validation-for="ProdutoOfertadoId" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Cadastrar Solicitaçao Troca" class="btn" style="background-color:#09294c; color:#fff;" />
-                        <a class="btn" style="background-color:#1d99ff; color:#fff;" asp-controller="Produtos" asp-action="Index">Voltar</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
--->
