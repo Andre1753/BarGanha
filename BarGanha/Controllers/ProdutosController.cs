@@ -29,17 +29,26 @@ namespace BarGanha.Controllers
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? searchString)
         {
             if (User.Identity.Name != null)
             {
                 Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-                ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id).Where(p => p.Anunciar == true).ToListAsync();
+                ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
+                                                          .Where(p => p.Anunciar == true)
+                                                          .ToListAsync();
+            }
+            if (searchString != null)
+            {
+                ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                          .Where(p => p.NomeProduto.Contains(searchString))
+                                                          .ToListAsync();
             }
             else
             {
-                ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true).ToListAsync();
+                ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                          .ToListAsync();
             }
 
             return View();
@@ -52,8 +61,7 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos
-                    .FirstOrDefaultAsync(u => u.ProdutoId == id);
+            var produto = await _context.Produtos.FirstOrDefaultAsync(u => u.ProdutoId == id);
             ViewBag.produto = produto;
 
             if (produto == null)
@@ -68,7 +76,8 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id)
+                                                  .ToListAsync();
             ViewBag.meusProdutos = produtos;
 
             return View();
@@ -182,8 +191,7 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos
-                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+            var produto = await _context.Produtos.FirstOrDefaultAsync(m => m.ProdutoId == id);
 
             produto.Anunciar = !produto.Anunciar;
 
@@ -209,8 +217,7 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos
-                .FirstOrDefaultAsync(m => m.ProdutoId == id);
+            var produto = await _context.Produtos.FirstOrDefaultAsync(m => m.ProdutoId == id);
 
             if (produto == null)
             {
@@ -219,7 +226,7 @@ namespace BarGanha.Controllers
             return View(produto);
         }
 
-        public async Task SearchBarFilter()
+        public async Task OnGetAsync()
         {
             var produtos = from m in _context.Produtos
                            select m;
