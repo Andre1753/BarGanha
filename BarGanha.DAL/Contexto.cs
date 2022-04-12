@@ -13,6 +13,7 @@ namespace BarGanha.DAL
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Oferta> Ofertas { get; set; }
         public DbSet<Troca> Trocas { get; set; }
+        public DbSet<ProdutoOfertado> ProdutosOfertados { get; set; }
 
 
         public Contexto(DbContextOptions<Contexto> opcoes) : base(opcoes)
@@ -30,6 +31,8 @@ namespace BarGanha.DAL
             builder.ApplyConfiguration(new CategoriaMap());
             builder.ApplyConfiguration(new OfertaMap());
             builder.ApplyConfiguration(new TrocaMap());
+            builder.ApplyConfiguration(new ProdutoOfertadoMap());
+
         }
     }
 }

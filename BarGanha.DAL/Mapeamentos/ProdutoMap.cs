@@ -20,6 +20,7 @@ namespace BarGanha.DAL.Mapeamentos
 
             builder.HasOne(p => p.usuario).WithMany(p => p.Produtos).HasForeignKey(p => p.UsuarioId);
             builder.HasOne(p => p.categoria).WithMany(p => p.Produtos).HasForeignKey(p => p.CategoriaId);
+            builder.HasMany(p => p.Ofertas).WithOne();
 
             builder.ToTable("Produtos");
         }

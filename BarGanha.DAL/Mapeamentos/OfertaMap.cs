@@ -11,11 +11,10 @@ namespace BarGanha.DAL.Mapeamentos
         {
             builder.HasKey(st => st.OfertaId);
             builder.Property(st => st.ProdutoId).IsRequired();
-            builder.Property(st => st.ProdutoOfertadoId).IsRequired();
-            builder.Property(st => st.Aprovado);
+            builder.Property(st => st.Status);
 
-            builder.HasOne(st => st.Produto).WithOne().OnDelete(DeleteBehavior.Restrict); ;
-            builder.HasOne(st => st.ProdutoOfertado).WithMany(p => p.SolicitacoesRecebidas).HasForeignKey(st => st.ProdutoOfertadoId).OnDelete(DeleteBehavior.Restrict); ;
+
+            builder.HasOne(st => st.Produto).WithMany(p => p.Ofertas).HasForeignKey(st => st.ProdutoId);
 
             builder.ToTable("Ofertas");
         }
