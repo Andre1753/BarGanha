@@ -38,19 +38,28 @@ namespace BarGanha.Controllers
                 ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
                                                           .Where(p => p.Anunciar == true)
                                                           .ToListAsync();
-            }
-            if (searchString != null)
-            {
-                ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
-                                                          .Where(p => p.NomeProduto.Contains(searchString))
-                                                          .ToListAsync();
+                if (searchString != null)
+                {
+                    ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
+                                                              .Where(p => p.Anunciar == true)
+                                                              .Where(p => p.NomeProduto.Contains(searchString))
+                                                              .ToListAsync();
 
-                ViewBag.searchString = searchString;
+                    ViewBag.searchString = searchString;
+                }
             }
             else
             {
                 ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
                                                           .ToListAsync();
+                if (searchString != null)
+                {
+                    ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                              .Where(p => p.NomeProduto.Contains(searchString))
+                                                              .ToListAsync();
+
+                    ViewBag.searchString = searchString;
+                }
             }
 
             return View();
