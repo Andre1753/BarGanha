@@ -9,6 +9,8 @@ namespace BarGanha.ViewModels
     public class OfertaViewModel
     {
         public IList<Ofertar> Ofertas { get; set; }
+
+        public int produtoId { get; set; }
     }
     
     public class Ofertar

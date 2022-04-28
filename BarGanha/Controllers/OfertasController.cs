@@ -59,6 +59,29 @@ namespace BarGanha.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(OfertaViewModel model)
         {
+
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+
+            Oferta ofer = new Oferta
+            {
+                ProdutoId = model.produtoId,
+                Status = 1
+            };
+            _context.Add(ofer);
+            await _context.SaveChangesAsync();
+
+            foreach (var oferta in model.Ofertas)
+            {
+                if (oferta.Selected)
+                {
+                    
+                }
+            }
+            
+
+
             return View();
 
         }

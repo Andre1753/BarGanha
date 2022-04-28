@@ -13,7 +13,6 @@ namespace BarGanha.DAL.Mapeamentos
             builder.Property(st => st.ProdutoId).IsRequired();
             builder.Property(st => st.Status);
 
-
             builder.HasOne(st => st.Produto).WithMany(p => p.Ofertas).HasForeignKey(st => st.ProdutoId);
 
             builder.ToTable("Ofertas");
