@@ -67,23 +67,29 @@ namespace BarGanha.Controllers
             Oferta ofer = new Oferta
             {
                 ProdutoId = model.produtoId,
-                Status = 1
+                Status = 1,
+                UsuarioId = usuario.Id
             };
             _context.Add(ofer);
             await _context.SaveChangesAsync();
 
-            foreach (var oferta in model.Ofertas)
+            int i = 0;
+            foreach (var produto in produtos)
             {
-                if (oferta.Selected)
+                if (model.Ofertas[i].Selected)
                 {
-                    
+                    ProdutoOfertado pdf = new ProdutoOfertado
+                    {
+                        OfertaId = ofer.OfertaId,
+                        ProdutoId = produto.ProdutoId
+                    };
+                    _context.Add(pdf);
+                    await _context.SaveChangesAsync();
                 }
+                i++;
             }
-            
-
 
             return View();
-
         }
 
         // GET: SolicitacoesTrocasController/Edit/5

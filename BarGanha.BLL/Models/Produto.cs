@@ -17,9 +17,10 @@ namespace BarGanha.BLL.Models
 
         public int CategoriaId { get; set; }
         public Categoria categoria { get; set; }
-        public ICollection<Oferta> Ofertas { get; set; }
 
-        public ProdutoOfertado produtoOfertado { get; set; }
+        public virtual ICollection<Oferta> Ofertas { get; set; }
+
+        public virtual ICollection<ProdutoOfertado> produtosOfertados { get; set; }
 
     }
 }
