@@ -11,17 +11,17 @@
 <!-- End All Title Box -->
 
 <div class="container mt-2">
-    <div class="row justify-content-end mb-2" style="padding-right:15px">
-        <a class="btn hvr-hover" style="background-color: #d33b33; color: #fff;" asp-controller="Produtos" asp-action="Create">Adicionar Produto</a>
-    </div>
-
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
+                <th scope="col" colspan="7" class="text-center">Ofertas de troca enviadas</th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th scope="col" class="text-center">Status</th>
                 <th scope="col" class="text-center">Produto</th>
-                <th scope="col" class="text-center">Nome</th>
-                <th scope="col" class="text-center">Preço Estimado</th>
-                <th scope="col" colspan="3" class="text-center">Produtos Ofertados</th>
+                <th scope="col" colspan="4" class="text-center">Produtos Ofertados</th>
                 <th scope="col" class="text-center">Ações</th>
 
             </tr>
@@ -31,21 +31,52 @@
             {
                 @foreach (var oferta in @ViewBag.ofertas)
                 {
-
                     <tr>
-                        <td class="text-center">
-                            <img src="~/images/@oferta.Produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                        </td>
-                        <td class="text-center">@oferta.Produto.NomeProduto</td>
-                        <td class="text-center">R$ @oferta.Produto.Preco</td>
-                        <td colspan="3" class="text-center">
-                            @foreach (var produtoOfertado in oferta.produtosOfertados)
+                        <td class="text-center align-content-center">
+                            @if (oferta.Status == 1)
                             {
-                                <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                <span class="badge badge-warning">Pendente</span>
+                            }
+                            else if(oferta.Status == 2)
+                            {
+                                <span class="badge badge-warning">Aprovado</span>
                             }
                         </td>
                         <td class="text-center">
-                            
+                            <div>
+                                <img src="~/images/@oferta.Produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                            </div>
+
+                            <div>
+                                @oferta.Produto.NomeProduto
+                            </div>
+
+                            <div>
+                                R$ @oferta.Produto.Preco
+                            </div>
+                        </td>
+                        <td colspan="4">
+
+                            <div class="row ml-2 text-center justify-content-center">
+                                @foreach (var produtoOfertado in oferta.produtosOfertados)
+                                {
+                                    <div class="cols-4">
+                                        <div>
+                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </div>
+
+                                        <div>
+                                            @produtoOfertado.produto.NomeProduto
+                                        </div>
+
+                                        <div>
+                                            R$ @produtoOfertado.produto.Preco
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                        <td class="text-center">
                         </td>
                     </tr>
                 }
