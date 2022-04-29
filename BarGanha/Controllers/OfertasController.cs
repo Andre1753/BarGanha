@@ -27,8 +27,25 @@ namespace BarGanha.Controllers
             _usuarioRepositorio = usuarioRepositorio;
         }
         // GET: SolicitacoesTrocasController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            var ofertas = await _context.Ofertas.Where(o => o.UsuarioId == usuario.Id).Include(o => o.produtosOfertados).ToListAsync();
+            foreach (Oferta oferta in ofertas)
+            {
+                foreach (ProdutoOfertado prodOfertado in oferta.produtosOfertados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == prodOfertado.ProdutoId).Load();
+                }
+
+                var prod = await _context.Produtos
+                    .FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
+            }
+
+            ViewBag.ofertas = ofertas;
+
+
             return View();
         }
 
@@ -64,6 +81,7 @@ namespace BarGanha.Controllers
 
             var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
 
+
             Oferta ofer = new Oferta
             {
                 ProdutoId = model.produtoId,
@@ -89,7 +107,7 @@ namespace BarGanha.Controllers
                 i++;
             }
 
-            return View();
+            return RedirectToAction("Index");
         }
 
         // GET: SolicitacoesTrocasController/Edit/5

@@ -9,14 +9,14 @@ namespace BarGanha.DAL.Mapeamentos
     {
         public void Configure(EntityTypeBuilder<Oferta> builder)
         {
-            builder.HasKey(st => st.OfertaId);
-            builder.Property(st => st.ProdutoId).IsRequired();
-            builder.Property(st => st.UsuarioId).IsRequired();
+            builder.HasKey(o => o.OfertaId);
+            builder.Property(o => o.ProdutoId).IsRequired();
+            builder.Property(o => o.UsuarioId).IsRequired();
 
-            builder.Property(st => st.Status);
+            builder.Property(o => o.Status);
 
-            builder.HasOne(st => st.Usuario).WithMany(u => u.Ofertas).HasForeignKey(pO => pO.UsuarioId).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(st => st.Produto).WithMany(p => p.Ofertas).HasForeignKey(st => st.ProdutoId);
+            builder.HasOne(o => o.Usuario).WithMany(u => u.Ofertas).HasForeignKey(o => o.UsuarioId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(o => o.Produto).WithMany(p => p.Ofertas).HasForeignKey(o => o.ProdutoId).OnDelete(DeleteBehavior.NoAction);
 
             builder.ToTable("Ofertas");
         }
