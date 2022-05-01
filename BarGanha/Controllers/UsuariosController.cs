@@ -258,9 +258,9 @@ namespace BarGanha.Controllers
         }
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> MinhaConta(string id)
+        public async Task<IActionResult> MinhaConta()
         {
-            Usuario usuario = await _usuarioRepositorio.PegarPeloId(id);
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
             if (usuario == null)
                 return NotFound();
