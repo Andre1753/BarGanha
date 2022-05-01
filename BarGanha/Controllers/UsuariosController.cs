@@ -117,6 +117,35 @@ namespace BarGanha.Controllers
         [HttpGet]
         public IActionResult Registro()
         {
+            ViewBag.estados = new string[] { 
+                "Acre",
+                "Alagoas",
+                "Amapá",
+                "Amazonas",
+                "Bahia",
+                "Ceará",
+                "Espírito Santo",
+                "Goiás",
+                "Maranhão",
+                "Mato Grosso",
+                "Mato Grosso do Sul",
+                "Minas Gerais",
+                "Pará",
+                "Paraíba",
+                "Paraná",
+                "Pernambuco",
+                "Piauí",
+                "Rio de Janeiro",
+                "Rio Grande do Norte",
+                "Rio Grande do Sul",
+                "Rondônia",
+                "Roraima",
+                "Santa Catarina",
+                "São Paulo",
+                "Sergipe",
+                "Tocantins"
+            };
+
             return View();
         }
 
@@ -138,6 +167,13 @@ namespace BarGanha.Controllers
                     usuario.CPF = model.CPF;
                     usuario.Email = model.Email;
                     usuario.PhoneNumber = model.Telefone;
+                    usuario.Logradouro = model.Logradouro;
+                    usuario.Bairro = model.Bairro;
+                    usuario.Numero = model.Numero;
+                    usuario.Complemento = model.Complemento;
+                    usuario.Cidade = model.Cidade;
+                    usuario.Estado = model.Estado;
+                    usuario.CEP = model.CEP;
 
                     usuarioCriado = await _usuarioRepositorio.CriarUsuario(usuario, model.Senha);
 
@@ -153,6 +189,14 @@ namespace BarGanha.Controllers
                 usuario.CPF = model.CPF;
                 usuario.Email = model.Email;
                 usuario.PhoneNumber = model.Telefone;
+                usuario.Logradouro = model.Logradouro;
+                usuario.Bairro = model.Bairro;
+                usuario.Numero = model.Numero;
+                usuario.Complemento = model.Complemento;
+                usuario.Cidade = model.Cidade;
+                usuario.Estado = model.Estado;
+                usuario.CEP = model.CEP;
+
 
                 usuarioCriado = await _usuarioRepositorio.CriarUsuario(usuario, model.Senha);
 
@@ -272,7 +316,43 @@ namespace BarGanha.Controllers
                 NomeCompleto = usuario.NomeCompleto,
                 CPF = usuario.CPF,
                 Email = usuario.Email,
-                Telefone = usuario.PhoneNumber
+                Telefone = usuario.PhoneNumber,
+                Logradouro = usuario.Logradouro,
+                Bairro = usuario.Bairro,
+                Numero = usuario.Numero,
+                Complemento = usuario.Complemento,
+                Cidade = usuario.Cidade,
+                Estado = usuario.Estado,
+                CEP = usuario.CEP
+            };
+
+            ViewBag.estados = new string[] {
+                "Acre",
+                "Alagoas",
+                "Amapá",
+                "Amazonas",
+                "Bahia",
+                "Ceará",
+                "Espírito Santo",
+                "Goiás",
+                "Maranhão",
+                "Mato Grosso",
+                "Mato Grosso do Sul",
+                "Minas Gerais",
+                "Pará",
+                "Paraíba",
+                "Paraná",
+                "Pernambuco",
+                "Piauí",
+                "Rio de Janeiro",
+                "Rio Grande do Norte",
+                "Rio Grande do Sul",
+                "Rondônia",
+                "Roraima",
+                "Santa Catarina",
+                "São Paulo",
+                "Sergipe",
+                "Tocantins"
             };
 
 
@@ -287,17 +367,20 @@ namespace BarGanha.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-                Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloId(viewModel.UsuarioId);
-                var usu = _context.Usuarios.Find(usuario.Id);
-
-                usu.UserName = viewModel.Nome;
-                usu.NomeCompleto = viewModel.NomeCompleto;
-                usu.CPF = viewModel.CPF;
-                usu.PhoneNumber = viewModel.Telefone;
-                usu.Email = viewModel.Email;
-
+                usuario.UserName = viewModel.Nome;
+                usuario.NomeCompleto = viewModel.NomeCompleto;
+                usuario.CPF = viewModel.CPF;
+                usuario.PhoneNumber = viewModel.Telefone;
+                usuario.Email = viewModel.Email;
+                usuario.Logradouro = viewModel.Logradouro;
+                usuario.Bairro = viewModel.Bairro;
+                usuario.Numero = viewModel.Numero;
+                usuario.Complemento = viewModel.Complemento;
+                usuario.Cidade = viewModel.Cidade;
+                usuario.Estado = viewModel.Estado;
+                usuario.CEP = viewModel.CEP;
                 _context.SaveChanges();
 
                 return RedirectToAction(nameof(MinhaConta));

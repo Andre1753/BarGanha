@@ -20,6 +20,26 @@ namespace BarGanha.ViewModels
         public string Telefone { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Logradouro { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Bairro { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public int Numero { get; set; }
+
+        public string Complemento { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string CEP { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Cidade { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Estado { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [StringLength(40, ErrorMessage = "Use menos caracteres")]
         [EmailAddress(ErrorMessage = "Email inválido")]
         public string Email { get; set; }

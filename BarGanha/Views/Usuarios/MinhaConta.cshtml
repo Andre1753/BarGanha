@@ -1,10 +1,5 @@
 ﻿@model BarGanha.ViewModels.AtualizarViewModel
 
-
-<head>
-    <link rel="stylesheet" href="~/css/MyAccount.css">
-</head>
-
 <!-- Start All Title Box -->
 <div class="all-title-box">
     <div class="container">
@@ -16,91 +11,131 @@
     </div>
 </div>
 <!-- End All Title Box -->
-<div class="container mt-7">
+<div class="container">
     <!-- Table -->
     <div class="row">
         <div class="col-xl-8 m-auto order-xl-1">
-            <div class="card bg-secondary shadow">
-                <div class="card-header bg-white border-0">
-                    <div class="row align-items-center">
-                        <div class="col-8">
-                            <h3 class="mb-0">Minhas Informações</h3>
-                        </div>
-                        <div class="col-4 text-right">
-                            <a href="#!" class="btn btn-sm btn-primary">Configurações</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
+            <div class="card">
+                <div class="card-body"> 
                     <form asp-action="Atualizar" enctype="multipart/form-data">
-                        <h6 class="heading-small text-muted mb-4">Bem vindo de volta, Usuário PlaceHolder!</h6>
+                        <h6 class="heading-small text-muted mb-4" style="font-size:25px">Informações pessoais</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group focused">
-                                        <label class="form-control-label" for="input-username">Usuário</label>
-                                        <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Username" value="">
+                                        <label class="form-control-label" asp-for="Nome" id="Nome">Usuário</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Usuário" asp-for="Nome">
+                                        <span asp-validation-for="Nome" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-email">Endereço de Email</label>
-                                        <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="Email" value="">
+                                        <label class="form-control-label" asp-for="Email" id="Nome">Email</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Email" asp-for="Email">
+                                        <span asp-validation-for="Email" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group focused">
+                                        <label class="form-control-label" asp-for="NomeCompleto" id="Nome">Nome</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Nome" asp-for="NomeCompleto">
+                                        <span asp-validation-for="NomeCompleto" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <div class="form-group focused">
-                                        <h4><label asp-for="Nome" id="Nome"></label></h4>
-                                        <input style="border:solid 0.2px #000000" asp-for="Nome" class="validate" id="Nome" />
-                                        <span asp-validation-for="Nome" class="red-text text-darken-4"></span>
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="CPF" id="Nome">CPF</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="CPF" asp-for="CPF">
+                                        <span asp-validation-for="CPF" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Telefone" id="Nome">Email</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Telefone" asp-for="Telefone">
+                                        <span asp-validation-for="Telefone" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-4">
+                        <hr class="">
+
                         <!-- Address -->
-                        <h6 class="heading-small text-muted mb-4">Contact information</h6>
+                        <h6 class="heading-small text-muted mb-4" style="font-size: 25px">Endereço</h6>
                         <div class="pl-lg-4">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group focused">
-                                        <label class="form-control-label" for="input-address">Endereço</label>
-                                        <input id="input-address" class="form-control form-control-alternative" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" type="text">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Logradouro" id="Nome">Logradouro</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Logradouro" asp-for="Logradouro">
+                                        <span asp-validation-for="Logradouro" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Bairro" id="Bairro">Bairro</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Bairro" asp-for="Bairro">
+                                        <span asp-validation-for="Bairro" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Numero" id="Numero">Numero</label>
+                                        <input type="number" class="form-control form-control-alternative" placeholder="Numero" asp-for="Numero">
+                                        <span asp-validation-for="Numero" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group focused">
-                                        <label class="form-control-label" for="input-city">Cidade</label>
-                                        <input type="text" id="input-city" class="form-control form-control-alternative" placeholder="City" value="Belo Horizonte">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Complemento" id="Complemento">Complemento</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Complemento" asp-for="Complemento">
+                                        <span asp-validation-for="Complemento" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group focused">
-                                        <label class="form-control-label" for="input-country">Estado</label>
-                                        <input type="text" id="input-country" class="form-control form-control-alternative" placeholder="Country" value="Minas Gerais">
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group focused">
-                                        <label class="form-control-label" for="input-country">Código Postal</label>
-                                        <input type="text" id="input-postal-code" class="form-control form-control-alternative" placeholder="CEP" value="31742-030">
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="CEP" id="CEP">CEP</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="CEP" asp-for="CEP">
+                                        <span asp-validation-for="CEP" class="red-text text-darken-4"></span>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <hr class="my-4">
-                        <!-- Description -->
-                        <h6 class="heading-small text-muted mb-4">About me</h6>
-                        <div class="pl-lg-4">
-                            <div class="form-group focused">
-                                <label>About Me</label>
-                                <textarea rows="4" class="form-control form-control-alternative" placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Cidade" id="Cidade">Complemento</label>
+                                        <input type="text" class="form-control form-control-alternative" placeholder="Cidade" asp-for="Cidade">
+                                        <span asp-validation-for="Cidade" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" asp-for="Estado" id="Estado">Estado</label>
+                                        @Html.DropDownListFor(m => m.Estado,
+                                                                    new SelectList(ViewBag.estados),
+                                                                    "Escolha o estado", new { @class = "form-control border border-black h4" })
+                                        <span asp-validation-for="Estado" class="red-text text-darken-4"></span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="row justify-content-end">
+                                <input type="submit" value="Editar Perfil" class="btn hvr-hover text-white mr-1 rounded" />
+                                <a class="btn" style="background-color:#808080; color:#fff;" asp-controller="Home" asp-action="Index">Voltar</a>
+                            </div>
+                        </div>                        
                     </form>
                 </div>
             </div>
