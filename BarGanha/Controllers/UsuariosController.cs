@@ -76,7 +76,7 @@ namespace BarGanha.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction(nameof(MinhasInformacoes));
+                return RedirectToAction(nameof(MinhaConta));
             }
 
             return View(viewModel);
@@ -228,12 +228,6 @@ namespace BarGanha.Controllers
             await _usuarioRepositorio.DeslogarUsuario();
             return RedirectToAction("Index", "Home");
         }
-       
-        [Authorize]
-        public async Task<IActionResult> MinhasInformacoes()
-        {
-            return View(await _usuarioRepositorio.PegarUsuarioPeloNome(User));
-        }
 
         [Authorize]
         public async Task<IActionResult>Informacoes(string usuarioId)
@@ -264,7 +258,7 @@ namespace BarGanha.Controllers
         }
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> Atualizar(string id)
+        public async Task<IActionResult> MinhaConta(string id)
         {
             Usuario usuario = await _usuarioRepositorio.PegarPeloId(id);
 
@@ -306,7 +300,7 @@ namespace BarGanha.Controllers
 
                 _context.SaveChanges();
 
-                return RedirectToAction(nameof(MinhasInformacoes));
+                return RedirectToAction(nameof(MinhaConta));
             }
 
             return View(viewModel);
@@ -336,7 +330,7 @@ namespace BarGanha.Controllers
                 await _usuarioRepositorio.AtualizarUsuario(usuario);
                 await _usuarioRepositorio.LogarUsuario(usuario, false);
 
-                return RedirectToAction(nameof(MinhasInformacoes));
+                return RedirectToAction(nameof(MinhaConta));
             }
 
             return View(model);
