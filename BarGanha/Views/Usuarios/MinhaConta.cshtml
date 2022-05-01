@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body"> 
                     <form asp-action="Atualizar" enctype="multipart/form-data">
-                        <h6 class="heading-small text-muted mb-4" style="font-size:25px">Informações pessoais</h6>
+                        <h6 class="heading-small text-center text-muted mb-4" style="font-size:25px">Informações pessoais</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-lg-6">
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="form-control-label" asp-for="Telefone" id="Nome">Email</label>
+                                        <label class="form-control-label" asp-for="Telefone" id="Nome">Telefone</label>
                                         <input type="text" class="form-control form-control-alternative" placeholder="Telefone" asp-for="Telefone">
                                         <span asp-validation-for="Telefone" class="red-text text-darken-4"></span>
                                     </div>
@@ -67,7 +67,7 @@
                         <hr class="">
 
                         <!-- Address -->
-                        <h6 class="heading-small text-muted mb-4" style="font-size: 25px">Endereço</h6>
+                        <h6 class="heading-small text-center text-muted mb-4" style="font-size: 25px">Endereço</h6>
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col-md-6">

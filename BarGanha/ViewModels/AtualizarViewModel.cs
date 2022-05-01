@@ -12,7 +12,7 @@ namespace BarGanha.ViewModels
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Nome Completo")
+        [Display(Name = "Nome Completo")]
         public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
