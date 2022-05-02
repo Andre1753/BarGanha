@@ -45,11 +45,6 @@
 
                         <div class="form-group">
                             @Html.LabelFor(m => m.CategoriaId, new { @class = "control-label" })
-                            <select class="form-control" id="StudentGender" name="StudentGender">
-                                <option>Select Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select>
                             @Html.DropDownListFor(m => m.CategoriaId,
                                                         new SelectList(ViewBag.Categorias, "CategoriaId", "NomeCategoria"),
                                                         "Escolha a categoria", new { @class = "form-control" })

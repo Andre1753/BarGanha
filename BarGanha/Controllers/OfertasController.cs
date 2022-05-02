@@ -131,25 +131,22 @@ namespace BarGanha.Controllers
             }
         }
 
-        // GET: SolicitacoesTrocasController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
 
-        // POST: SolicitacoesTrocasController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> Delete(int? id)
         {
-            try
+            var oferta = await _context.Ofertas.FindAsync(id);
+
+            var produtosOfertados = await _context.ProdutosOfertados.Where(pO => pO.OfertaId == oferta.OfertaId).ToListAsync();
+
+            foreach (ProdutoOfertado prodOfertado in produtosOfertados)
             {
-                return RedirectToAction(nameof(Index));
+                _context.ProdutosOfertados.Remove(prodOfertado);
             }
-            catch
-            {
-                return View();
-            }
+
+            _context.Ofertas.Remove(oferta);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }

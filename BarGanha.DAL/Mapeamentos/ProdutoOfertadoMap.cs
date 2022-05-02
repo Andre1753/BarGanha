@@ -12,8 +12,8 @@ namespace BarGanha.DAL.Mapeamentos
             builder.Property(pO => pO.ProdutoId).IsRequired();
             builder.Property(pO => pO.OfertaId).IsRequired();
 
-            builder.HasOne(pO => pO.produto).WithMany(p => p.produtosOfertados).HasForeignKey(pO => pO.ProdutoId).OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(pO => pO.oferta).WithMany(o => o.produtosOfertados).HasForeignKey(pO => pO.OfertaId).OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(pO => pO.produto).WithMany(p => p.produtosOfertados).HasForeignKey(pO => pO.ProdutoId).OnDelete(DeleteBehavior.ClientCascade);
+            builder.HasOne(pO => pO.oferta).WithMany(o => o.produtosOfertados).HasForeignKey(pO => pO.OfertaId).OnDelete(DeleteBehavior.ClientCascade);
 
             builder.ToTable("ProdutosOfertados");
         }
