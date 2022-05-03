@@ -34,17 +34,38 @@ namespace BarGanha.Controllers
             var ofertas = await _context.Ofertas.Where(o => o.UsuarioId == usuario.Id).Include(o => o.produtosOfertados).ToListAsync();
             foreach (Oferta oferta in ofertas)
             {
-                foreach (ProdutoOfertado prodOfertado in oferta.produtosOfertados)
+                foreach (ProdutoOfertado pO in oferta.produtosOfertados)
                 {
-                    _context.Produtos.Where(p => p.ProdutoId == prodOfertado.ProdutoId).Load();
+                    _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
                 }
 
                 var prod = await _context.Produtos
                     .FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
             }
 
-            ViewBag.ofertas = ofertas;
+            _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Load();
 
+            foreach (Produto meuProduto in usuario.Produtos)
+            {
+                var pt = meuProduto;
+                _context.Ofertas.Where(o => o.ProdutoId == meuProduto.ProdutoId).Load();
+
+                if (meuProduto.Ofertas != null)
+                {
+                    foreach (Oferta oferta in meuProduto.Ofertas)
+                    {
+                        _context.ProdutosOfertados.Where(pO => pO.OfertaId == oferta.OfertaId).Load();
+
+                        foreach (ProdutoOfertado prodOferta in oferta.produtosOfertados)
+                        {
+                            _context.Produtos.Where(p => p.ProdutoId == prodOferta.ProdutoId).Load();
+                        }
+                    }
+                }
+            }
+            
+            ViewBag.ofertas = ofertas;
+            ViewBag.usuario = usuario;
 
             return View();
         }

@@ -37,7 +37,7 @@
                             {
                                 <span class="badge badge-warning">Pendente</span>
                             }
-                            else if(oferta.Status == 2)
+                            else if (oferta.Status == 2)
                             {
                                 <span class="badge badge-warning">Aprovado</span>
                             }
@@ -89,5 +89,101 @@
                 </tr>
             }
         </tbody>
+    </table>
+    &nbsp
+    &nbsp
+    &nbsp
+    &nbsp
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th scope="col" colspan="7" class="text-center">Ofertas de troca recebidas</th>
+            </tr>
+        </thead>
+        @foreach (var produto in @ViewBag.usuario.Produtos)
+        {
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center" colspan="6">
+                        <div>
+                            <img src="~/images/@produto.ImagemProduto" width="160px" height="160px" asp-append-version="true" />
+                        </div>
+
+                        <div>
+                            @produto.NomeProduto
+                        </div>
+
+                        <div>
+                            @produto.Preco
+                        </div>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td class="text-center align-content-center">Status</td>
+                    <td class="text-center" colspan="4">Produtos Ofertados</td>
+                    <td class="text-center">Ações</td>
+
+                </tr>
+
+                @if (produto.Ofertas == null)
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">Nenhuma oferta de troca registrada</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center align-content-center" style="background-color:rgb(22 21 21 / 0,64)" colspan="6"></td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var oferta in @produto.Ofertas)
+                    {
+                        <tr>
+                            <td class="text-center align-content-center">
+                                @if (@oferta.Status == 1)
+                                {
+                                    <span class="badge badge-warning">Pendente</span>
+                                }
+                                else if (@oferta.Status == 2)
+                                {
+                                    <span class="badge badge-warning">Aprovado</span>
+                                }
+                            </td>
+                            <td colspan="4">
+                                <div class="row ml-2 text-center justify-content-center">
+                                    @foreach (var produtoOfertado in @oferta.produtosOfertados)
+                                    {
+                                        <div class="cols-4">
+                                            <div>
+                                                <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" style="border:1px solid black" asp-append-version="true" />
+                                            </div>
+
+                                            <div>
+                                                @produtoOfertado.produto.NomeProduto
+                                            </div>
+
+                                            <div>
+                                                R$ @produtoOfertado.produto.Preco
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </td>
+                            <td class="text-center">
+                                <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Delete" asp-route-id="@oferta.OfertaId">Deletar</a>
+                            </td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td class="text-center align-content-center" style="background-color:rgb(22 21 21 / 0,64)" colspan="6"></td>
+                    </tr>
+                }
+            </tbody>
+        }
     </table>
 </div>
