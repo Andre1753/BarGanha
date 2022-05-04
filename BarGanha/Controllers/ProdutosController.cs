@@ -121,6 +121,7 @@ namespace BarGanha.Controllers
                     NomeProduto = model.NomeProduto,
                     Preco = model.Preco,
                     Anunciar = true,
+                    Troca = false,
                     Descricao = model.Descricao,
                     ImagemProduto = nomeUnicoArquivo,
                     UsuarioId = usuario.Id,

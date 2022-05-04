@@ -9,11 +9,13 @@ namespace BarGanha.DAL.Mapeamentos
     {
         public void Configure(EntityTypeBuilder<Troca> builder)
         {
-            builder.HasKey(st => st.TrocaId);
-            builder.Property(st => st.OfertaId).IsRequired();
+            builder.HasKey(t => t.TrocaId);
+            builder.Property(t => t.OfertaId).IsRequired();
+            builder.Property(t => t.UsuarioId).IsRequired();
 
-            builder.HasOne(st => st.Oferta).WithOne().OnDelete(DeleteBehavior.Restrict); ;
-
+            builder.HasOne(t => t.Oferta).WithOne().OnDelete(DeleteBehavior.Restrict);
+            builder.HasOne(t => t.Usuario).WithMany(u => u.Trocas).HasForeignKey(t => t.UsuarioId);
+            
             builder.ToTable("Trocas");
         }
     }

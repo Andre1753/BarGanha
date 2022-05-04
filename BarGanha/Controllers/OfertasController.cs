@@ -169,5 +169,43 @@ namespace BarGanha.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Aprovar(int? id)
+        {
+            var oferta = await _context.Ofertas.FindAsync(id);
+
+            if (oferta == null)
+            {
+                return NotFound();
+            }
+
+            oferta.Status = 2;
+
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            Troca troc = new Troca
+            {
+                OfertaId = oferta.OfertaId,
+                UsuarioId = usuario.Id
+            };
+            _context.Add(troc);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Reprovar(int? id)
+        {
+            var oferta = await _context.Ofertas.FindAsync(id);
+
+            if (oferta == null)
+            {
+                return NotFound();
+            }
+
+            oferta.Status = 3;
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
     }
 }

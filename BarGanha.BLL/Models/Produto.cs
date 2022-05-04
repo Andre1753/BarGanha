@@ -9,6 +9,7 @@ namespace BarGanha.BLL.Models
         public string NomeProduto { get; set; }
         public decimal Preco { get; set; }
         public bool Anunciar { get; set; }
+        public bool Troca { get; set; }
         public string Descricao { get; set; }
         public string ImagemProduto { get; set; }
 
@@ -21,6 +22,5 @@ namespace BarGanha.BLL.Models
         public ICollection<Oferta> Ofertas { get; set; }
 
         public ICollection<ProdutoOfertado> produtosOfertados { get; set; }
-
     }
 }

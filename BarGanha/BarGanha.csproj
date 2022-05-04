@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\Trocas\**" />
+    <Compile Remove="Views\NovaPasta1\**" />
     <Compile Remove="wwwroot\Imagens\**" />
-    <Content Remove="Views\Trocas\**" />
+    <Content Remove="Views\NovaPasta1\**" />
     <Content Remove="wwwroot\Imagens\**" />
-    <EmbeddedResource Remove="Views\Trocas\**" />
+    <EmbeddedResource Remove="Views\NovaPasta1\**" />
     <EmbeddedResource Remove="wwwroot\Imagens\**" />
-    <None Remove="Views\Trocas\**" />
+    <None Remove="Views\NovaPasta1\**" />
     <None Remove="wwwroot\Imagens\**" />
   </ItemGroup>
 

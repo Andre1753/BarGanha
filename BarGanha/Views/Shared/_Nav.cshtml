@@ -39,13 +39,14 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
+                    <!--
                     <li class="side-menu">
                         <a href="#">
                             <i class="fas fa-shopping-bag"></i>
                             <span class="badge">3</span>
                         </a>
                     </li>
-
+                    -->
                     @if (SignInManager.IsSignedIn(User))
                     {
                         <li class="side-menu dropdown" style="cursor: pointer;">
@@ -61,6 +62,9 @@
                                 </a>
                                 <a class="dropdown-item" style="cursor:pointer" value="Meus Produtos" onclick="location.href='@Url.Action("Index", "Ofertas")'">
                                     Minhas Ofertas
+                                </a>
+                                <a class="dropdown-item" style="cursor:pointer" value="Meus Produtos" onclick="location.href='@Url.Action("Index", "Trocas")'">
+                                    Trocas Finalizadas
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" style="margin-top: -10px; margin-left: -10px"><partial name="_Logout" /></a>
