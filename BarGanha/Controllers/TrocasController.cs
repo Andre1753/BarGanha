@@ -8,6 +8,8 @@ using BarGanha.DAL.Interfaces;
 using BarGanha.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+
 namespace BarGanha.Controllers
 {
     public class TrocasController : Controller
@@ -16,9 +18,33 @@ namespace BarGanha.Controllers
         private readonly IUsuarioRepositorio _usuarioRepositorio;
         private readonly IWebHostEnvironment webHostEnvironment;
 
-        // GET: TrocasController
-        public ActionResult Index()
+        public TrocasController(Contexto context, IWebHostEnvironment hostEnvironment, IUsuarioRepositorio usuarioRepositorio)
         {
+            _context = context;
+            webHostEnvironment = hostEnvironment;
+            _usuarioRepositorio = usuarioRepositorio;
+        }
+
+        // GET: TrocasController
+        public async Task<ActionResult> Index()
+        {
+            Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            var trocas = await _context.Trocas.Where(t => t.UsuarioId == usuario.Id).ToListAsync();
+
+            foreach (Troca troca in trocas)
+            {
+                _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.produtosOfertados).Load();
+                _context.Produtos.Where(p => p.ProdutoId == troca.Oferta.ProdutoId).Load();
+
+                foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
+                }
+            }
+
+            ViewBag.trocas = trocas;
+
             return View();
         }
 

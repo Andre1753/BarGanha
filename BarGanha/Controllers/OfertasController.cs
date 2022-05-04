@@ -181,7 +181,12 @@ namespace BarGanha.Controllers
 
             oferta.Status = 2;
 
+            var produto = await _context.Produtos
+                            .FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
+
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+
+            produto.Troca = true;
 
             Troca troc = new Troca
             {

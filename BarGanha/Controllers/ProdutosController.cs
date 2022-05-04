@@ -36,12 +36,14 @@ namespace BarGanha.Controllers
                 Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
                 ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
+                                                          .Where(p => p.Troca == false)
                                                           .Where(p => p.Anunciar == true)
                                                           .ToListAsync();
                 if (searchString != null)
                 {
                     ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
                                                               .Where(p => p.Anunciar == true)
+                                                              .Where(p => p.Troca == false)
                                                               .Where(p => p.NomeProduto.Contains(searchString))
                                                               .ToListAsync();
 
@@ -51,10 +53,12 @@ namespace BarGanha.Controllers
             else
             {
                 ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                         .Where(p => p.Troca == false)
                                                           .ToListAsync();
                 if (searchString != null)
                 {
                     ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                              .Where(p => p.Troca == false)
                                                               .Where(p => p.NomeProduto.Contains(searchString))
                                                               .ToListAsync();
 
@@ -87,7 +91,7 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id)
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Where(p=>p.Troca == false)
                                                   .ToListAsync();
             ViewBag.meusProdutos = produtos;
 
