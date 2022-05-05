@@ -43,7 +43,19 @@ namespace BarGanha.Controllers
                 }
             }
 
+            var ofertas = await _context.Ofertas.Where(o => o.UsuarioId == usuario.Id).Where(o => o.Status == 2).Include(o => o.produtosOfertados).ToListAsync();
+            foreach (Oferta oferta in ofertas)
+            {
+                _context.Produtos.Where(p => p.ProdutoId == oferta.ProdutoId).Load();
+
+                foreach (ProdutoOfertado pO in oferta.produtosOfertados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
+                }
+            }
+
             ViewBag.trocas = trocas;
+            ViewBag.ofertas = ofertas;
 
             return View();
         }
