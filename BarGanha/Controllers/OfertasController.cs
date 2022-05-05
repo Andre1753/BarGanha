@@ -45,25 +45,28 @@ namespace BarGanha.Controllers
 
             _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Load();
 
-            foreach (Produto meuProduto in usuario.Produtos)
+            if (usuario.Produtos != null)
             {
-                var pt = meuProduto;
-                _context.Ofertas.Where(o => o.ProdutoId == meuProduto.ProdutoId).Load();
-
-                if (meuProduto.Ofertas != null)
+                foreach (Produto meuProduto in usuario.Produtos)
                 {
-                    foreach (Oferta oferta in meuProduto.Ofertas)
-                    {
-                        _context.ProdutosOfertados.Where(pO => pO.OfertaId == oferta.OfertaId).Load();
+                    var pt = meuProduto;
+                    _context.Ofertas.Where(o => o.ProdutoId == meuProduto.ProdutoId).Load();
 
-                        foreach (ProdutoOfertado prodOferta in oferta.produtosOfertados)
+                    if (meuProduto.Ofertas != null)
+                    {
+                        foreach (Oferta oferta in meuProduto.Ofertas)
                         {
-                            _context.Produtos.Where(p => p.ProdutoId == prodOferta.ProdutoId).Load();
+                            _context.ProdutosOfertados.Where(pO => pO.OfertaId == oferta.OfertaId).Load();
+
+                            foreach (ProdutoOfertado prodOferta in oferta.produtosOfertados)
+                            {
+                                _context.Produtos.Where(p => p.ProdutoId == prodOferta.ProdutoId).Load();
+                            }
                         }
                     }
                 }
             }
-            
+
             ViewBag.ofertas = ofertas;
             ViewBag.usuario = usuario;
 
@@ -172,11 +175,18 @@ namespace BarGanha.Controllers
 
         public async Task<IActionResult> Aprovar(int? id)
         {
-            var oferta = await _context.Ofertas.FindAsync(id);
+            var ofertas = await _context.Ofertas.Where(o => o.OfertaId == id).Include(o => o.produtosOfertados).ToListAsync();
+            var oferta = ofertas[0];
 
             if (oferta == null)
             {
                 return NotFound();
+            }
+
+            foreach (ProdutoOfertado prodOferta in oferta.produtosOfertados)
+            {
+                var prod = await _context.Produtos.Where(p => p.ProdutoId == prodOferta.ProdutoId).ToListAsync();
+                prod[0].Troca = true;
             }
 
             oferta.Status = 2;
