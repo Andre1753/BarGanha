@@ -40,6 +40,12 @@ namespace BarGanha.DAL.Mapeamentos
                 new Categoria
                 {
                     CategoriaId = 5,
+                    NomeCategoria = "Veiculos",
+                },
+
+                new Categoria
+                {
+                    CategoriaId = 6,
                     NomeCategoria = "Outros",
                 }); 
 

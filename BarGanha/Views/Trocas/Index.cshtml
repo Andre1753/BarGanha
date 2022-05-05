@@ -66,7 +66,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Delete" asp-route-id="@troca.Oferta.OfertaId">Deletar</a>
+                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Trocas" asp-action="Delete" asp-route-id="@troca.TrocaId">Recusar Troca</a>
                         </td>
                     </tr>
                 }
@@ -138,7 +138,7 @@
                         </td>
 
                         <td class="text-center">
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Delete" asp-route-id="@oferta.OfertaId">Deletar</a>
+                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Trocas" asp-action="DeleteByOferta" asp-route-id="@oferta.OfertaId">Recusar Troca</a>
                         </td>
                     </tr>
                 }

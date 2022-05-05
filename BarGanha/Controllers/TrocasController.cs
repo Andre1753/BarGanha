@@ -108,16 +108,31 @@ namespace BarGanha.Controllers
             }
         }
 
-        // GET: TrocasController/Delete/5
-        public ActionResult Delete(int id)
+
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            
+            var troca = await _context.Trocas
+                        .FirstAsync(t => t.TrocaId == id);
+
+            _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.Produto).Include(o => o.produtosOfertados).Load();
+
+            troca.Oferta.Status = 3;
+            troca.Oferta.Produto.Troca = false;
+
+            foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
+            {
+                _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
+                pO.produto.Troca = false;
+            }
+
+            _context.Trocas.Remove(troca);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
-        // POST: TrocasController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteByOferta(int id)
         {
             try
             {
