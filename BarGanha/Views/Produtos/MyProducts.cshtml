@@ -36,41 +36,43 @@
             {
                 @foreach (var produto in meusProdutos)
                 {
-
-                    <tr>
-                        <td class="text-center">
-                            <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                        </td>
-                        <td class="text-center">
-                            @if (produto.Anunciar)
-                            {
-                                <span class="badge badge-success">Anunciado</span>
-                            }
-                            else
-                            {
-                                <span class="badge badge-danger">Não Anunciado</span>
-                            }
-                        </td>
-                        <td class="text-center">@produto.NomeProduto</td>
-                        <td class="text-center">R$ @produto.Preco</td>
-                        <td colspan="3" class="text-center">@produto.Descricao</td>
-                        <td class="text-center">
-                            <a class="btn btn-sm" style="background-color:#ff6a00; color:#ffffff;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>
-
-                            <a class="btn btn-sm" style="background-color:#0026ff; color:#ffffff;" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
+                    @if (produto.Troca == false)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                            </td>
+                            <td class="text-center">
                                 @if (produto.Anunciar)
                                 {
-                                    <span>Remover Anuncio</span>
+                                    <span class="badge badge-success">Anunciado</span>
                                 }
                                 else
                                 {
-                                    <span>Anunciar</span>
+                                    <span class="badge badge-danger">Não Anunciado</span>
                                 }
-                            </a>
+                            </td>
+                            <td class="text-center">@produto.NomeProduto</td>
+                            <td class="text-center">R$ @produto.Preco</td>
+                            <td colspan="3" class="text-center">@produto.Descricao</td>
+                            <td class="text-center">
+                                <a class="btn btn-sm" style="background-color:#ff6a00; color:#ffffff;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>
 
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
-                        </td>
-                    </tr>
+                                <a class="btn btn-sm" style="background-color:#0026ff; color:#ffffff;" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
+                                    @if (produto.Anunciar)
+                                    {
+                                        <span>Remover Anuncio</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Anunciar</span>
+                                    }
+                                </a>
+
+                                <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
+                            </td>
+                        </tr>
+                    }
                 }
             }
             else
