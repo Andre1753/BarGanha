@@ -1,15 +1,4 @@
-﻿<!-- Start Top Search -->
-<div class="top-search">
-    <div class="container">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fas fa-search"></i></span>
-            <input type="text" class="form-control" placeholder="Procurar">
-            <span class="input-group-addon close-search"><i class="fas fa-times"></i></span>
-        </div>
-    </div>
-</div>
-<!-- End Top Search -->
-<!-- Start Slider -->
+﻿<!-- Start Slider -->
 <div id="slides-shop" class="cover-slides">
     <ul class="slides-container">
         <li class="text-left">
@@ -17,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>BarGanha<br> aqui ninguém fica sem</strong></h1>
+                        <h1 class="m-b-20"><strong>BarGanha<br> Aqui ninguém fica sem!</strong></h1>
                         <p class="m-b-40">                     <br>                         </p>
                         <p><a class="btn hvr-hover" href="#">Novidades</a></p>
                     </div>
@@ -29,7 +18,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>BarGanha<br> aqui ninguém fica sem</strong></h1>
+                        <h1 class="m-b-20"><strong>BarGanha<br> Aqui ninguém fica sem!</strong></h1>
                         <p class="m-b-40">                     <br>                         </p>
                         <p><a class="btn hvr-hover" href="#">Novidades</a></p>
                     </div>
@@ -41,7 +30,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <h1 class="m-b-20"><strong>BarGanha<br> aqui ninguém fica sem</strong></h1>
+                        <h1 class="m-b-20"><strong>BarGanha<br> Aqui ninguém fica sem!</strong></h1>
                         <p class="m-b-40">                     <br>                         </p>
                         <p><a class="btn hvr-hover" href="#">Novidades</a></p>
                     </div>
@@ -66,19 +55,6 @@
                 </div>
             </div>
         </div>
-        <!-- BOTOES DE FILTRAR -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="special-menu text-center">
-                    <div class="button-group filter-button-group">
-                        <button class="active" data-filter="*">Recentes</button>
-                        <button data-filter=".top-featured">Mais Procurados</button>
-                        <button data-filter=".best-seller">Mais Ofertados</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- BOTOES DE FILTRAR -->
         <div class="row special-list">
             <div class="col-lg-3 col-md-6 special-grid best-seller">
                 <div class="products-single fix">
@@ -179,32 +155,54 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/1.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Veículos </a>
+                    <img src="~/images/6-itens/1.jpg" height="220px" alt="" />
+                    <form class="row" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="5" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Veiculos</button>
+                    </form>
                 </div>
+
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/2.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Instrumentos Musicais</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/3.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Decoração</a>
-                </div>
-                <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/4.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Cama & Banho</a>
+                    <img src="~/images/6-itens/2.jpg" height="220px" alt="" />
+                    <form class="row" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="1" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Móveis</button>
+                    </form>
                 </div>
             </div>
+
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/5.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Antiquarias</a>
+                    <img src="~/images/6-itens/3.jpg" height="220px" alt="" />
+                    <form class="row" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="3" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Eletrodomésticos</button>
+                    </form>
                 </div>
                 <div class="shop-cat-box">
-                    <img class="img-fluid" src="~/images/6-itens/6.jpg" alt="" />
-                    <a class="btn hvr-hover" href="#">Artigos Esportivos</a>
+                    <img src="~/images/6-itens/4.jpg" height="220px" alt="" />
+                    <form class="row" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="2" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Eletrônicos</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img src="~/images/6-itens/5.jpg" height="220px" alt="" />
+                    <form class="row" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="4" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Vestuários</button>
+                    </form>
+                </div>
+
+                <div class="shop-cat-box">
+                    <img src="~/images/6-itens/6.jpg" height="220px" alt="" />
+                    <form class="row" style="margin-bottom:-3px" asp-controller="Produtos" asp-action="Index">
+                        <input style="display:none" name="categoria" value="6" />
+                        <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Outros</button>
+                    </form>
                 </div>
             </div>
         </div>

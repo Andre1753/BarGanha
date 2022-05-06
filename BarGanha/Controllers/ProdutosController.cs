@@ -29,7 +29,7 @@ namespace BarGanha.Controllers
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
 
-        public async Task<IActionResult> Index(string? searchString)
+        public async Task<IActionResult> Index(string? searchString, int? categoria)
         {
             if (User.Identity.Name != null)
             {
@@ -49,6 +49,17 @@ namespace BarGanha.Controllers
 
                     ViewBag.searchString = searchString;
                 }
+
+                if (categoria != null)
+                {
+                    ViewBag.produtos = await _context.Produtos.Where(p => p.UsuarioId != usuario.Id)
+                                                              .Where(p => p.Anunciar == true)
+                                                              .Where(p => p.Troca == false)
+                                                              .Where(p => p.CategoriaId == categoria)
+                                                              .ToListAsync();
+
+                    ViewBag.categoria = categoria;
+                }
             }
             else
             {
@@ -63,6 +74,16 @@ namespace BarGanha.Controllers
                                                               .ToListAsync();
 
                     ViewBag.searchString = searchString;
+                }
+
+                if (categoria != null)
+                {
+                    ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true)
+                                                              .Where(p => p.Troca == false)
+                                                              .Where(p => p.CategoriaId == categoria)
+                                                              .ToListAsync();
+
+                    ViewBag.categoria = categoria;
                 }
             }
 

@@ -37,36 +37,76 @@
                             <h3>Categorias</h3>
                         </div>
                         <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-                            <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">
-                                    Vestuário <small class="text-muted">(100)</small>
-                                </a>
-                                <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action active">Camiseta <small class="text-muted">(50)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Camisa Polo <small class="text-muted">(10)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Camisa Gola Redonda <small class="text-muted">(10)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Camisa Gola V <small class="text-muted">(10)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Moletom <small class="text-muted">(20)</small></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-group-collapse sub-men">
-                                <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">
-                                    Calçados
-                                    <small class="text-muted">(50)</small>
-                                </a>
-                                <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                    <div class="list-group">
-                                        <a href="#" class="list-group-item list-group-item-action">Tênis Esportivo <small class="text-muted">(10)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Tênis <small class="text-muted">(20)</small></a>
-                                        <a href="#" class="list-group-item list-group-item-action">Sapato Social <small class="text-muted">(20)</small></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="#" class="list-group-item list-group-item-action">Masculino <small class="text-muted">(150) </small></a>
-                            <a href="#" class="list-group-item list-group-item-action">Acessórios <small class="text-muted">(11)</small></a>
-                            <a href="#" class="list-group-item list-group-item-action">Bolsas <small class="text-muted">(22)</small></a>
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="5" />
+                                @if (@ViewBag.categoria == 5)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Veiculos" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Veiculos" />
+                                }
+                            </form>
+
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="1" />
+                                @if (@ViewBag.categoria == 1)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Móveis" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Móveis" />
+                                }
+                            </form>
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="3" />
+                                @if (@ViewBag.categoria == 3)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Eletrodomésticos" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Eletrodomésticos" />
+                                }
+                            </form>
+
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="2" />
+                                @if (@ViewBag.categoria == 2)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Eletrônicos" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Eletrônicos" />
+                                }
+                            </form>
+
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="4" />
+                                @if (@ViewBag.categoria == 4)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Vestuários" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Vestuários" />
+                                }
+                            </form>
+
+                            <form asp-controller="Produtos" asp-action="Index">
+                                <input style="display:none" name="categoria" value="6" />
+                                @if (@ViewBag.categoria == 6)
+                                {
+                                    <input class="list-group-item list-group-item-action active" type="submit" value="Outros" />
+                                }
+                                else
+                                {
+                                    <input class="list-group-item list-group-item-action" type="submit" value="Outros" />
+                                }
+                            </form>
                         </div>
                     </div>   
                 </div>
