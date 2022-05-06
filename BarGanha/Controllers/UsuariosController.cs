@@ -154,38 +154,48 @@ namespace BarGanha.Controllers
         [HttpPost]
         public async Task<IActionResult> Registro(RegistroViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                Usuario usuario = new Usuario();
-                IdentityResult usuarioCriado;
+                ViewBag.estados = new string[] {
+                    "Acre",
+                    "Alagoas",
+                    "Amapá",
+                    "Amazonas",
+                    "Bahia",
+                    "Ceará",
+                    "Espírito Santo",
+                    "Goiás",
+                    "Maranhão",
+                    "Mato Grosso",
+                    "Mato Grosso do Sul",
+                    "Minas Gerais",
+                    "Pará",
+                    "Paraíba",
+                    "Paraná",
+                    "Pernambuco",
+                    "Piauí",
+                    "Rio de Janeiro",
+                    "Rio Grande do Norte",
+                    "Rio Grande do Sul",
+                    "Rondônia",
+                    "Roraima",
+                    "Santa Catarina",
+                    "São Paulo",
+                    "Sergipe",
+                    "Tocantins"
+                };
+
+                return View(model);
+            }
+
+            Usuario usuario = new Usuario();
+            IdentityResult usuarioCriado;
 
 
-                if (_usuarioRepositorio.VerificarSeExisteRegistro() == 0)
-                {
-                    usuario.UserName = model.Nome;
-                    usuario.NomeCompleto = model.NomeCompleto;
-                    usuario.CPF = model.CPF;
-                    usuario.Email = model.Email;
-                    usuario.PhoneNumber = model.Telefone;
-                    usuario.Logradouro = model.Logradouro;
-                    usuario.Bairro = model.Bairro;
-                    usuario.Numero = model.Numero;
-                    usuario.Complemento = model.Complemento;
-                    usuario.Cidade = model.Cidade;
-                    usuario.Estado = model.Estado;
-                    usuario.CEP = model.CEP;
-
-                    usuarioCriado = await _usuarioRepositorio.CriarUsuario(usuario, model.Senha);
-
-                    if (usuarioCriado.Succeeded)
-                    {
-                        await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Administrador");
-                        await _usuarioRepositorio.LogarUsuario(usuario, false);
-                        return View("login");
-                    }
-                }
-                usuario.NomeCompleto = model.NomeCompleto;
+            if (_usuarioRepositorio.VerificarSeExisteRegistro() == 0)
+            {
                 usuario.UserName = model.Nome;
+                usuario.NomeCompleto = model.NomeCompleto;
                 usuario.CPF = model.CPF;
                 usuario.Email = model.Email;
                 usuario.PhoneNumber = model.Telefone;
@@ -197,26 +207,46 @@ namespace BarGanha.Controllers
                 usuario.Estado = model.Estado;
                 usuario.CEP = model.CEP;
 
-
                 usuarioCriado = await _usuarioRepositorio.CriarUsuario(usuario, model.Senha);
 
                 if (usuarioCriado.Succeeded)
                 {
-                    await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Usuario");
+                    await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Administrador");
+                    await _usuarioRepositorio.LogarUsuario(usuario, false);
                     return View("login");
                 }
-
-                else
-                {
-                    foreach (IdentityError erro in usuarioCriado.Errors)
-                    {
-                        ModelState.AddModelError("", erro.Description);
-                    }
-                    return View(model);
-                }
             }
-            return View(model);
-        }
+            usuario.NomeCompleto = model.NomeCompleto;
+            usuario.UserName = model.Nome;
+            usuario.CPF = model.CPF;
+            usuario.Email = model.Email;
+            usuario.PhoneNumber = model.Telefone;
+            usuario.Logradouro = model.Logradouro;
+            usuario.Bairro = model.Bairro;
+            usuario.Numero = model.Numero;
+            usuario.Complemento = model.Complemento;
+            usuario.Cidade = model.Cidade;
+            usuario.Estado = model.Estado;
+            usuario.CEP = model.CEP;
+
+
+            usuarioCriado = await _usuarioRepositorio.CriarUsuario(usuario, model.Senha);
+
+            if (usuarioCriado.Succeeded)
+            {
+                await _usuarioRepositorio.IncluirUsuarioEmFuncao(usuario, "Usuario");
+                return View("login");
+            }
+
+            else
+            {
+                foreach (IdentityError erro in usuarioCriado.Errors)
+                {
+                    ModelState.AddModelError("", erro.Description);
+                }
+                return View(model);
+            }
+        }    
 
         [AllowAnonymous]
         [HttpGet]

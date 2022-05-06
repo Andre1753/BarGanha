@@ -32,14 +32,12 @@
                 <h5>Registrar-se</h5>
             </div>
 
-            <form class="px-4" asp-action="Registro" enctype="multipart/form-data">
-                <div class="red-text text-darken-4" asp-validation-summary="ModelOnly"></div>
-
+            <form class="px-4" asp-action="Registro">
                 <div class="row">
                     <div class="form-group col-12">
                         <label asp-for="Nome" id="Nome" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Nome" class="form-control border border-black" id="Nome" />
-                        <span asp-validation-for="Nome" class="red-text text-darken-4" />
+                        <span asp-validation-for="Nome" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -47,7 +45,7 @@
                     <div class="form-group col-12">
                         <label asp-for="NomeCompleto" id="Nome" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="NomeCompleto" class="form-control border border-black" id="NomeCompleto" />
-                        <span asp-validation-for="NomeCompleto" class="red-text text-darken-4" />
+                        <span asp-validation-for="NomeCompleto" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -55,7 +53,7 @@
                     <div class="form-group col-12">
                         <label asp-for="CPF" id="CPF" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="CPF" class="form-control border border-black" id="CPF" />
-                        <span asp-validation-for="CPF" class="red-text text-darken-4" />
+                        <span asp-validation-for="CPF" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -63,7 +61,7 @@
                     <div class="form-group col-12">
                         <label asp-for="Telefone" id="Telefone" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Telefone" class="form-control border border-black" id="Telefone" />
-                        <span asp-validation-for="Telefone" class="red-text text-darken-4" />
+                        <span asp-validation-for="Telefone" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -71,13 +69,13 @@
                     <div class="form-group col-6">
                         <label asp-for="Logradouro" id="Logradouro" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Logradouro" class="form-control border border-black" id="Logradouro" />
-                        <span asp-validation-for="Logradouro" class="red-text text-darken-4" />
+                        <span asp-validation-for="Logradouro" class="red-text text-darken-4" ></span>
                     </div>
 
                     <div class="form-group col-6">
                         <label asp-for="Bairro" id="Bairro" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Bairro" class="form-control border border-black" id="Bairro" />
-                        <span asp-validation-for="Bairro" class="red-text text-darken-4" />
+                        <span asp-validation-for="Bairro" class="red-text text-darken-4" ></span>
                     </div>
                 </div>
 
@@ -85,19 +83,19 @@
                     <div class="form-group col-4">
                         <label asp-for="CEP" id="CEP" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="CEP" class="form-control border border-black" id="CEP" />
-                        <span asp-validation-for="CEP" class="red-text text-darken-4" />
+                        <span asp-validation-for="CEP" class="red-text text-darken-4" ></span>
                     </div>
 
                     <div class="form-group col-2">
                         <label asp-for="Numero" id="Numero" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Numero" type="number" class="form-control border border-black" id="Numero" />
-                        <span asp-validation-for="Numero" class="red-text text-darken-4" />
+                        <span asp-validation-for="Numero" class="red-text text-darken-4" ></span>
                     </div>
 
                     <div class="form-group col-6">
                         <label asp-for="Complemento" id="Complemento" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Complemento" type="text" class="form-control border border-black" id="Complemento" />
-                        <span asp-validation-for="Complemento" class="red-text text-darken-4" />
+                        <span asp-validation-for="Complemento" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -105,7 +103,7 @@
                     <div class="form-group col-6">
                         <label asp-for="Cidade" id="Cidade" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Cidade" class="form-control border border-black" id="Cidade" />
-                        <span asp-validation-for="Cidade" class="red-text text-darken-4" />
+                        <span asp-validation-for="Cidade" class="red-text text-darken-4"></span>
                     </div>
 
                     <div class="form-group col-6">
@@ -113,7 +111,7 @@
                         @Html.DropDownListFor(m => m.Estado,
                                                     new SelectList(ViewBag.estados),
                                                     "Escolha o estado", new { @class = "form-control border border-black h4" })
-                        <span asp-validation-for="Estado" class="red-text text-darken-4" />
+                        <span asp-validation-for="Estado" class="red-text text-darken-4" ></span>
                     </div>
                 </div>
 
@@ -122,7 +120,7 @@
                     <div class="form-group col-12">
                         <label asp-for="Email" id="Email" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Email" class="form-control border border-black" id="Email" />
-                        <span asp-validation-for="Email" class="red-text text-darken-4" />
+                        <span asp-validation-for="Email" class="red-text text-darken-4" ></span>
                     </div>
                 </div>
 
@@ -130,7 +128,7 @@
                     <div class="form-group col-12">
                         <label asp-for="Senha" id="Senha" type="password" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="Senha" class="form-control border border-black" id="Senha" />
-                        <span asp-validation-for="Senha" class="red-text text-darken-4" />
+                        <span asp-validation-for="Senha" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -138,7 +136,7 @@
                     <div class="form-group col-12">
                         <label asp-for="SenhaConfirmada" id="SenhaConfirmada" type="password" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="SenhaConfirmada" class="form-control border border-black" id="SenhaConfirmada" />
-                        <span asp-validation-for="SenhaConfirmada" class="red-text text-darken-4" />
+                        <span asp-validation-for="SenhaConfirmada" class="red-text text-darken-4"></span>
                     </div>
                 </div>
 
@@ -149,7 +147,7 @@
                     </div>
 
                     <div class="row">
-                        <button type="button" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #808080; " onclick="location.href='@Url.Action("Registro", "Usuarios")'">Já possuo conta</button>
+                        <button type="button" class="btn btn-block hvr-hover text-white mr-1 rounded" 4" style="background-color: #808080; " onclick="location.href='@Url.Action("Login", "Usuarios")'">Já possuo conta</button>
                     </div>
                 </div>
             </form>
