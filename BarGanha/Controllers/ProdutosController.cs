@@ -86,7 +86,6 @@ namespace BarGanha.Controllers
             return View();
         }
 
-
         public async Task<IActionResult> MyProducts()
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
@@ -117,25 +116,26 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                string nomeUnicoArquivo = UploadedFile(model);
-                Produto prod = new Produto
-                {
-                    NomeProduto = model.NomeProduto,
-                    Preco = model.Preco,
-                    Anunciar = true,
-                    Troca = false,
-                    Descricao = model.Descricao,
-                    ImagemProduto = nomeUnicoArquivo,
-                    UsuarioId = usuario.Id,
-                    CategoriaId = model.CategoriaId,
-                };
-                _context.Add(prod);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("MyProducts");
+                ViewBag.Categorias = _context.Categorias.ToList();
+                return View();
             }
-            return View();
+            string nomeUnicoArquivo = UploadedFile(model);
+            Produto prod = new Produto
+            {
+                NomeProduto = model.NomeProduto,
+                Preco = model.Preco,
+                Anunciar = true,
+                Troca = false,
+                Descricao = model.Descricao,
+                ImagemProduto = nomeUnicoArquivo,
+                UsuarioId = usuario.Id,
+                CategoriaId = model.CategoriaId,
+            };
+            _context.Add(prod);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("MyProducts");
         }
 
         private string UploadedFile(ProdutoViewModel model)
@@ -170,8 +170,16 @@ namespace BarGanha.Controllers
                 return NotFound();
             }
 
+            EditProdutoViewModel epvm = new EditProdutoViewModel(); //ViewModel
+            epvm.ProdutoId = produto.ProdutoId;
+            epvm.NomeProduto = produto.NomeProduto;
+            epvm.Preco = produto.Preco;
+            epvm.CategoriaId = produto.CategoriaId;
+            epvm.Descricao = produto.Descricao;
+
             ViewBag.Categorias = _context.Categorias.ToList();
-            return View(produto);
+            ViewBag.ImgProduto = produto.ImagemProduto;
+            return View(epvm);
         }
 
         // POST: Produtos/Edit/5
@@ -179,25 +187,29 @@ namespace BarGanha.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,CategoriaId")] Produto produto)
+        public async Task<IActionResult> Edit([Bind("ProdutoId,NomeProduto,Preco,Descricao,CategoriaId")] EditProdutoViewModel produto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var prod = _context.Produtos.Find(produto.ProdutoId);
-                if (produto == null)
-                {
-                    return NotFound();
-                }
-                prod.NomeProduto = produto.NomeProduto;
-                prod.Preco = produto.Preco;
-                prod.Descricao = produto.Descricao;
-                prod.CategoriaId = produto.CategoriaId;
-
-                _context.SaveChanges();
-
-                return RedirectToAction("MyProducts");
+                ViewBag.Categorias = _context.Categorias.ToList();
+                var prod1 = _context.Produtos.Find(produto.ProdutoId);
+                ViewBag.ImgProduto = prod1.ImagemProduto;
+                return View();
             }
-            return View(produto);
+
+            var prod = _context.Produtos.Find(produto.ProdutoId);
+            if (produto == null)
+            {
+                return NotFound();
+            }
+            prod.NomeProduto = produto.NomeProduto;
+            prod.Preco = produto.Preco;
+            prod.Descricao = produto.Descricao;
+            prod.CategoriaId = produto.CategoriaId;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("MyProducts");
         }
 
         public async Task<IActionResult> ChangeAnunciar(int? id)

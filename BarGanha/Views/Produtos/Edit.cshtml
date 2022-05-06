@@ -1,4 +1,4 @@
-﻿@model BarGanha.BLL.Models.Produto
+﻿@model BarGanha.ViewModels.EditProdutoViewModel
 
 <!-- Start All Title Box -->
 <div class="all-title-box">
@@ -16,12 +16,12 @@
     <div class="card col-9" style="background: rgba(0, 53, 68, 0.1);">
         <div class="card-body">
             <form enctype="multipart/form-data" asp-action="Edit">
-                <input type="hidden" asp-for="ProdutoId" />
+                <input type="hidden" asp-for="@Model.ProdutoId" />
 
                 <div class="row">
                     <div class="form-group col-md-6">
                         <div class="justify-content-center">
-                            <img id="blah" src="~/images/@Model.ImagemProduto" width="200px" height="200px" class="rounded mx-auto d-block" />
+                            <img id="blah" src="~/images/@ViewBag.ImgProduto" width="200px" height="200px" class="rounded mx-auto d-block" />
 
                             <input asp-for="ImagemProduto" class="custom-file-input" id="fileEdit" style="display:none;" onchange="readURL(this);">
                             <input type="button"

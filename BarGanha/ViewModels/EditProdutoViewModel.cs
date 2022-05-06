@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BarGanha.ViewModels
 {
-    public class ProdutoViewModel
+    public class EditProdutoViewModel
     {
         public int? ProdutoId { get; set; }
 
@@ -23,10 +23,8 @@ namespace BarGanha.ViewModels
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Required(ErrorMessage = "A imagem do Produto é obrigatório")]
         [Display(Name = "Imagem")]
         public IFormFile ImagemProduto { get; set; }
-
 
         [Required(ErrorMessage = "Selecione uma categoria")]
         [Display(Name = "Categoria")]
