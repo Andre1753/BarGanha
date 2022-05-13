@@ -60,7 +60,7 @@
                         <td class="text-center">
                             <a class="btn btn-sm" style="background-color:#ff6a00; color:#ffffff;" asp-action="Edit" asp-route-id="@produto.ProdutoId">Editar</a>
 
-                            <a class="btn btn-sm" style="background-color:#0026ff; color:#ffffff;" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
+                            <a class="btn btn-sm" style="background-color:#0026ff; color:#ffffff;" onclick="return confirm('Tem certeza que deseja mudar o status do anuncio?');" asp-action="ChangeAnunciar" asp-route-id="@produto.ProdutoId">
                                 @if (produto.Anunciar)
                                 {
                                     <span>Remover Anuncio</span>
@@ -71,7 +71,7 @@
                                 }
                             </a>
 
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
+                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" onclick="return confirm('Tem certeza que deseja excluir este produto?');" asp-action="Delete" asp-route-id="@produto.ProdutoId">Deletar</a>
                         </td>
                     </tr>
                     }

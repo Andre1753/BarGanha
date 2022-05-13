@@ -41,7 +41,7 @@
 
                         <div class="form-group">
                             <label class="control-label">Preço</label>
-                            <input asp-for="Preco" class="form-control" />
+                            <input asp-for="Preco" class="form-control" id="preco" />
                             <span asp-validation-for="Preco" class="text-danger"></span>
                         </div>
 
@@ -73,7 +73,16 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="~/js/jquery.mask.min.js"></script>
+
 <script>
+    $(document).ready(function () {
+        $('#preco').mask('000.000.000.000.000,00', {
+            reverse: true
+        });
+    });
+
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();

@@ -11,6 +11,7 @@ namespace BarGanha.DAL.Mapeamentos
         {
             builder.HasKey(t => t.TrocaId);
             builder.Property(t => t.OfertaId).IsRequired();
+            builder.Property(t => t.Liberado).IsRequired();
             builder.Property(t => t.UserDonoId).IsRequired();
             builder.Property(t => t.UserOfertaId).IsRequired();
 

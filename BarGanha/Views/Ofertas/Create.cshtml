@@ -32,7 +32,7 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center" colspan="4">Produtos de  @ViewBag.user.UserName</th>
+                                <th scope="col" class="text-center" colspan="5">Produtos de  @ViewBag.user.UserName</th>
 
                             </tr>
                         </thead>
@@ -41,6 +41,7 @@
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">Produto</th>
                                 <th scope="col" class="text-center">Preço Estimado</th>
+                                <th scope="col" class="text-center">Localização</th>
                                 <th scope="col" class="text-center">Selecionar</th>
 
                             </tr>
@@ -57,8 +58,13 @@
                                     <td class="text-center">
                                         <img src="~/images/@produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </td>
+
                                     <td class="text-center">@produto.NomeProduto</td>
+
                                     <td class="text-center">R$ @produto.Preco</td>
+
+                                    <td class="text-center">@produto.Cidade / @produto.Estado</td>
+
                                     <td class="text-center">
                                         @Html.CheckBoxFor(m => Model.Selecionados[i].Selected)
                                     </td>
@@ -74,7 +80,7 @@
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th scope="col" class="text-center" colspan="4">Meus Produtos</th>
+                                <th scope="col" class="text-center" colspan="5">Meus Produtos</th>
 
                             </tr>
                         </thead>
@@ -83,6 +89,7 @@
                                 <th scope="col"></th>
                                 <th scope="col" class="text-center">Produto</th>
                                 <th scope="col" class="text-center">Preço Estimado</th>
+                                <th scope="col" class="text-center">Localização</th>
                                 <th scope="col" class="text-center">Trocar</th>
 
                             </tr>
@@ -99,8 +106,13 @@
                                         <td class="text-center">
                                             <img src="~/images/@meuProduto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                         </td>
+
                                         <td class="text-center">@meuProduto.NomeProduto</td>
+
                                         <td class="text-center">R$ @meuProduto.Preco</td>
+
+                                        <td class="text-center">@meuProduto.Cidade / @meuProduto.Estado</td>
+
                                         <td class="text-center">
                                             @Html.CheckBoxFor(m => Model.Ofertas[j].Selected)
                                         </td>
@@ -112,7 +124,7 @@
                             else
                             {
                                 <tr>
-                                    <td colspan="4" class="text-center">Você não tem produtos registrados para trocar</td>
+                                    <td colspan="5" class="text-center">Você não tem produtos registrados para trocar</td>
                                 </tr>
                             }
                         </tbody>

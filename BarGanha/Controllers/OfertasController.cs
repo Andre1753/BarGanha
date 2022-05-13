@@ -79,9 +79,9 @@ namespace BarGanha.Controllers
 
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            var meusProdutos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+            var meusProdutos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Where(p => p.Troca == false).ToListAsync();
 
-            var produtos = await _context.Produtos.Where(p => p.UsuarioId == produto.UsuarioId).Where(p => p.Anunciar == true).ToListAsync();
+            var produtos = await _context.Produtos.Where(p => p.UsuarioId == produto.UsuarioId).Where(p => p.Anunciar == true).Where(p => p.Troca == false).ToListAsync();
 
             var user = await _usuarioRepositorio.PegarUsuarioPeloId(produto.UsuarioId);
 
@@ -98,10 +98,10 @@ namespace BarGanha.Controllers
         public async Task<IActionResult> Create(OfertaViewModel model)
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
-            var meusprodutos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
+            var meusprodutos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Where(p => p.Troca == false).ToListAsync();
 
             Usuario dono = await _usuarioRepositorio.PegarUsuarioPeloId(model.usuarioId);
-            var produtosDono = await _context.Produtos.Where(p => p.UsuarioId == dono.Id).Where(p => p.Anunciar == true).ToListAsync();
+            var produtosDono = await _context.Produtos.Where(p => p.UsuarioId == dono.Id).Where(p => p.Anunciar == true).Where(p => p.Troca == false).ToListAsync();
 
             Oferta ofer = new Oferta
             {
@@ -169,16 +169,20 @@ namespace BarGanha.Controllers
             }
         }
 
-
         public async Task<IActionResult> Delete(int? id)
         {
             var oferta = await _context.Ofertas.FindAsync(id);
 
             var produtosOfertados = await _context.ProdutosOfertados.Where(pO => pO.OfertaId == oferta.OfertaId).ToListAsync();
+            var produtosSelecionados = await _context.ProdutosSelecionados.Where(pO => pO.OfertaId == oferta.OfertaId).ToListAsync();
 
             foreach (ProdutoOfertado prodOfertado in produtosOfertados)
             {
                 _context.ProdutosOfertados.Remove(prodOfertado);
+            }
+            foreach (ProdutoSelecionado produtoSelecionado in produtosSelecionados)
+            {
+                _context.ProdutosSelecionados.Remove(produtoSelecionado);
             }
 
             _context.Ofertas.Remove(oferta);
@@ -220,7 +224,8 @@ namespace BarGanha.Controllers
             {
                 OfertaId = oferta.OfertaId,
                 UserDonoId = oferta.UserDonoId,
-                UserOfertaId = oferta.UserOfertaId
+                UserOfertaId = oferta.UserOfertaId,
+                Liberado = false
             };
             _context.Add(troc);
             await _context.SaveChangesAsync();

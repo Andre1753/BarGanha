@@ -61,18 +61,6 @@ namespace BarGanha.Controllers
                     _context.Produtos.Where(p => p.ProdutoId == pS1.ProdutoId).Load();
                 }
             }
-            /*
-            var ofertas = await _context.Ofertas.Where(o => o.UserDonoId == usuario.Id).Where(o => o.Status == 2).Include(o => o.produtosOfertados).ToListAsync();
-            foreach (Oferta oferta in ofertas)
-            {
-                //_context.Produtos.Where(p => p.ProdutoId == oferta.ProdutoId).Load();
-
-                foreach (ProdutoOfertado pO in oferta.produtosOfertados)
-                {
-                    _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
-                }
-            }
-            */
 
             ViewBag.trocasEnviadas = trocasEnviadas;
             ViewBag.trocasRecebidas = trocasRecebidas;
@@ -135,15 +123,19 @@ namespace BarGanha.Controllers
             var troca = await _context.Trocas
                         .FirstAsync(t => t.TrocaId == id);
 
-            //_context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.Produto).Include(o => o.produtosOfertados).Load();
+            _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.produtosOfertados).Include(o => o.produtosSelecionados).Load();
 
             troca.Oferta.Status = 3;
-            //troca.Oferta.Produto.Troca = false;
 
             foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
             {
                 _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
                 pO.produto.Troca = false;
+            }
+            foreach (ProdutoSelecionado pS in troca.Oferta.produtosSelecionados)
+            {
+                _context.Produtos.Where(p => p.ProdutoId == pS.ProdutoId).Load();
+                pS.produto.Troca = false;
             }
 
             _context.Trocas.Remove(troca);
@@ -152,16 +144,20 @@ namespace BarGanha.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public ActionResult DeleteByOferta(int id)
+        public async Task<IActionResult> Liberar(int? id)
         {
-            try
+            var troca = await _context.Trocas.FindAsync(id);
+
+            if (troca == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
-            }
+
+            troca.Liberado = true;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

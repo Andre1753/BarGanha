@@ -20,7 +20,6 @@ namespace BarGanha.BLL.Models
         public Categoria categoria { get; set; }
         public string Cidade { get; set; }
          public string Estado { get; set; }
-        public ICollection<Oferta> Ofertas { get; set; }
 
         public ICollection<ProdutoOfertado> produtosOfertados { get; set; }
         public ICollection<ProdutoSelecionado> produtosSelecionados { get; set; }

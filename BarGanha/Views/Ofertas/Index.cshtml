@@ -49,50 +49,58 @@
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoSelecionado in ofertaEnv.produtosSelecionados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoSelecionado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoSelecionado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoSelecionado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoSelecionado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoOfertado in ofertaEnv.produtosOfertados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoOfertado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoOfertado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoOfertado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoOfertado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
                         <td class="text-center">
-                            @if (ofertaEnv.Status == 1)
+                            @if (ofertaEnv.Status != 2)
                             {
-                                <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Delete" asp-route-id="@ofertaEnv.OfertaId">Deletar</a>
+                                <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" onclick="return confirm('Tem certeza que deseja excluir esta oferta?');" asp-controller="Ofertas" asp-action="Delete" asp-route-id="@ofertaEnv.OfertaId">Excluir Oferta</a>
                             }
                         </td>
                     </tr>
@@ -150,49 +158,60 @@
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoSelecionado in ofertaRec.produtosSelecionados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoSelecionado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoSelecionado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoSelecionado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoSelecionado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoOfertado in ofertaRec.produtosOfertados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoOfertado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoOfertado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoOfertado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoOfertado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
                         <td class="text-center">
                             <a class="btn btn-sm" style="background-color:green; color:#ffffff;" asp-controller="Ofertas" asp-action="Aprovar" asp-route-id="@ofertaRec.OfertaId">Aprovar</a>
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Reprovar" asp-route-id="@ofertaRec.OfertaId">Reprovar</a>
+                            @if (ofertaRec.Status != 3)
+                            {
+                                <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Ofertas" asp-action="Reprovar" asp-route-id="@ofertaRec.OfertaId">Reprovar</a>
+                            }
                         </td>
                     </tr>
                 }

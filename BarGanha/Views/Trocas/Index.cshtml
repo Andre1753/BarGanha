@@ -37,47 +37,69 @@
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoSelecionado in trocaEnv.Oferta.produtosSelecionados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoSelecionado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoSelecionado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoSelecionado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoSelecionado.produto.Preco
+                                    </div>
+                                    
+                                    <div style="margin-top:-3px">
+                                        @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoOfertado in trocaEnv.Oferta.produtosOfertados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoOfertado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoOfertado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoOfertado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoOfertado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
                         <td class="text-center">
+                            @if (!trocaEnv.Liberado)
+                            {
+                                <div class="mb-1">
+                                    <a class="btn btn-sm" style="background-color:blue; color:#ffffff;" asp-controller="Trocas" asp-action="Liberar" asp-route-id="@trocaEnv.TrocaId">Liberar dados p/ comunicaçao</a>
+                                </div>
+
+                                <div>
+                                    <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" onclick="return confirm('Tem certeza que deseja cancelar esta troca?');" asp-controller="Trocas" asp-action="Delete" asp-route-id="@trocaEnv.TrocaId">Cancelar Troca</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="badge badge-warning">Aguarde o contato de @trocaEnv.UserDono.UserName</span>
+                            }
                         </td>
                     </tr>
                 }
@@ -120,47 +142,72 @@
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoSelecionado in trocaRec.Oferta.produtosSelecionados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoSelecionado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoSelecionado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div style ="margin-top:-3px">
+                                        @produtoSelecionado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoSelecionado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
 
                         <td colspan="3">
-                            <div class="row ml-2 text-center justify-content-center">
+                            <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoOfertado in trocaRec.Oferta.produtosOfertados)
                                 {
-                                    <div class="cols-4">
-                                        <div>
-                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                        </div>
-
-                                        <div>
-                                            @produtoOfertado.produto.NomeProduto
-                                        </div>
-
-                                        <div>
-                                            R$ @produtoOfertado.produto.Preco
-                                        </div>
+                                <div class="cols-4">
+                                    <div>
+                                        <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
                                     </div>
+
+                                    <div>
+                                        @produtoOfertado.produto.NomeProduto
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        R$ @produtoOfertado.produto.Preco
+                                    </div>
+
+                                    <div style="margin-top:-3px">
+                                        @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                    </div>
+                                </div>
                                 }
                             </div>
                         </td>
+
                         <td class="text-center">
+                            @if (@trocaRec.Liberado)
+                            {
+                                <div class="mb-1">
+                                    <a class="btn btn-sm" style="background-color:blue; color:#ffffff;" asp-controller="Trocas" asp-action="" asp-route-id="@trocaRec.TrocaId">Dados p/ comunicaçao</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="mb-1">
+                                    <a class="btn btn-sm" readonly style="background-color:gray; color:#ffffff;">Aguardando dados p/ comunicaçao</a>
+                                </div>
+
+                                <div>
+                                    <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" onclick="return confirm('Tem certeza que deseja cancelar esta troca?');" asp-controller="Trocas" asp-action="Delete" asp-route-id="@trocaRec.TrocaId">Cancelar Troca</a>
+                                </div>
+                            }
                         </td>
                     </tr>
                 }
