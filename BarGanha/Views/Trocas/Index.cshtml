@@ -145,23 +145,23 @@
                             <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoSelecionado in trocaRec.Oferta.produtosSelecionados)
                                 {
-                                <div class="cols-4">
-                                    <div>
-                                        <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                    </div>
+                                    <div class="cols-4">
+                                        <div>
+                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </div>
 
-                                    <div style ="margin-top:-3px">
-                                        @produtoSelecionado.produto.NomeProduto
-                                    </div>
+                                        <div style="margin-top:-3px">
+                                            @produtoSelecionado.produto.NomeProduto
+                                        </div>
 
-                                    <div style="margin-top:-3px">
-                                        R$ @produtoSelecionado.produto.Preco
-                                    </div>
+                                        <div style="margin-top:-3px">
+                                            R$ @produtoSelecionado.produto.Preco
+                                        </div>
 
-                                    <div style="margin-top:-3px">
-                                        @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                        <div style="margin-top:-3px">
+                                            @produtoSelecionado.produto.Cidade / @produtoSelecionado.produto.Estado
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                         </td>
@@ -170,23 +170,23 @@
                             <div class="row ml-2 text-center justify-content-around">
                                 @foreach (var produtoOfertado in trocaRec.Oferta.produtosOfertados)
                                 {
-                                <div class="cols-4">
-                                    <div>
-                                        <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                                    </div>
+                                    <div class="cols-4">
+                                        <div>
+                                            <img src="~/images/@produtoOfertado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </div>
 
-                                    <div>
-                                        @produtoOfertado.produto.NomeProduto
-                                    </div>
+                                        <div>
+                                            @produtoOfertado.produto.NomeProduto
+                                        </div>
 
-                                    <div style="margin-top:-3px">
-                                        R$ @produtoOfertado.produto.Preco
-                                    </div>
+                                        <div style="margin-top:-3px">
+                                            R$ @produtoOfertado.produto.Preco
+                                        </div>
 
-                                    <div style="margin-top:-3px">
-                                        @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                        <div style="margin-top:-3px">
+                                            @produtoOfertado.produto.Cidade / @produtoOfertado.produto.Estado
+                                        </div>
                                     </div>
-                                </div>
                                 }
                             </div>
                         </td>
@@ -195,7 +195,7 @@
                             @if (@trocaRec.Liberado)
                             {
                                 <div class="mb-1">
-                                    <a class="btn btn-sm" style="background-color:blue; color:#ffffff;" asp-controller="Trocas" asp-action="" asp-route-id="@trocaRec.TrocaId">Dados p/ comunicaçao</a>
+                                    <a id="dadosUsuarioModal" href="#dadosUsuarioModal" data-toggle="modal" title="Desatribuir conciliadores de Analista" class="btn btn-sm" style="background-color:blue; color:#ffffff;">Dados p/ comunicaçao</a>
                                 </div>
                             }
                             else
@@ -210,6 +210,66 @@
                             }
                         </td>
                     </tr>
+                    <!-- #modal-alert -->
+                    <div class="modal fade" id="dadosUsuarioModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h2>Dados de @trocaRec.UserOferta.UserName</h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="font-weight-bold">
+                                        Nome completo: <span class="font-weight-normal">@trocaRec.UserOferta.NomeCompleto</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Apelido: <span class="font-weight-normal">@trocaRec.UserOferta.UserName</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Email: <span class="font-weight-normal">@trocaRec.UserOferta.Email</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        CPF: <span class="font-weight-normal">@trocaRec.UserOferta.CPF</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Telefone: <span class="font-weight-normal">@trocaRec.UserOferta.PhoneNumber</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Logradouro: <span class="font-weight-normal">@trocaRec.UserOferta.Logradouro</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Numero: <span class="font-weight-normal">@trocaRec.UserOferta.Numero</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Bairro: <span class="font-weight-normal">@trocaRec.UserOferta.Bairro</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        CEP: <span class="font-weight-normal">@trocaRec.UserOferta.CEP</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Complemento: <span class="font-weight-normal">@trocaRec.UserOferta.Complemento</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Cidade: <span class="font-weight-normal">@trocaRec.UserOferta.Cidade</span>
+                                    </p>
+
+                                    <p class="font-weight-bold">
+                                        Estado: <span class="font-weight-normal">@trocaRec.UserOferta.Estado</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 }
             }
             else
