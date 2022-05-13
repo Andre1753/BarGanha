@@ -31,5 +31,11 @@ namespace BarGanha.ViewModels
         [Required(ErrorMessage = "Selecione uma categoria")]
         [Display(Name = "Categoria")]
         public int CategoriaId { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Cidade { get; set; }
+
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        public string Estado { get; set; }
     }
 }

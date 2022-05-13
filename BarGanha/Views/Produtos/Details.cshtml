@@ -23,16 +23,24 @@
         <div class="col-xl-8 col-lg-8 col-md-6">
             <div class="single-product-details p-3" style="background-color: #FFFFEB;">
                 <h2>@ViewBag.produto.NomeProduto</h2>
-                <h5>R$ @ViewBag.produto.Preco</h5>
-                <p>
-                    <h4>Descrição:</h4>
-                <p style="height: 111px; overflow-y: auto">
-                    @ViewBag.produto.Descricao
-                </p>
+                <h4 style="margin-top:-4px">De <span style="color:#0026ff">@ViewBag.dono.UserName </span></h4>
+
+                <h5 class="mt-1 mb-1">R$ @ViewBag.produto.Preco</h5>
+
+                <h5 class="mt-1 mb-1" style="color:#000000">Localizado em: @ViewBag.produto.Cidade / @ViewBag.produto.Estado</h5>
+
+                <div class="card p-1">
+                    <h4 style="margin-top:-3px">Descrição</h4>
+                    <p style="height: 111px; overflow-y: auto" class="px-1">
+                        @ViewBag.produto.Descricao
+                    </p>
+                </div>
 
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <a class="btn hvr-hover" style="background-color: #d33b33; margin-top: -8px; color: #fff;" asp-controller="Ofertas" asp-action="Create" asp-route-id="@ViewBag.produto.ProdutoId">Ofertar Troca</a>
+                    <div class="row justify-content-end">
+                        <a class="btn hvr-hover mt-2 mr-2" style="background-color: #d33b33; color: #fff;" asp-controller="Ofertas" asp-action="Create" asp-route-id="@ViewBag.produto.ProdutoId">Trocar com usuario</a>
+                    </div>
                 }
 
             </div>

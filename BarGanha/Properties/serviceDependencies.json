@@ -1,9 +1,5 @@
 {
   "dependencies": {
-    "mssql2": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:ConexaoDB"
-    },
     "mssql1": {
       "type": "mssql",
       "connectionId": "ConexaoDB"

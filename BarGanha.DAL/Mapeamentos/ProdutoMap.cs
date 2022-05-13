@@ -16,6 +16,8 @@ namespace BarGanha.DAL.Mapeamentos
             builder.Property(p => p.Troca).IsRequired();
             builder.Property(p => p.Descricao).IsRequired().HasMaxLength(144);
             builder.Property(p => p.ImagemProduto).IsRequired();
+            builder.Property(p => p.Cidade).IsRequired();
+            builder.Property(p => p.Estado).IsRequired();
             builder.Property(p => p.CategoriaId).IsRequired();
             builder.Property(p => p.UsuarioId).IsRequired();
 

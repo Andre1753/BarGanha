@@ -98,7 +98,11 @@ namespace BarGanha.Controllers
             }
 
             var produto = await _context.Produtos.FirstOrDefaultAsync(u => u.ProdutoId == id);
+
+            Usuario dono = await _usuarioRepositorio.PegarUsuarioPeloId(produto.UsuarioId);
+
             ViewBag.produto = produto;
+            ViewBag.dono = dono;
 
             if (produto == null)
             {
@@ -128,6 +132,35 @@ namespace BarGanha.Controllers
         public IActionResult Create()
         {
             ViewBag.Categorias = _context.Categorias.ToList();
+
+            ViewBag.estados = new string[] {
+                "Acre",
+                "Alagoas",
+                "Amapá",
+                "Amazonas",
+                "Bahia",
+                "Ceará",
+                "Espírito Santo",
+                "Goiás",
+                "Maranhão",
+                "Mato Grosso",
+                "Mato Grosso do Sul",
+                "Minas Gerais",
+                "Pará",
+                "Paraíba",
+                "Paraná",
+                "Pernambuco",
+                "Piauí",
+                "Rio de Janeiro",
+                "Rio Grande do Norte",
+                "Rio Grande do Sul",
+                "Rondônia",
+                "Roraima",
+                "Santa Catarina",
+                "São Paulo",
+                "Sergipe",
+                "Tocantins"
+            };
             return View();
         }
 
@@ -140,6 +173,34 @@ namespace BarGanha.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Categorias = _context.Categorias.ToList();
+                ViewBag.estados = new string[] {
+                    "Acre",
+                    "Alagoas",
+                    "Amapá",
+                    "Amazonas",
+                    "Bahia",
+                    "Ceará",
+                    "Espírito Santo",
+                    "Goiás",
+                    "Maranhão",
+                    "Mato Grosso",
+                    "Mato Grosso do Sul",
+                    "Minas Gerais",
+                    "Pará",
+                    "Paraíba",
+                    "Paraná",
+                    "Pernambuco",
+                    "Piauí",
+                    "Rio de Janeiro",
+                    "Rio Grande do Norte",
+                    "Rio Grande do Sul",
+                    "Rondônia",
+                    "Roraima",
+                    "Santa Catarina",
+                    "São Paulo",
+                    "Sergipe",
+                    "Tocantins"
+                };
                 return View();
             }
             string nomeUnicoArquivo = UploadedFile(model);
@@ -153,6 +214,8 @@ namespace BarGanha.Controllers
                 ImagemProduto = nomeUnicoArquivo,
                 UsuarioId = usuario.Id,
                 CategoriaId = model.CategoriaId,
+                Cidade = model.Cidade,
+                Estado = model.Estado
             };
             _context.Add(prod);
             await _context.SaveChangesAsync();

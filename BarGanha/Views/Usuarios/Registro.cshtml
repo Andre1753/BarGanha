@@ -82,7 +82,7 @@
 
                 <div class="row">
                     <div class="form-group col-4">
-                        <label asp-for="CEP" id="CEP" class="control-label" style="font-size: 1.02rem;"></label>
+                        <label asp-for="CEP" class="control-label" style="font-size: 1.02rem;"></label>
                         <input asp-for="CEP" class="form-control border border-black" id="CEP" />
                         <span asp-validation-for="CEP" class="red-text text-darken-4"></span>
                     </div>
@@ -171,6 +171,7 @@
             $(document).ready(function () {
                 $("#telefone").inputmask('(99) 99999-9999');
                 $("#CPF").inputmask('999.999.999-99');
+                $("#CEP").inputmask('99999-999');
             });
 
         </script>

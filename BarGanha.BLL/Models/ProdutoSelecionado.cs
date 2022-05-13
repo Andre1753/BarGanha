@@ -1,0 +1,16 @@
+﻿
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace BarGanha.BLL.Models
+{
+    public class ProdutoSelecionado
+    {
+        public int Id { get; set; }
+        public int OfertaId { get; set; }
+        public Oferta oferta { get; set; }
+        public int ProdutoId { get; set; }
+        public Produto produto { get; set; }
+    }
+}

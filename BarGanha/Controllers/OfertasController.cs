@@ -31,7 +31,7 @@ namespace BarGanha.Controllers
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            var ofertas = await _context.Ofertas.Where(o => o.UsuarioId == usuario.Id).Include(o => o.produtosOfertados).ToListAsync();
+            var ofertas = await _context.Ofertas.Where(o => o.UserDonoId == usuario.Id).Include(o => o.produtosOfertados).ToListAsync();
             foreach (Oferta oferta in ofertas)
             {
                 foreach (ProdutoOfertado pO in oferta.produtosOfertados)
@@ -39,8 +39,7 @@ namespace BarGanha.Controllers
                     _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
                 }
 
-                var prod = await _context.Produtos
-                    .FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
+                //var prod = await _context.Produtos.FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
             }
 
             _context.Produtos.Where(p => p.UsuarioId == usuario.Id).Load();
@@ -50,7 +49,7 @@ namespace BarGanha.Controllers
                 foreach (Produto meuProduto in usuario.Produtos)
                 {
                     var pt = meuProduto;
-                    _context.Ofertas.Where(o => o.ProdutoId == meuProduto.ProdutoId).Load();
+                    //_context.Ofertas.Where(o => o.ProdutoId == meuProduto.ProdutoId).Load();
 
                     if (meuProduto.Ofertas != null)
                     {
@@ -100,7 +99,6 @@ namespace BarGanha.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(OfertaViewModel model)
         {
-
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
             var produtos = await _context.Produtos.Where(p => p.UsuarioId == usuario.Id).ToListAsync();
@@ -108,9 +106,9 @@ namespace BarGanha.Controllers
 
             Oferta ofer = new Oferta
             {
-                ProdutoId = model.produtoId,
+                //ProdutoId = model.produtoId,
                 Status = 1,
-                UsuarioId = usuario.Id
+                UserOfertaId = usuario.Id
             };
             _context.Add(ofer);
             await _context.SaveChangesAsync();
@@ -191,12 +189,11 @@ namespace BarGanha.Controllers
 
             oferta.Status = 2;
 
-            var produto = await _context.Produtos
-                            .FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
+            //var produto = await _context.Produtos.FirstOrDefaultAsync(m => m.ProdutoId == oferta.ProdutoId);
 
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
 
-            produto.Troca = true;
+            //produto.Troca = true;
 
             Troca troc = new Troca
             {

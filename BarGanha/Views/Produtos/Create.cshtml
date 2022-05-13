@@ -54,6 +54,22 @@
                 </div>
 
                 <div class="row">
+                    <div class="form-group col-6">
+                        <label asp-for="Cidade" id="Cidade" class="control-label" style="font-size: 1.02rem;"></label>
+                        <input asp-for="Cidade" class="form-control border border-black" id="Cidade" />
+                        <span asp-validation-for="Cidade" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label asp-for="Estado" id="Estado" class="control-label" style="font-size: 1.02rem;"></label>
+                        @Html.DropDownListFor(m => m.Estado,
+                                                    new SelectList(ViewBag.estados),
+                                                    "Escolha o estado", new { @class = "form-control border border-black h4" })
+                        <span asp-validation-for="Estado" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="form-group col-md-12">
                         <label asp-for="Descricao" class="control-label"></label>
                         <textarea rows="6" asp-for="Descricao" class="form-control"></textarea>

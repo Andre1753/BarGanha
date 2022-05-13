@@ -16,6 +16,8 @@ namespace BarGanha.BLL.Models
         public string Estado { get; set; }
         public ICollection<Produto> Produtos { get; set; }
         public ICollection<Oferta> Ofertas { get; set; }
+        public ICollection<Oferta> OfertasEnviadas { get; set; }
+
         public ICollection<Troca> Trocas { get; set; }
 
     }

@@ -35,7 +35,7 @@ namespace BarGanha.Controllers
             foreach (Troca troca in trocas)
             {
                 _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.produtosOfertados).Load();
-                _context.Produtos.Where(p => p.ProdutoId == troca.Oferta.ProdutoId).Load();
+                //_context.Produtos.Where(p => p.ProdutoId == troca.Oferta.ProdutoId).Load();
 
                 foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
                 {
@@ -43,10 +43,10 @@ namespace BarGanha.Controllers
                 }
             }
 
-            var ofertas = await _context.Ofertas.Where(o => o.UsuarioId == usuario.Id).Where(o => o.Status == 2).Include(o => o.produtosOfertados).ToListAsync();
+            var ofertas = await _context.Ofertas.Where(o => o.UserDonoId == usuario.Id).Where(o => o.Status == 2).Include(o => o.produtosOfertados).ToListAsync();
             foreach (Oferta oferta in ofertas)
             {
-                _context.Produtos.Where(p => p.ProdutoId == oferta.ProdutoId).Load();
+                //_context.Produtos.Where(p => p.ProdutoId == oferta.ProdutoId).Load();
 
                 foreach (ProdutoOfertado pO in oferta.produtosOfertados)
                 {
@@ -115,10 +115,10 @@ namespace BarGanha.Controllers
             var troca = await _context.Trocas
                         .FirstAsync(t => t.TrocaId == id);
 
-            _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.Produto).Include(o => o.produtosOfertados).Load();
+            //_context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.Produto).Include(o => o.produtosOfertados).Load();
 
             troca.Oferta.Status = 3;
-            troca.Oferta.Produto.Troca = false;
+            //troca.Oferta.Produto.Troca = false;
 
             foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
             {
