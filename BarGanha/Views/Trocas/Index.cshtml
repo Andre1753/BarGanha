@@ -14,40 +14,52 @@
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th scope="col" colspan="7" class="text-center">Trocas recebidas finalizadas</th>
+                <th scope="col" colspan="9" class="text-center">Trocas enviadas finalizadas</th>
             </tr>
         </thead>
         <thead>
             <tr>
-                <th scope="col" class="text-center">Produto</th>
-                <th scope="col" colspan="4" class="text-center">Produtos Ofertados</th>
+                <th scope="col" class="text-center">Usuario</th>
+                <th scope="col" colspan="3" class="text-center">Produtos Selecionados</th>
+                <th scope="col" colspan="3" class="text-center">Produtos Ofertados</th>
                 <th scope="col" class="text-center">Ações</th>
 
             </tr>
         </thead>
         <tbody>
-            @if (@ViewBag.trocas.Count > 0)
+            @if (@ViewBag.trocasEnviadas.Count > 0)
             {
-                @foreach (var troca in @ViewBag.trocas)
+                @foreach (var trocaEnv in @ViewBag.trocasEnviadas)
                 {
                     <tr>
                         <td class="text-center">
-                            <div>
-                                <img src="~/images/@troca.Oferta.Produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                            </div>
+                            @trocaEnv.UserDono.UserName
+                        </td>
 
-                            <div>
-                                @troca.Oferta.Produto.NomeProduto
-                            </div>
+                        <td colspan="3">
+                            <div class="row ml-2 text-center justify-content-center">
+                                @foreach (var produtoSelecionado in trocaEnv.Oferta.produtosSelecionados)
+                                {
+                                    <div class="cols-4">
+                                        <div>
+                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </div>
 
-                            <div>
-                                R$ @troca.Oferta.Produto.Preco
+                                        <div>
+                                            @produtoSelecionado.produto.NomeProduto
+                                        </div>
+
+                                        <div>
+                                            R$ @produtoSelecionado.produto.Preco
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </td>
-                        <td colspan="4">
 
+                        <td colspan="3">
                             <div class="row ml-2 text-center justify-content-center">
-                                @foreach (var produtoOfertado in troca.Oferta.produtosOfertados)
+                                @foreach (var produtoOfertado in trocaEnv.Oferta.produtosOfertados)
                                 {
                                     <div class="cols-4">
                                         <div>
@@ -66,7 +78,6 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Trocas" asp-action="Delete" asp-route-id="@troca.TrocaId">Recusar Troca</a>
                         </td>
                     </tr>
                 }
@@ -74,37 +85,64 @@
             else
             {
                 <tr>
-                    <td colspan="8" class="text-center">Nenhuma troca enviada finalizada</td>
+                    <td colspan="9" class="text-center">Nenhuma troca enviada finalizada</td>
                 </tr>
             }
         </tbody>
     </table>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    &nbsp;
+    &nbsp
+    &nbsp
+    &nbsp
+    &nbsp
     <table class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th scope="col" colspan="7" class="text-center">Trocadas recebidas finalizadas</th>
+                <th scope="col" colspan="9" class="text-center">Trocas recebidas finalizadas</th>
             </tr>
         </thead>
         <thead>
             <tr>
-                <th scope="col" class="text-center">Produtos Ofertados</th>
-                <th scope="col" colspan="4" class="text-center">Produto</th>
+                <th scope="col" class="text-center">Usuario</th>
+                <th scope="col" colspan="3" class="text-center">Produtos Selecionados</th>
+                <th scope="col" colspan="3" class="text-center">Produtos Ofertados</th>
                 <th scope="col" class="text-center">Ações</th>
+
             </tr>
         </thead>
         <tbody>
-            @if (@ViewBag.ofertas.Count > 0)
+            @if (@ViewBag.trocasRecebidas.Count > 0)
             {
-                @foreach (var oferta in @ViewBag.ofertas)
+                @foreach (var trocaRec in @ViewBag.trocasRecebidas)
                 {
                     <tr>
-                        <td colspan="4">
+                        <td class="text-center">
+                            @trocaRec.UserOferta.UserName
+                        </td>
+
+                        <td colspan="3">
                             <div class="row ml-2 text-center justify-content-center">
-                                @foreach (var produtoOfertado in oferta.produtosOfertados)
+                                @foreach (var produtoSelecionado in trocaRec.Oferta.produtosSelecionados)
+                                {
+                                    <div class="cols-4">
+                                        <div>
+                                            <img src="~/images/@produtoSelecionado.produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
+                                        </div>
+
+                                        <div>
+                                            @produtoSelecionado.produto.NomeProduto
+                                        </div>
+
+                                        <div>
+                                            R$ @produtoSelecionado.produto.Preco
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </td>
+
+                        <td colspan="3">
+                            <div class="row ml-2 text-center justify-content-center">
+                                @foreach (var produtoOfertado in trocaRec.Oferta.produtosOfertados)
                                 {
                                     <div class="cols-4">
                                         <div>
@@ -122,23 +160,7 @@
                                 }
                             </div>
                         </td>
-
                         <td class="text-center">
-                            <div>
-                                <img src="~/images/@oferta.Produto.ImagemProduto" width="80px" height="80px" asp-append-version="true" />
-                            </div>
-
-                            <div>
-                                @oferta.Produto.NomeProduto
-                            </div>
-
-                            <div>
-                                R$ @oferta.Produto.Preco
-                            </div>
-                        </td>
-
-                        <td class="text-center">
-                            <a class="btn btn-sm" style="background-color:#d33b33; color:#ffffff;" asp-controller="Trocas" asp-action="DeleteByOferta" asp-route-id="@oferta.OfertaId">Recusar Troca</a>
                         </td>
                     </tr>
                 }
@@ -146,10 +168,9 @@
             else
             {
                 <tr>
-                    <td colspan="8" class="text-center">Nenhuma troca enviada finalizada.</td>
+                    <td colspan="9" class="text-center">Nenhuma oferta de troca enviada</td>
                 </tr>
             }
         </tbody>
     </table>
-
 </div>

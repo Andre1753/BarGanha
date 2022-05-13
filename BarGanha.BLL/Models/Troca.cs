@@ -8,8 +8,10 @@ namespace BarGanha.BLL.Models
         public int TrocaId { get; set; }
         public int OfertaId { get; set; }
         public Oferta Oferta { get; set; }
-        public string UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
+        public string UserDonoId { get; set; }
+        public Usuario UserDono { get; set; }
+        public string UserOfertaId { get; set; }
+        public Usuario UserOferta { get; set; }
 
     }
 }

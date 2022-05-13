@@ -19,6 +19,8 @@ namespace BarGanha.BLL.Models
         public ICollection<Oferta> OfertasEnviadas { get; set; }
 
         public ICollection<Troca> Trocas { get; set; }
+        public ICollection<Troca> TrocasEnviadas { get; set; }
+
 
     }
 

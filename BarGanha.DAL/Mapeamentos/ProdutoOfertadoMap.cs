@@ -19,3 +19,4 @@ namespace BarGanha.DAL.Mapeamentos
         }
     }
 }
+    

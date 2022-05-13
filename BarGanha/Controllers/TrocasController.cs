@@ -29,20 +29,39 @@ namespace BarGanha.Controllers
         public async Task<ActionResult> Index()
         {
             Usuario usuario = await _usuarioRepositorio.PegarUsuarioPeloNome(User);
+                        
+            var trocasEnviadas = await _context.Trocas.Where(t => t.UserOfertaId == usuario.Id).ToListAsync();
 
-            var trocas = await _context.Trocas.Where(t => t.UsuarioId == usuario.Id).ToListAsync();
-
-            foreach (Troca troca in trocas)
+            foreach (Troca trocaEnv in trocasEnviadas)
             {
-                _context.Ofertas.Where(o => o.OfertaId == troca.OfertaId).Include(o => o.produtosOfertados).Load();
-                //_context.Produtos.Where(p => p.ProdutoId == troca.Oferta.ProdutoId).Load();
+                _context.Ofertas.Where(o => o.OfertaId == trocaEnv.OfertaId).Include(o => o.produtosOfertados).Include(o => o.produtosSelecionados).Include(o => o.UserDono).Load();
 
-                foreach (ProdutoOfertado pO in troca.Oferta.produtosOfertados)
+                foreach (ProdutoOfertado pO in trocaEnv.Oferta.produtosOfertados)
                 {
                     _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
                 }
+                foreach (ProdutoSelecionado pS in trocaEnv.Oferta.produtosSelecionados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == pS.ProdutoId).Load();
+                }
             }
 
+            var trocasRecebidas = await _context.Trocas.Where(t => t.UserDonoId == usuario.Id).ToListAsync();
+
+            foreach (Troca trocaRec in trocasRecebidas)
+            {
+                _context.Ofertas.Where(o => o.OfertaId == trocaRec.OfertaId).Include(o => o.produtosOfertados).Include(o => o.produtosSelecionados).Include(o => o.UserOferta).Load();
+
+                foreach (ProdutoOfertado pO1 in trocaRec.Oferta.produtosOfertados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == pO1.ProdutoId).Load();
+                }
+                foreach (ProdutoSelecionado pS1 in trocaRec.Oferta.produtosSelecionados)
+                {
+                    _context.Produtos.Where(p => p.ProdutoId == pS1.ProdutoId).Load();
+                }
+            }
+            /*
             var ofertas = await _context.Ofertas.Where(o => o.UserDonoId == usuario.Id).Where(o => o.Status == 2).Include(o => o.produtosOfertados).ToListAsync();
             foreach (Oferta oferta in ofertas)
             {
@@ -53,9 +72,10 @@ namespace BarGanha.Controllers
                     _context.Produtos.Where(p => p.ProdutoId == pO.ProdutoId).Load();
                 }
             }
+            */
 
-            ViewBag.trocas = trocas;
-            ViewBag.ofertas = ofertas;
+            ViewBag.trocasEnviadas = trocasEnviadas;
+            ViewBag.trocasRecebidas = trocasRecebidas;
 
             return View();
         }
