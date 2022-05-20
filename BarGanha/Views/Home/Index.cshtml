@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="title-all text-center">
-                    <h1>Produtos em Destaque</h1>
+                    <h1>Produtos em Destaque</h1>''
                     <p>Veja o que esta quente na BarGanha nesse exato momento!</p>
                 </div>
             </div>
@@ -60,15 +60,19 @@
             @foreach (var produto in ViewBag.produtos)
             {
                 <div class="col-lg-3 col-md-6 special-grid">
-                    <div class="products-single fix">
+                    <div class="products-single fix" style="border:1.5px solid black">
+                        <div class="type-lb">
+                            <p class="new">NOVO</p>
+                        </div>
                         <div class="box-img-hover">
-                            <img src="~/images/@produto.ImagemProduto" height="220px" alt="Image">
+                            <img src="~/images/@produto.ImagemProduto" height="220px" width="100%" alt="Image">
                             <div class="mask-icon">
                                 <a class="cart" asp-controller="Produtos" asp-action="Details" asp-route-id="@produto.ProdutoId">Visualizar</a>
                             </div>
                         </div>
                         <div class="why-text">
                             <h4>@produto.NomeProduto</h4>
+                            <h5 style="color:red">R$ @produto.Preco</h5>
                         </div>
                     </div>
                 </div>
