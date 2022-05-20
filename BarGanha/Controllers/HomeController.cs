@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using BarGanha.DAL;
+using BarGanha.DAL.Interfaces;
 using BarGanha.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace BarGanha.Controllers
@@ -12,14 +16,21 @@ namespace BarGanha.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Contexto _context;
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Contexto context, IWebHostEnvironment hostEnvironment, IUsuarioRepositorio usuarioRepositorio)
         {
             _logger = logger;
+            _context = context;
+            webHostEnvironment = hostEnvironment;
+            _usuarioRepositorio = usuarioRepositorio;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            ViewBag.produtos = await _context.Produtos.Where(p => p.Anunciar == true).Where(p => p.Troca == false).Take(4).ToListAsync();
             return View();
         }
 

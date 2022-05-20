@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>BarGanha<br> Aqui ninguém fica sem!</strong></h1>
-                        <p class="m-b-40 font-weight-bold" style="font-size:40px">Crie uma conta agora! <br>E comece a trocar centenas de produtos com outros usuarios!</p>
+                        <p class="m-b-40 font-weight-bold" style="font-size:36px">Crie uma conta agora!</p>
                         <p><a class="btn hvr-hover" onclick="location.href='@Url.Action("Registro", "Usuarios")'">Criar uma conta</a></p>
                     </div>
                 </div>
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>BarGanha<br> Aqui Ninguém fica sem!</strong></h1>
-                        <p class="m-b-40 font-weight-bold" style="font-size:40px">Crie uma conta agora! <br>E comece a trocar centenas de produtos com outros usuarios!</p>
+                        <p class="m-b-40 font-weight-bold" style="font-size:36px">Crie uma conta agora!</p>
                         <p><a class="btn hvr-hover" onclick="location.href='@Url.Action("Registro", "Usuarios")'">Criar uma conta</a></p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h1 class="m-b-20"><strong>BarGanha<br> Aqui ninguém fica sem!</strong></h1>
-                        <p class="m-b-40 font-weight-bold" style="font-size:40px">Crie uma conta agora! <br>E comece a trocar centenas de produtos com outros usuarios!</p>
+                        <p class="m-b-40 font-weight-bold" style="font-size:36px">Crie uma conta agora!</p>
                         <p><a class="btn hvr-hover" onclick="location.href='@Url.Action("Registro", "Usuarios")'">Criar uma conta</a></p>
                     </div>
                 </div>
@@ -44,6 +44,7 @@
     </div>
 </div>
 <!-- End Slider -->
+
 <!-- Start Products  -->
 <div class="products-box">
     <div class="container">
@@ -56,94 +57,22 @@
             </div>
         </div>
         <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">MAIS OFERTADO</p>
+            @foreach (var produto in ViewBag.produtos)
+            {
+                <div class="col-lg-3 col-md-6 special-grid">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <img src="~/images/@produto.ImagemProduto" height="220px" alt="Image">
+                            <div class="mask-icon">
+                                <a class="cart" asp-controller="Produtos" asp-action="Details" asp-route-id="@produto.ProdutoId">Visualizar</a>
+                            </div>
                         </div>
-                        <img src="~/images/destaques/1.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Ver"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comparar"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Adicionar para Lista de Desejos"><i class="fas fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Fazer uma oferta</a>
+                        <div class="why-text">
+                            <h4>@produto.NomeProduto</h4>
                         </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Espelho Vintage Moldura Barroco</h4>
                     </div>
                 </div>
-            </div>
-            <!-- Start Individual Products -->
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="new">EM ALTA</p>
-                        </div>
-                        <img src="~/images/destaques/2.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Ver"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comparar"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Adicionar para Lista de Desejos"><i class="fas fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Fazer uma oferta</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bandeja de Vidro Pintado Floral</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="new">EM ALTA</p>
-                        </div>
-                        <img src="~/images/destaques/3.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Ver"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comparar"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Adicionar para Lista de Desejos"><i class="fas fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Fazer uma oferta</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Bandeja de Prata Ornada</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">MAIS OFERTADO</p>
-                        </div>
-                        <img src="~/images/destaques/4.png" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Ver"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comparar"><i class="fas fa-sync-alt"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Adicionar para Lista de Desejos"><i class="fas fa-heart"></i></a></li>
-                            </ul>
-                            <a class="cart" href="#">Fazer uma oferta</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Cabeça de Pelucia Mickey</h4>
-                    </div>
-                </div>
-            </div>
-            <!-- End Individual Products -->
+            }
         </div>
     </div>
 </div>
@@ -155,7 +84,7 @@
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/1.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/1.jpg" height="300px" alt="" />
                     <form class="row" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="5" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Veiculos</button>
@@ -163,7 +92,7 @@
                 </div>
 
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/2.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/2.jpg" height="300px" alt="" />
                     <form class="row" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="1" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Móveis</button>
@@ -173,14 +102,14 @@
 
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/3.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/3.jpg" height="300px" alt="" />
                     <form class="row" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="3" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Eletrodomésticos</button>
                     </form>
                 </div>
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/4.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/4.jpg" height="300px" alt="" />
                     <form class="row" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="2" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Eletrônicos</button>
@@ -190,7 +119,7 @@
 
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/5.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/5.jpg" height="300px" alt="" />
                     <form class="row" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="4" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Vestuários</button>
@@ -198,7 +127,7 @@
                 </div>
 
                 <div class="shop-cat-box">
-                    <img src="~/images/6-itens/6.jpg" height="220px" alt="" />
+                    <img src="~/images/6-itens/6.jpg" height="300px" alt="" />
                     <form class="row" style="margin-bottom:-3px" asp-controller="Produtos" asp-action="Index">
                         <input style="display:none" name="categoria" value="6" />
                         <button class="btn hvr-hover" style="width:100%; color:#ffffff" type="submit"> Outros</button>
