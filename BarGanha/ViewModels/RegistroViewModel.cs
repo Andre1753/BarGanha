@@ -45,12 +45,12 @@ namespace BarGanha.ViewModels
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(40, ErrorMessage = "Use menos caracteres")]
+        [StringLength(40, ErrorMessage = "O campo {0} deve conter no minimo {2} caracteres.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         public string Senha { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [StringLength(40, ErrorMessage = "Use menos caracteres")]
+        [StringLength(40, ErrorMessage = "O campo {0} deve conter no minimo {2} caracteres.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Confirme sua senha")]
         [Compare("Senha", ErrorMessage = "As senhas não conferem")]
