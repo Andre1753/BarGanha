@@ -1,6 +1,5 @@
-<div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=soft&color=5C2D91&height=200&section=header&text=BarGanha&fontSize=50&animation=slow&fontAlignY=40" />
-</div>
+# 🎈 Bar.Ganha - Ecommerce das trocas
+### Projeto de TCC distribuido e aprovado.
 
 <div align="center">
   <h3>🔄 Ecossistema de Economia Circular e Trocas Diretas</h3>
