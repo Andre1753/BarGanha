@@ -40,5 +40,5 @@ Plataforma desenvolvida para permitir a troca direta de itens entre usuários. O
 
 ---
 <p align="center">
-  Projeto acadêmico com rigor profissional por <b>André Araújo Silva</b>.
+  Projeto acadêmico com desenvolvido por <b>André Araújo Silva</b>.
 </p>
