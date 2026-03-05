@@ -1,7 +1,7 @@
 # 🎈 Bar.Ganha - Ecommerce das trocas
 ### Projeto de TCC distribuido e aprovado.
 
-<div align="center">
+<div align="left">
   <h3>🔄 Ecossistema de Economia Circular e Trocas Diretas</h3>
   <p><i>Projeto de Conclusão de Curso (TCC) focado em escalabilidade e arquitetura limpa.</i></p>
 </div>
