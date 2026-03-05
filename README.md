@@ -6,7 +6,7 @@
   <p><i>Projeto de Conclusão de Curso (TCC) focado em escalabilidade e arquitetura limpa.</i></p>
 </div>
 
-<div align="center">
+<div align="left">
   <img src="https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=dotnet&logoColor=white" />
   <img src="https://img.shields.io/badge/Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white" />
   <img src="https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" />
